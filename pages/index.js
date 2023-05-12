@@ -105,7 +105,7 @@ export default function Home() {
             
             >
               GPT-1</a>
-         <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/3.7.png" />
+
         </div>
         <div className={styles.navlinks}>
           <a href="https://www.fiverr.com/share/WYQ1w5" target="_blank">Order Yours Now!</a>
