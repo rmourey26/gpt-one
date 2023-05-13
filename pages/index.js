@@ -94,25 +94,25 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>GPT-1</title>
-        <meta name="description" content="GPT-1 web app" />
+        <title>Anthealth</title>
+        <meta name="description" content="Anthealth AI" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.topnav}>
-        <div className={styles.navlogo}>
         
-                <Image
+        
+                <Image className={styles.navlogo}>
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/3.7.png"
 
 
                     alt="Anthealth Logo"
-                />
+               </Image>
     
           <a href="https://anthealth.ai">
   
-          </a>
-        </div>
+               </a>
+
         <div className={styles.navlinks}>
        
 
