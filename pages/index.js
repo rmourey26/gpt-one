@@ -104,8 +104,8 @@ export default function Home() {
         <div>
                 <Image
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/3.7.png"
-                    height="48"
-                    width="192"
+
+
                     alt="Anthealth Logo"
                 />
             </div>
@@ -114,10 +114,10 @@ export default function Home() {
           </a>
         </div>
         <div className={styles.navlinks}>
-          <a href="https://www.fiverr.com/share/WYQ1w5" target="_blank">Order Yours Now!</a>
-          <a href="https://replit.com/@rmourey26/gpt-one" target="_blank">Replit</a>
+       
+
             
-          </div>
+     </div>
       </div>
       <main className={styles.main}>
         <div className={styles.cloud}>
