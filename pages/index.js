@@ -102,12 +102,12 @@ export default function Home() {
       <div className={styles.topnav}>
         
         
-                <Image className={styles.navlogo}>
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/3.7.png"
+                <Image className={styles.navlogo} src="https://quantumone.b-cdn.net/AntHealth_Logos/3.7.png" alt="Anthealth Logo" width="128px" height="48px" />
 
 
-                    alt="Anthealth Logo"
-               </Image>
+
+              
+
     
           <a href="https://anthealth.ai">
   
