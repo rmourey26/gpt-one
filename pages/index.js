@@ -102,7 +102,7 @@ export default function Home() {
       <div className={styles.topnav}>
         
         
-                <Image className={styles.navlogo} src="https://quantumone.b-cdn.net/AntHealth_Logos/3.7.png" alt="Anthealth Logo" width="128px" height="48px" />
+                <Image className={styles.navlogo} src="https://quantumone.b-cdn.net/AntHealth_Logos/Untitled%20Design_1-5.png" alt="Anthealth Logo" />
 
 
 
