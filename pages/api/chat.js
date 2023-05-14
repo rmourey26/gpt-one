@@ -1,7 +1,7 @@
 // Make sure to add OPENAI_API_KEY as a secret
 
 import { Configuration, OpenAIApi } from "openai";
-import { config } from "aws-exports";
+import { config } from "/codebuild/output/src837495800/src/gpt-one/aws-exports.js";
 
 // Amplify SSR configuration needs to be done within each API route
 Amplify.configure({ ...config, ssr: true });
