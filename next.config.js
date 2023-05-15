@@ -4,10 +4,5 @@ const nextConfig = {
   images : {
     domains : ['quantumone.b-cdn.net'],
   },
-  experimental: {
-    outputFileTracingExcludes: {
-      '/api/chat': ['../src/aws-exports'],
-    },
-  },
 }
 module.exports = nextConfig
