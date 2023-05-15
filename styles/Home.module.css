@@ -33,7 +33,9 @@
 
 .navlogo {
   font-size: 1.25rem;
-  margin-left: 1rem;
+  margin-left: 0.625rem;
+  width: 192px;
+  height: 48px;
 }
 
 .navlinks {
