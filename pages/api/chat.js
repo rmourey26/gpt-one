@@ -46,9 +46,7 @@ export default async function(req, res) {
   console.log(markdownToPlainText(({ result:completion.data.choices[0].message }))+"that was markdown")
   console.log(JSON.stringify(completion.data.choices[0].message)+"that was json stringified")
 }
-console.log(JSON.stringify(completion.data.choices[0].text )+"that was text")
     
-
 };
 
 
