@@ -9,15 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^4.6.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.11.4",
     "@next/font": "13.1.1",
     "@notionhq/client": "^2.2.3",
-    "aws-amplify": "^5.2.1",
     "components": "^0.1.0",
-    "cors": "^2.8.5",
     "docx": "^8.0.1",
     "dom": "^0.0.3",
     "file-saver": "^2.0.5",
@@ -32,12 +29,5 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.4"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/node": "^20.1.4",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "typescript": "^5.0.4"
   }
 }
