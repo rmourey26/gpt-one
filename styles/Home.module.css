@@ -151,7 +151,7 @@
 .usermessagewaiting{
   padding: 1.5rem;
   color: #ECECF1;
-  background: linear-gradient(to left, #070809, #0079bf, #070809);
+  background: linear-gradient(to left, #070809, #60bbf0, #070809);
   background-size: 200% 200%;
   background-position: -100% 0;
   animation: loading-gradient 2s ease-in-out infinite;
