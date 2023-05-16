@@ -68,12 +68,12 @@ export default function NestedGrid() {
                 id="category-d"
                 sx={{ fontSize: '12px', textTransform: 'uppercase' }}
               >
-                Category D
+                Legal
               </Box>
               <Box component="ul" aria-labelledby="category-d" sx={{ pl: 2 }}>
-                <li>Link 4.1</li>
-                <li>Link 4.2</li>
-                <li>Link 4.3</li>
+                <li>Privacy</li>
+                <li>Do Not Call</li>
+                <li>Terms of Service</li>
               </Box>
             </Item>
           </Grid>

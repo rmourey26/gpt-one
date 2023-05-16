@@ -97,7 +97,6 @@ export default function Example() {
           </Dialog.Panel>
         </Dialog>
       </header>
-
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -123,26 +122,75 @@ export default function Example() {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Alternative Employee Health Benefits Management
+              AntHealth.ai 
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Solutions for a healthier you - AntHealth.ai
+              Alternative Employee Health Benefits Management
             </p>
             
             <div className="mt-10 flex items-center justify-center gap-x-6">
               
               <a
                 href="#"
-                className="rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                className="rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-lg hover:bg-sky-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-900"
               >
                 Get started
               </a>
               <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
                 Learn more <span aria-hidden="true">→</span>
               </a>
+           
             </div>
+            <div> <img src="https://quantumone.b-cdn.net/AntHealth_Logos/Workplace.svg" /></div>
           </div>
         </div>
+        
+    <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
+          Trusted by the world’s most innovative teams
+        </h2>
+        <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+          <img
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg"
+            alt="Transistor"
+            width={158}
+            height={48}
+          />
+          <img
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg"
+            alt="Reform"
+            width={158}
+            height={48}
+          />
+          <img
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
+            alt="Tuple"
+            width={158}
+            height={48}
+          />
+          <img
+            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+            src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg"
+            alt="SavvyCal"
+            width={158}
+            height={48}
+          />
+          <img
+            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+            src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg"
+            alt="Statamic"
+            width={158}
+            height={48}
+          />
+        </div>
+      </div>
+    </div>
+  
+
         <NestedGrid />
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
