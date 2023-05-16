@@ -125,9 +125,11 @@ export default function Example() {
               Alternative Employee Health Benefits Management
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Solutions for a healthier you - AnthHealth.ai
+              Solutions for a healthier you - AntHealth.ai
             </p>
+            
             <div className="mt-10 flex items-center justify-center gap-x-6">
+              
               <a
                 href="#"
                 className="rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
