@@ -128,7 +128,7 @@ export default function Example() {
             <p className="mt-6 text-lg leading-8 text-gray-600">
               Solutions for a healthier you - AntHealth.ai
             </p>
-            <img className="w-auto" src="https://quantumone.b-cdn.net/AntHealth_Logos/Workplace.svg?color=sky&shade=600" height={350} width={350}/>
+            
             <div className="mt-10 flex items-center justify-center gap-x-6">
               
               <a
