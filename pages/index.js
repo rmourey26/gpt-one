@@ -6,7 +6,16 @@ import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Home() {
+  
+  
+    const clickPoint = useRef();
+    const handleFocus = () => {
+        clickPoint.current.style.display = "none";
+    };
 
+    const handleBlur = () => {
+        clickPoint.current.style.display = "block";
+    };
   const [content, setContent] = useState([]);
   const [userInput, setUserInput] = useState("");
  
