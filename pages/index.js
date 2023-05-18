@@ -555,10 +555,10 @@ export default function Home() {
 
                 <span class="relative flex h-2 w-2">
                   <span
-                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"
+                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
                   ></span>
                   <span
-                    class="relative inline-flex h-2 w-2 rounded-full bg-teal-500"
+                    class="relative inline-flex h-2 w-2 rounded-full bg-sky-500"
                   ></span>
                 </span>
               </a>
@@ -591,7 +591,7 @@ export default function Home() {
               />
 
               <button
-                class="block rounded-full bg-indigo-500 px-8 py-3 font-medium text-white transition hover:bg-sky-600"
+                class="block rounded-full bg-sky-500 px-8 py-3 font-medium text-white transition hover:bg-sky-900"
                 type="submit"
               >
                 Subscribe
@@ -615,7 +615,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-teal-700 transition hover:text-teal-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Facebook</span>
             <svg
@@ -638,7 +638,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-teal-700 transition hover:text-teal-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Instagram</span>
             <svg
@@ -661,7 +661,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-teal-700 transition hover:text-teal-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Twitter</span>
             <svg
@@ -682,7 +682,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-teal-700 transition hover:text-teal-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">GitHub</span>
             <svg
@@ -705,7 +705,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-teal-700 transition hover:text-teal-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Dribbble</span>
             <svg
