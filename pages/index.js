@@ -351,6 +351,7 @@ export default function Home() {
           <div> 
           </div>
           </div>
+<lottie-player src="https://quantumone.b-cdn.net/AntHealth_Logos/Workplace.json" background="transparent"  speed="1"  style={{width: "300px", height: "300px"}} loop controls autoplay></lottie-player>
           <div className={styles.footer}>
             <div>
           <a href="https://www.uschamber.com"><Image alt="U.S. Chamber of Commerce Member" src="https://quantumone.b-cdn.net/AntHealth_Logos/USCC_Webstickers_2022_120x30.png" title="U.S. Chamber of Commerce Member" width={120} height={30}/></a></div>
