@@ -122,6 +122,7 @@ export default function Home() {
         <meta name="description" content="Anthealth AI" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
       </Head>
       <Disclosure as="nav" className="bg-stone-400">
       {({ open }) => (
