@@ -141,7 +141,7 @@ export default function Example() {
               </a>
            
             </div>
-            <div> <img src="https://quantumone.b-cdn.net/AntHealth_Logos/Workplace.svg" /></div>
+             <img src="https://quantumone.b-cdn.net/AntHealth_Logos/Workplace.svg" />
           </div>
         </div>
         

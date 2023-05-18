@@ -47,3 +47,12 @@ a:hover {
      border-radius: 6px;
      background: rgb(54, 49, 49);
  }
+
+ img {
+    max-width: 100%;
+    display: block;
+ }
+
+ .ReactCollapse--collapse{
+  transition: height 500ms;
+ }
