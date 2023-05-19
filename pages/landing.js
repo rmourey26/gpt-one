@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import NestedGrid from 'components/nestedgrid'
+import { useLottie } from 'lottie-react';
+import workplaceAnimation from "workplacelottie.json";
+import { height } from '@mui/system';
 
 const navigation = [
   { name: 'Alt Employee Health Benefits', href: '#' },
@@ -12,6 +15,19 @@ const navigation = [
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  
+  
+  const options = {
+    animationData: workplaceAnimation,
+    loop: true
+  };
+  
+  const style = {
+    height: 400,
+  };
+  const { View } = useLottie(options, style);
+
 
   return (
     <div className="bg-white">
@@ -141,9 +157,10 @@ export default function Example() {
               </a>
            
             </div>
-             <img src="https://quantumone.b-cdn.net/AntHealth_Logos/Workplace.svg" />
+            <>{View}</>
           </div>
         </div>
+        
         
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -445,7 +462,7 @@ export default function Example() {
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
       <p class="text-center text-sm text-gray-500 sm:text-left">
-        Copyright &copy; 2023. All rights reserved.
+        Copyright &copy; AntHealth 2023. All rights reserved.
       </p>
 
       <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
