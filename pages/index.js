@@ -7,6 +7,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Content from '../components/Content';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -21,7 +22,31 @@ function classNames(...classes) {
 
 
 export default function Home() {
-  
+  const accordionData = [
+    {
+        title: "Demo 1",
+        desc: "Description 1",
+    },
+    {
+        title: "Demo 2",
+        desc: "Desc 2",
+    },
+    {
+        title: "Demo 3",
+        desc: "Desc 3",
+    },
+
+
+]
+  const [open, setOpen] = useState(false);
+
+const toggle = (index) => {
+    if (open === index) {
+        return setOpen(null)
+    }
+
+    setOpen(index)
+}
   
     const clickPoint = useRef();
     const handleFocus = () => {
@@ -122,7 +147,7 @@ export default function Home() {
         <meta name="description" content="Anthealth AI" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+   
       </Head>
       <Disclosure as="nav" className="twindnav">
       {({ open }) => (
@@ -262,6 +287,7 @@ export default function Home() {
     </Disclosure>
       
       <main className={styles.main}>
+        
       <div className="items-center px-4 flex justify-center mb-10" >
             <div className="relative mr-3">
                 <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
@@ -351,7 +377,7 @@ export default function Home() {
           <div> 
           </div>
           </div>
-          
+          <Content />
 <footer aria-label="Site Footer" class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">
@@ -574,8 +600,7 @@ export default function Home() {
           <p
             class="text-center leading-relaxed text-gray-500 ltr:sm:text-left rtl:sm:text-right"
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum id,
-            iure consectetur et error hic!
+            Enter your email below to receive our latest updates!
           </p>
 
           <form class="mt-4">
@@ -615,7 +640,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-700 transition hover:text-sky-700/75"
+            class="text-sky-600 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Facebook</span>
             <svg
@@ -638,7 +663,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-700 transition hover:text-sky-700/75"
+            class="text-sky-600 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Instagram</span>
             <svg
@@ -661,7 +686,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-700 transition hover:text-sky-700/75"
+            class="text-sky-600 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Twitter</span>
             <svg
@@ -682,7 +707,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-700 transition hover:text-sky-700/75"
+            class="text-sky-600 transition hover:text-sky-700/75"
           >
             <span class="sr-only">GitHub</span>
             <svg
@@ -705,7 +730,7 @@ export default function Home() {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-700 transition hover:text-sky-700/75"
+            class="text-sky-600 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Dribbble</span>
             <svg

@@ -4,7 +4,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import NestedGrid from 'components/nestedgrid'
 import { useLottie } from 'lottie-react';
 import workplaceAnimation from "workplacelottie.json";
-import { height } from '@mui/system';
 
 const navigation = [
   { name: 'Alt Employee Health Benefits', href: '#' },
@@ -430,8 +429,7 @@ export default function Example() {
           <p
             class="text-center leading-relaxed text-gray-500 ltr:sm:text-left rtl:sm:text-right"
           >
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum id,
-            iure consectetur et error hic!
+            Enter your email below to receive our latest updates!
           </p>
 
           <form class="mt-4">

@@ -1,0 +1,27 @@
+[
+    {
+      "id": "1",
+      "title": "I am new to AI, how do I chat?",
+      "content": "Chat with the AntHealth AI assistant like you would with real people. The assistant is aware of the general context so complete grammatically correct sentences are necessary."
+    },
+    {
+      "id": "2",
+      "title": "What are Alternative Health Benefits?",
+      "content": "Alternative health benefits....."
+    },
+    {
+      "id": "3",
+      "title": "How do I reset my password?",
+      "content": "Click “Forgot password” from the login page or “Change password” from your profile page. A reset link will be emailed to you."
+    },
+    {
+      "id": "4",
+      "title": "Can I cancel my plan?",
+      "content": "Yes! Send us a message and we’ll process your request no questions asked."
+    },
+    {
+      "id": "5",
+      "title": "Do you provide additional support?",
+      "content": "Chat and email support is available 24/7. Phone lines are open during normal business hours."
+    }
+  ]
