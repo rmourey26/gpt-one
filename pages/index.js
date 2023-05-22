@@ -13,7 +13,7 @@ const navigation = [
   { name: 'Dashboard', href: '#', current: true },
   { name: 'Alternative Benefits Mgmt', href: '#', current: false },
   { name: 'Health Benefits Mgmt', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  { name: 'Contact', href: '#', current: false },
 ]
 
 function classNames(...classes) {
