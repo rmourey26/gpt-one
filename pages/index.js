@@ -728,7 +728,7 @@ const toggle = (index) => {
         </li>
       </ul>
     </div>
-  </div>
+
 </footer>
           
       </main>
