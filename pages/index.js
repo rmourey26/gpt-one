@@ -272,22 +272,7 @@ const toggle = (index) => {
     </Disclosure>
       
       <main className={styles.main}>
-      <div className="grid grid-cols-2 gap-2">  
-      <div className="items-center px-4 flex justify-center mb-10" >
-            <div className="relative mr-3">
-                <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
-                    <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
-                </div>
-                <input
-                    type="text"
-                    className="block p-2 pl-10 w-80 text-gray-900 bg-gray-50 rounded-lg border border-sky-500 focus:pl-3"
-                    placeholder="Search chronic diseases..."
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                />
-            </div>
-           </div>
-           </div>
+      
 
                   
 
@@ -295,7 +280,9 @@ const toggle = (index) => {
 
 
         <div className={styles.cloud}>
+          
           <div ref={messageListRef} className={styles.messagelist}>
+            
             {messages.map((message, index) => {
               return (
                 // The latest message sent by the user will be animated while waiting for a response
@@ -319,6 +306,7 @@ const toggle = (index) => {
               )
             })}
           </div>
+          
         </div>
         <div className={styles.center}>
         
@@ -356,7 +344,7 @@ const toggle = (index) => {
           </div>
           </div>
         
-          <Content />
+          
 <footer aria-label="Site Footer" class="bg-transparent">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">

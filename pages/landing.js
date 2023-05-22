@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import NestedGrid from 'components/nestedgrid'
 import { useLottie } from 'lottie-react';
 import docrxAnimation from "docrx.json";
+import Content from '../components/Content'
 
 const navigation = [
   { name: 'Alt Employee Health Benefits', href: '#' },
@@ -15,7 +15,14 @@ const navigation = [
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  
+  const clickPoint = useRef();
+    const handleFocus = () => {
+        clickPoint.current.style.display = "none";
+    };
+
+    const handleBlur = () => {
+        clickPoint.current.style.display = "block";
+    };
   
   const options = {
     animationData: docrxAnimation,
@@ -31,7 +38,7 @@ export default function Example() {
   return (
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <nav className="flex items-center justify-between p-6 lg:px-8 mb-3" aria-label="Global">
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">AntHealth</span>
@@ -112,25 +119,35 @@ export default function Example() {
           </Dialog.Panel>
         </Dialog>
       </header>
-      <section class="bg-white dark:bg-gray-900">
-    <div class="space-y-28 grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div class="mr-auto place-self-center lg:col-span-7">
+      <div>
+      <section class="my-20 bg-white dark:bg-gray-900">
+    <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
+        <div class="mr-auto place-self-center lg:col-span-7 md:col-span-8 sm:col-span-1">
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">AI Powered Benefits</h1>
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Empowering intelligent health plan and employer benefit design.</p>
-            <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                Get started
-                <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-            </a>
-            <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-sky-500 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Chat now!
-            </a> 
             
+            <div className="items-center px-4 flex justify-center" >
+            <div className="relative mr-3">
+                <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
+                    <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+                </div>
+                <input
+                    type="text"
+                    className="block p-2 pl-10 w-80 text-gray-900 bg-gray-50 rounded-lg border border-sky-500 focus:pl-3"
+                    placeholder="Search plans, chronic diseases, etc...."
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                />
+            </div>
+            </div>
         </div>
-        <div class="hidden lg:mt-0 lg:col-span-5 lg:flex">
+        <div class="md:mt-0 md:col-span-8 md:flex flex lg:mt-0 lg:col-span-5 lg:flex">
             <>{View}</>
         </div>                
     </div>
+    
 </section>
+</div>
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
