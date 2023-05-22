@@ -23,7 +23,7 @@ export default function Example() {
   };
   
   const style = {
-    height: 352,
+    height: 320,
   };
   const { View } = useLottie(options, style);
 
