@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ImageDesktop from "../public/illustration-woman-online-desktop.svg";
+import ImageDesktop from "../public/health-insurance-agent.svg";
 import Box from "../public/illustration-box-desktop.svg";
 
 const DesktopImage = () => {
@@ -8,7 +8,7 @@ const DesktopImage = () => {
       <div className='relative overflow-hidden w-[465px] h-full'>
         <Image
           src={ImageDesktop}
-          alt='Desktop-woman-online'
+          alt='health-insurance-agent'
           className='relative left-[-5rem] bottom-[-7rem]'
         />
       </div>

@@ -1,12 +1,12 @@
 import Image from "next/image";
-import ImageMobile from "../public/illustration-woman-online-mobile.svg";
+import ImageMobile from "../public/health-insurance-agent.svg";
 
 const MobileImage = () => {
   return (
     <div className="p-0 m-0">
       <Image
         src={ImageMobile}
-        alt='Women with computer-mobile'
+        alt='health-insurance-agent-mobile'
         width={230}
         height={230}
         className='relative top-[-6.5rem]'

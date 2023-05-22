@@ -36,7 +36,7 @@ const Content = () => {
 
       <div className='md:w-[50%] md:min-h-[535px]'>
         <h1 className='text-darkBlue font-bold text-center text-4xl relative top-[-2.75rem] md:text-left md:top-[5rem]'>
-          FAQ
+          AntHealth Tools
         </h1>
         <div className='flex flex-col gap-4 relative top-[-1.5rem] mb-[2.5rem] md:top-[6rem] md:mb-0'>
           {Data.map((item, index) => {

@@ -22,22 +22,7 @@ function classNames(...classes) {
 
 
 export default function Home() {
-  const accordionData = [
-    {
-        title: "Demo 1",
-        desc: "Description 1",
-    },
-    {
-        title: "Demo 2",
-        desc: "Desc 2",
-    },
-    {
-        title: "Demo 3",
-        desc: "Desc 3",
-    },
-
-
-]
+  
   const [open, setOpen] = useState(false);
 
 const toggle = (index) => {
@@ -287,15 +272,15 @@ const toggle = (index) => {
     </Disclosure>
       
       <main className={styles.main}>
-        
+      <div className="grid grid-cols-2 gap-2">  
       <div className="items-center px-4 flex justify-center mb-10" >
             <div className="relative mr-3">
                 <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
-                    <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                 </div>
                 <input
                     type="text"
-                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:pl-3"
+                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-sky-500 focus:pl-3"
                     placeholder="Search chronic diseases..."
                     onFocus={handleFocus}
                     onBlur={handleBlur}
@@ -305,16 +290,17 @@ const toggle = (index) => {
 <div className="items-center px-4 flex justify-center mb-10" >
             <div className="relative mr-3">
                 <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
-                    <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                    <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                 </div>
                 <input
                     type="text"
-                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:pl-3"
+                    className="block p-2 pl-10 w-70 text-gray-900 bg-gray-50 rounded-lg border border-sky-500 focus:pl-3"
                     placeholder="Search health plans..."
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />
             </div>
+</div>
 </div>
         <div className={styles.cloud}>
           <div ref={messageListRef} className={styles.messagelist}>
@@ -377,8 +363,9 @@ const toggle = (index) => {
           <div> 
           </div>
           </div>
+        
           <Content />
-<footer aria-label="Site Footer" class="bg-white">
+<footer aria-label="Site Footer" class="bg-transparent">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">
       <div class="flex justify-center text-sky-600 sm:justify-start">
@@ -610,7 +597,7 @@ const toggle = (index) => {
               <label for="email" class="sr-only">Email</label>
 
               <input
-                class="w-full rounded-full border-gray-200 px-6 py-3 shadow-sm"
+                class="w-full rounded-full border-sky-400 px-6 py-3 shadow-sm"
                 type="email"
                 placeholder="Enter your email"
               />
@@ -630,8 +617,9 @@ const toggle = (index) => {
     <div
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
+      <img src="https://quantumone.b-cdn/Anthealth_Logos/30px.svg" />
       <p class="text-center text-sm text-gray-500 sm:text-left">
-        Copyright &copy; 2023. All rights reserved.
+        Copyright &copy; AntHealth 2023. All rights reserved.
       </p>
 
       <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
