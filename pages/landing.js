@@ -122,7 +122,7 @@ export default function Example() {
       <div>
       <section class="my-20 bg-white dark:bg-gray-900">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
-        <div class="mr-auto place-self-center lg:col-span-7 md:col-span-8 sm:col-span-1">
+        <div class="mx-auto place-self-center lg:col-span-7 md:col-span-4 sm:col-span-1">
             <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">AI Powered Benefits</h1>
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Empowering intelligent health plan and employer benefit design.</p>
             
@@ -141,7 +141,7 @@ export default function Example() {
             </div>
             </div>
         </div>
-        <div class="md:mt-0 md:col-span-8 md:flex flex lg:mt-0 lg:col-span-5 lg:flex">
+        <div class="md:mt-0 md:col-span-4 md:flex flex lg:mt-0 lg:col-span-5 lg:flex sm:col-span-1 place-self-center">
             <>{View}</>
         </div>                
     </div>
