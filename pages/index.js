@@ -597,7 +597,7 @@ const toggle = (index) => {
     <div
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
-      <img src="https://quantumone.b-cdn/Anthealth_Logos/30px.svg" />
+      <img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" />
       <p class="text-center text-sm text-gray-500 sm:text-left">
         Copyright &copy; AntHealth 2023. All rights reserved.
       </p>
