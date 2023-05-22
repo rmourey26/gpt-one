@@ -286,7 +286,8 @@ const toggle = (index) => {
                     onBlur={handleBlur}
                 />
             </div>
-</div>
+           </div>
+           </div>
 
                   
 
@@ -727,6 +728,7 @@ const toggle = (index) => {
           </a>
         </li>
       </ul>
+    </div>
     </div>
 
 </footer>
