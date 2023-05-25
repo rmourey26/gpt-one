@@ -1,5 +1,5 @@
 ##  gpt-one
-## Live Prod [App](https://main.d3jb1dmvjh3vyd.amplifyapp.com/)
+## Live Prod [App](https://main.d3jb1dmvjh3vyd.amplifyapp.com/) ..
 Enter your healthcare scenario in one simple sentence and receive your recommended health care plan type for the healthcare market place. Try the sample scenario to get an idea of how it works:
 
 ## Sample Scenario
