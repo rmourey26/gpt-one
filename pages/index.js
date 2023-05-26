@@ -11,8 +11,8 @@ import Content from '../components/Content';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Alternative Benefits Mgmt', href: '#', current: false },
-  { name: 'Health Benefits Mgmt', href: '#', current: false },
+  { name: 'SMART App', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
+  { name: 'Registration', href: '/registration', current: false },
   { name: 'Contact', href: '#', current: false },
 ]
 
