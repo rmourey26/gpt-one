@@ -40,7 +40,8 @@
     "react-collapse": "^5.1.1",
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
-    "react-markdown": "^8.0.4"
+    "react-markdown": "^8.0.4",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
