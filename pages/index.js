@@ -650,11 +650,11 @@ const toggle = (index) => {
     <div
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
-      <img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block mt-1">
+      <img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block mt-4" />
       <p class="text-center text-sm text-gray-500 sm:text-left">
         Copyright &copy; AntHealth 2023. All rights reserved.
       </p>
-      </img>
+     
       <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
         <li>
           <a
