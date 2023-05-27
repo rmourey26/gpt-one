@@ -14,8 +14,13 @@
 */
 import Head from 'next/head'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import dynamic from 'next/dynamic'
 
-export default function Example() {
+const SurveyComponent = dynamic(() => import("../components/SurveyComp"),{
+  ssr:false,
+})
+
+const Questionaire = () => {
   return (
   
     <>
@@ -210,11 +215,11 @@ export default function Example() {
             </div>
           </div>
         </div>
-
+<><SurveyComponent /></>
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
+          <h2 className="text-base font-semibold leading-7 text-gray-900">Benefit Ranking</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
+            Rank the folowing benefits in terms of their importance to you. 
           </p>
 
           <div className="mt-10 space-y-10">
@@ -330,3 +335,4 @@ export default function Example() {
     
   )
 }
+export default Questionaire
