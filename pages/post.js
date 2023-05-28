@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Tabshui from "../components/Tabshui";
-import PopoverOne from "../components/Popover"
+import PopoverOne from "../components/popover"
 
 const Post = () => {
   const [title, setTitle] = useState("");
