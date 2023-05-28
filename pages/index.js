@@ -13,6 +13,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Content from '../components/Content';
+import RadixTabs from 'components/RadixTabs'
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -650,7 +651,7 @@ const toggle = (index) => {
     <div
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
-      <img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block mt-4" />
+      <><img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block flex-end" /></>
       <p class="text-center text-sm text-gray-500 sm:text-left">
         Copyright &copy; AntHealth 2023. All rights reserved.
       </p>

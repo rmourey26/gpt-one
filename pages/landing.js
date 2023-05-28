@@ -4,6 +4,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useLottie } from 'lottie-react';
 import docrxAnimation from "docrx.json";
 import Content from '../components/Content'
+import Tabshui from '../components/Tabshui';
 import Head from 'next/head'
 
 const navigation = [
