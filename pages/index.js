@@ -49,7 +49,7 @@ export default function Home() {
    { "effective_date": "", 
      "has_married_couple": "",
      "income": "",
-     "unemployment_received": Adult, 
+     "unemployment_received":"",
      "people": [ 
       { 
         "age": 27, 
