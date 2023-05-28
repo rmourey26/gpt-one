@@ -1,4 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
+
+
+import { Combobox } from '@headlessui/react'
+
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
@@ -11,8 +16,8 @@ import Content from '../components/Content';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Alternative Benefits Mgmt', href: '#', current: false },
-  { name: 'Health Benefits Mgmt', href: '#', current: false },
+  { name: 'SMART App', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
+  { name: 'Registration', href: '/registration', current: false },
   { name: 'Contact', href: '#', current: false },
 ]
 
@@ -20,8 +25,44 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const people = [
+
+  { id: 1, name: 'Wade Cooper' },
+
+  { id: 2, name: 'Arlene Mccoy' },
+
+  { id: 3, name: 'Devon Webb' },
+
+  { id: 4, name: 'Tom Cook' },
+
+  { id: 5, name: 'Tanya Fox' },
+
+  { id: 6, name: 'Hellen Schmidt' },
+
+]
 
 export default function Home() {
+  const [selected, setSelected] = useState(people[0])
+
+  const [query, setQuery] = useState('')
+
+  const filteredPeople =
+
+    query === ''
+
+      ? people
+
+      : people.filter((person) =>
+
+          person.name
+
+            .toLowerCase()
+
+            .replace(/\s+/g, '')
+
+            .includes(query.toLowerCase().replace(/\s+/g, ''))
+
+        )
   
   const [open, setOpen] = useState(false);
 
@@ -132,7 +173,11 @@ const toggle = (index) => {
         <meta name="description" content="Anthealth AI" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-   
+  
+
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8a43adc3-5c36-4cb7-bc9b-bc7dfe86162d"> </script>
+
+
       </Head>
       <Disclosure as="nav" className="twindnav">
       {({ open }) => (
@@ -273,8 +318,15 @@ const toggle = (index) => {
       
       <main className={styles.main}>
       
+     
+      
 
-                  
+
+
+
+
+
+     
 
         
 
@@ -308,6 +360,7 @@ const toggle = (index) => {
           </div>
           
         </div>
+        
         <div className={styles.center}>
         
           <div className={styles.cloudform}>
@@ -597,11 +650,11 @@ const toggle = (index) => {
     <div
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
-      <img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block"/>
+      <img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block mt-4" />
       <p class="text-center text-sm text-gray-500 sm:text-left">
         Copyright &copy; AntHealth 2023. All rights reserved.
       </p>
-
+     
       <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
         <li>
           <a
@@ -672,7 +725,7 @@ const toggle = (index) => {
 
         <li>
           <a
-            href="/"
+            href="https://github.com/AntHealth"
             rel="noreferrer"
             target="_blank"
             class="text-sky-600 transition hover:text-sky-700/75"
