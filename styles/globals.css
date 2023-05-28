@@ -5,12 +5,12 @@
 @tailwind utilities;
 
 
-/* reset */
-button,
-fieldset,
-input {
-  all: unset;
-}
+
+
+
+
+
+
 
 .TabsRoot {
   display: flex;
