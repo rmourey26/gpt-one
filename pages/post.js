@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Tabshui from "../components/Tabshui";
 
 const Post = () => {
   const [title, setTitle] = useState("");
@@ -24,6 +25,9 @@ const Post = () => {
   }
 
   return (
+<>
+    <Tabshui />
+    
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="Title">Title</label>
@@ -45,6 +49,7 @@ const Post = () => {
       </div>
       <button type="submit">Submit</button>
     </form>
+    </>
   );
 };
 
