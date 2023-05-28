@@ -490,7 +490,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Employee Handbook
+                AI
               </a>
             </li>
 
@@ -516,7 +516,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Web Development
+                SMART on FHIR
               </a>
             </li>
 
@@ -525,7 +525,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Web Design
+                
               </a>
             </li>
 
@@ -534,7 +534,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Marketing
+                HL7
               </a>
             </li>
 
@@ -543,7 +543,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Google Ads
+                CMS
               </a>
             </li>
           </ul>
@@ -611,7 +611,7 @@ const toggle = (index) => {
             <li>
               <a
                 class="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
+                href="/FAQs"
               >
                 FAQs
               </a>
