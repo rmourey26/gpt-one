@@ -25,21 +25,12 @@ const Questionaire = () => {
   return (
   
     <>
-      <Head>
-        <title>Anthealth</title>
-        <meta name="description" content="Anthealth AI" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-  
-
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8a43adc3-5c36-4cb7-bc9b-bc7dfe86162d"> </script>
-
-
-      </Head>
+    
+        
     <form>
-      <div className="space-y-12 mt-[50px] mr-[50px] ml-[50px] mb-[50px]">
+      <div className="space-y-12 mx-36 my-16">
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold text-center text-gray-900">Health Benefits</h2>
+          <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Benefit Questionaire</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
            What benefits are most important to you and your family?
           </p>
@@ -48,6 +39,7 @@ const Questionaire = () => {
         </div>
 
         <div className="border-b border-gray-900/10 pb-12">
+        <><SurveyComponent color="inherit" /></>
           <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
 
@@ -216,17 +208,17 @@ const Questionaire = () => {
             </div>
           </div>
         </div>
-<><SurveyComponent color="inherit" /></>
+            
         
       </div>
 
-      <div className="mt-6 flex items-center justify-end gap-x-6 mx-35">
+      <div className="mt-6 flex items-center justify-end gap-x-6 mx-36">
         <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancel
         </button>
         <button
           type="submit"
-          className="rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+          className="rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-800 [focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
         >
           Save
         </button>

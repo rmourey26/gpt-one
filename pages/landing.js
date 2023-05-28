@@ -39,17 +39,7 @@ export default function Example() {
 
   return (
     <>
-    <Head>
-    <title>Anthealth</title>
-    <meta name="description" content="Anthealth AI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" />
-
-
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8a43adc3-5c36-4cb7-bc9b-bc7dfe86162d"> </script>
-
-
-  </Head>
+    
     <div className="bg-white">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8 mb-3" aria-label="Global">
