@@ -31,7 +31,7 @@ export default function Example() {
 
       </Head>
     <form>
-      <div className="space-y-12 mt-[50px] mr-[50px] ml-[50px] mb-[50px]">
+      <div className="space-y-12 mx-36 my-16">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
@@ -314,7 +314,7 @@ export default function Example() {
         </div>
       </div>
 
-      <div className="mt-6 flex items-center justify-end gap-x-6 mx-35">
+      <div className="mt-6 flex items-center justify-end gap-x-6 mx-36">
         <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
           Cancel
         </button>
