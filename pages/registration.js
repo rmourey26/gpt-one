@@ -224,33 +224,33 @@ export default function Example() {
                 <div className="relative flex gap-x-3">
                   <div className="flex h-6 items-center">
                     <input
-                      id="comments"
-                      name="comments"
-                      type="checkbox"
+                      id="products"
+                      name="products"
+                      type="products"
                       className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="comments" className="font-medium text-gray-900">
-                      Comments
+                    <label htmlFor="products" className="font-medium text-gray-900">
+                      Products 
                     </label>
-                    <p className="text-gray-500">Get notified when someones posts a comment on a posting.</p>
+                    <p className="text-gray-500">Get notified when we launch new AntHealth products andbservices.</p>
                   </div>
                 </div>
                 <div className="relative flex gap-x-3">
                   <div className="flex h-6 items-center">
                     <input
-                      id="candidates"
-                      name="candidates"
+                      id="ACA"
+                      name="ACA"
                       type="checkbox"
                       className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="candidates" className="font-medium text-gray-900">
-                      Candidates
+                    <label htmlFor="ACA" className="font-medium text-gray-900">
+                      ACA Marketplace
                     </label>
-                    <p className="text-gray-500">Get notified when a candidate applies for a job.</p>
+                    <p className="text-gray-500">Get notified with Healthcare.gov ACA Marketplace news.</p>
                   </div>
                 </div>
                 <div className="relative flex gap-x-3">

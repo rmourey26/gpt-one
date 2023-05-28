@@ -43,6 +43,44 @@ const people = [
 ]
 
 export default function Home() {
+  
+  const [household, setHousehold] = useState([""]);
+  const householdData=(
+   
+   { "effective_date": "", 
+     "has_married_couple": "",
+     "income": "",
+     "unemployment_received":"",
+     "people": [ 
+      { 
+        "age": 27, 
+        "dob": "1992-01-01", 
+        "aptc_eligible": true,
+        "does_not_cohabitate": false, 
+        "gender": "Female", 
+        "has_mec": false, 
+        "is_parent": false, 
+        "is_pregnant": false, 
+        "relationship": "Self", 
+        "uses_tobacco": false, 
+        "utilization": "Medium",
+      }, 
+      { 
+        "age": 25,
+        "dob": "1994-03",
+        "aptc_eligible": true, 
+        "does_not_cohabitate": false, 
+        "gender": "Male", 
+        "has_mec": false, 
+        "is_parent": false, 
+        "is_pregnant": false, 
+        "relationship": "Spouse", 
+        "uses_tobacco": false, 
+        "utilization": "Medium" } ] }, 
+        {
+        "market": "Individual", "place": { "countyfips": "37057", "state": "NC", "zipcode": 27360 }, "year": 2019}
+        );
+
   const [selected, setSelected] = useState(people[0])
 
   const [query, setQuery] = useState('')
@@ -453,7 +491,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Employee Handbook
+                AI
               </a>
             </li>
 
@@ -479,7 +517,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Web Development
+                SMART on FHIR
               </a>
             </li>
 
@@ -488,7 +526,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Web Design
+                
               </a>
             </li>
 
@@ -497,7 +535,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Marketing
+                HL7
               </a>
             </li>
 
@@ -506,7 +544,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Google Ads
+                CMS
               </a>
             </li>
           </ul>
@@ -574,7 +612,7 @@ const toggle = (index) => {
             <li>
               <a
                 class="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
+                href="/FAQs"
               >
                 FAQs
               </a>
@@ -772,7 +810,7 @@ const toggle = (index) => {
       </ul>
     </div>
     </div>
-<div className="text-center text-sm"> 
+<div className="text-center text-xs text-lightgray"> 
                   <p>AntHealth Group Inc. A Protocol Platforms Inc company. ALL RIGHTS RESERVED.AntHealth.ai is a non-government website that is owned and operated by AntHealth Operating LLC, which is an affiliate of AntHealth Group Inc. Both are licensed health insurance agencies and each does business as AntHealth Group.AntHealth Group is not affiliated with or endorsed by the U.S. government, Healthcare.gov or the federal Medicare program. The purpose of this site is the solicitation of insurance. Contact may be made by an insurance agent/producer or insurance company.Not all products are available in all States. AntHealth represents various Insurance Carriers, Medicare Advantage plans, Medicare Supplement plans, Dental plans, Vision plans, Hospital Gap Coverage plans and Prescription Drug Plans (PDP).We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE (TTY users should call 1-877-486-2048) to get information on all of your options. Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.By using this site, you acknowledge that you have read and agree to our Privacy Policy, Do Not Call Policy and Terms of Service. </p>
 </div>
 </footer>

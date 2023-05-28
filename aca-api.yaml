@@ -1,0 +1,3443 @@
+swagger: '2.0'
+info:
+  title: Marketplace API
+  version: '1'
+  description: |
+    # About
+
+    The Marketplace API delivers data that helps users find and evaluate health care insurance plans, providers, and coverage information on the marketplace. It’s used by [HealthCare.gov](https://healthcare.gov) and other third party services. Request an API token [here](https://developer.cms.gov/marketplace-api/key-request.html), or learn more from [the developer site](https://developer.cms.gov/marketplace-api/).
+
+    ## Retention
+
+    Marketplace API data includes at minimum the last three years of data.
+
+    ## Limitations
+
+    API keys are rate limited. This rate limit is passed along in the Header information provided. If you have concerns with the rate limit, please reach out to the [Marketplace API team](mailto:marketplace-api@cms-provider-directory.uservoice.com).
+
+    # Quickstart
+
+    This section will cover a short workflow for a common scenario — looking up insurance plans for a person's household with premiums and estimated tax credits, obtaining details about a particular plan, and looking up the drug coverage for a specific plan. Other endpoints,   like looking up doctors and providers, or getting recent state medicaid information,  are covered in the docs.
+
+    ## Search for health insurance plans
+
+    We begin by searching for the health insurance plans for a 27 year-old woman living in North Carolina by posting a single person household to the plan search endpoint
+
+    ```
+    apikey="d687412e7b53146b2631dc01974ad0a4" # rate limited test key
+    curl --request POST \\
+      --url "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${apikey}" \\
+      --header 'content-type: application/json' \\
+      --data '{
+        "household": {
+          "income": 52000,
+          "people": [
+            {
+              "age": 27,
+              "aptc_eligible": true,
+              "gender": "Female",
+              "uses_tobacco": false
+            }
+          ]
+        },
+        "market": "Individual",
+        "place": {
+          "countyfips": "37057",
+          "state": "NC",
+          "zipcode": "27360"
+        },
+        "year": 2019
+    }'
+    ```
+
+    This **POST** request returns health insurance information and pricing estimates for the plans for which she can sign up. More discussion about building the household JSON object can be found later on this page. Don't know the county [FIPS](https://en.m.wikipedia.org/wiki/FIPS_county_code) code? To look it up for this person's zip code, we use the counties by zip endpoint.
+
+    ```
+    apikey="d687412e7b53146b2631dc01974ad0a4"
+    zipcode="27360"
+    curl "https://marketplace.api.healthcare.gov/api/v1/counties/by/zip/${zipcode}?apikey=${apikey}"
+    ```
+
+    This helps gather the necessary information to build the household object to submit to the API.
+
+    ## Get details about a specific health insurance plan
+
+    With a plan search completed, let's look more closely at a particular plan. For example, **Blue Cross Blue Shield of North Carolina Blue Value Catastrophic** was one of the first returned from the example above. We will use it as an example to drill down
+
+    ```
+    apikey="d687412e7b53146b2631dc01974ad0a4"
+    planid="11512NC0100031"
+    year="2019"
+    curl "https://marketplace.api.healthcare.gov/api/v1/plans/${planid}?year=${year}&apikey=${apikey}"
+    ```
+
+    Using this endpoint will provide more granular information about the particular plan for a searching user, like issuer information, cost sharing deductibles, eligible dependents, website urls, quality ratings, and more.
+
+    ## Standard Plans
+
+    Some plans are considered **standard plans.** These can be identified in the results of a plan search or plan details endpoint.  If a plan has a **design_type** that is one of the following, it is considered a standard plan: "DESIGN1", "DESIGN2", "DESIGN3", "DESIGN4", "DESIGN5".  If a plan has a **design_type** of "NOT_APPLICABLE", then it is not considered a standard plan.
+
+    ## Get drug coverage information about a health insurance plan
+
+    Now that we have a plan of interest, let's look up what drugs it covers. We want to know if **ibuprofen** is covered under the insurance plan. First, we can mimic a user interaction with an autocomplete for ibuprofen for a typeahead.
+
+    ```
+    apikey="d687412e7b53146b2631dc01974ad0a4"
+    query="ibuprof"
+    curl "https://marketplace.api.healthcare.gov/api/v1/drugs/autocomplete?q=${query}&apikey=${apikey}"
+    ```
+
+    Among other things, this provides us with an **RxCUI**, a unique identifier for a clinical drug. We can use it along with the plan id to query the API for whether or not **ibuprofen** is covered under this plan
+
+    ```
+    apikey="d687412e7b53146b2631dc01974ad0a4"
+    drugs="1049589"
+    planids="11512NC0100031"
+    year="2019"
+    curl "https://marketplace.api.healthcare.gov/api/v1/drugs/covered?year=${year}&drugs=${drugs}&planids=${planids}&apikey=${apikey}"
+    ```
+
+    The API confirms that ibuprofen is covered.
+
+    # More information about households
+
+    The household in the example above was sufficient to query Marketplace API, but there are more optional fields that can provide more accurate search results and premium estimates, or can be used by application developers to specify scenarios. For example, if a household does not live together, certain plans may no longer be eligible to them.
+
+    We begin with an example, describing what some of the less intuitive fields means. Here's the JSON of a fully filled in household, using all possible features
+
+    ```
+    {
+      "aptc_override": 288.61,
+      "household": {
+        "effective_date": "2019-05-01",
+        "has_married_couple": true,
+        "income": 52000,
+        "unemployment_received": Adult,
+        "people": [
+          {
+            "age": 27,
+            "dob": "1992-01-01",
+            "aptc_eligible": true,
+            "does_not_cohabitate": false,
+            "gender": "Female",
+            "has_mec": false,
+            "is_parent": false,
+            "is_pregnant": false,
+            "relationship": "Self",
+            "uses_tobacco": false,
+            "utilization": "Medium"
+          },
+          {
+            "age": 25,
+            "dob": "1994-03-03,
+            "aptc_eligible": true,
+            "does_not_cohabitate": false,
+            "gender": "Male",
+            "has_mec": false,
+            "is_parent": false,
+            "is_pregnant": false,
+            "relationship": "Spouse",
+            "uses_tobacco": false,
+            "utilization": "Medium"
+          }
+        ]
+      },
+      "market": "Individual",
+      "place": {
+        "countyfips": "37057",
+        "state": "NC",
+        "zipcode": "27360"
+      },
+      "year": 2019
+    }
+    ```
+
+    ## APTC Override
+    The `aptc_override` is an optional override to specify the Advanced Premium Tax Credit for a user, if the exact value is already known. For persons in the household, `aptc_eligible` denotes if the person is eligible for the Advanced Premium Tax Credit.
+
+    ## Unemployment Received
+    As part of the American Rescue Plan, if the household has received unemployment benefits during 2021 the household income must be capped to 133% of the Federal Poverty Level for the household size in APTC and CSR estimations.  If the recipient is an adult tax payer, both ATPC and CSRs will be affected.  If only a tax dependent received unemployment, the only effect will be to CSR eligibility.
+    If both an adult and dependent have received unemployment, "Adult" should be passed so that the maximum APTC and CSRs are received.
+    This field defaults to None if not included and only affects the 2021 market year.
+
+    ## Effective Date
+    This is the date a plan or coverage goes into effect and is used in premium calculations and determining eligibility. If omitted, the value defaults to the effective date of the plan, which is generally Jan 1 of the market year. The `effective_date` is required to correctly calculate the number of months since an individual has used tobacco. The number of months is the difference of the last tobacco use date until the `effective_date`. Considering the number of months since last tobacco use can impact the rate charged by a plan, this field is required to be included for a more accurate search result.
+
+    ## Age Calculation
+    Either an `age` or `dob` value must be provided.  If `age` is provided that value is used in determining eligibility and premiums. If a `dob` is provided, a more accurate age is calculated using the combination of `dob`, the effective date, and plan specific rating-age adjustments.  If both fields are populated, `age` takes precedence and no calculation will occur.
+
+    Plan rates can have age adjustments affecting what premiums get returned.  Additionally, effective date in relation to age affects premium calculation and eligibility.  Therefore, determining the correct age is important for accurate results.
+
+    ## Cohabitation
+    `does_not_cohabitate` indicates whether the person is living with the household.
+
+    ## Minimal Essential Coverage (MEC)
+    `has_mec` indicates whether a person has Medicaid/CHIP and may possibly not be included in the household for premium determination and insurance eligibility.
+
+    ## Relationship
+    `relationship` — which is not required to issue a request — is the relationship of a household member to the person applying for health insurance. For the main enrollee, the `Self` relationship is used.
+
+    Each plan on the marketplace defines a set of dependent relationships within a household as eligible to enroll in that plan.
+
+    If it is known by the caller what relationships exist within a household when making a request to Marketplace API, the API can more accurately determine household eligibility for plans.  If the relationship field is used in a request, it must be a valid relationship for the provided market year (see list below).
+    When a household request is sent without relationships present in the household, Marketplace API will make as accurate an eligibility determinaton as possible without the relationship values.
+
+    The total set of dependent relationships that plans may use to restrict eligibility may change over the years. For 2020 and 2021, the possible relationship types that plans may utilize are as follows
+
+    2020                              | 2021
+    --------------------------------- | ---------------------------
+    `Self`                            | `Self`
+    `Brother or Sister`               | `Brother or Sister`
+    `Child`                           | `Child`
+    `Collateral Dependent`            | `Collateral Dependent`
+    `Ex-Spouse`                       | `Ex-Spouse`
+    `Foster Child`                    | `Foster Child`
+    `Grandson or Granddaughter`       | `Grandson or Granddaughter`
+    `Life Partner`                    | `Life Partner`
+    `Nephew or Niece`                 | `Nephew or Niece`
+    `Other Relationship`              | `Other Relationship`
+    `Other Relative`                  | `Other Relative`
+    `Sponsored Dependent`             | `Sponsored Dependent`
+    `Spouse`                          | `Spouse`
+    `Stepson or Stepdaughter`         | `Stepson or Stepdaughter`
+    `Ward`                            | `Ward`
+    `Adopted Child`                   |
+    `Annultant`                       |
+    `Brother-in-Law or Sister-in-Law` |
+    `Court Appointed Guardian`        |
+    `Dependent of a Minor Dependent`  |
+    `Guardian`                        |
+    `Son-in-Law or Daughter-in-Law`   |
+    `Stepparent`                      |
+
+    As can be seen from this list, the list of potential relationships has been simplified between 2020 and 2021. When a relationship is not one of the obvious choices in this list, the fallback values of `Other Relative` and `Other Relationship` may be used.
+
+    ## Utilization
+    Finally, `utilization` is one of `{"Low", "Medium", "High"}` and is a description of how much a person intends to use their health insurance.
+
+    # Understanding Errors
+    The Marketplace API returns standard HTTP status codes which indicate whether a specific HTTP request has successfully completed. For some errors, additional information is provided in the response body, including an application error code and a brief message.
+
+    ## HTTP Response Status Codes
+    Responses are grouped in five classes:
+      - Successful responses (200–299)
+      - Client errors (400–499)
+      - Server errors (500–599)
+
+    ## Marketplace API Error Codes
+    The various codes are listed below:
+
+    1000 - errInternalServerError |
+    -----
+    The Internal Server Error response code indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.
+      ```
+        Request:  GET /api/v1/drugs/search?q=...
+        Response: {
+                    "code": "1000",
+                    "status": "500",
+                    "message": "Internal server error",
+                    "error": "sql: Scan called without calling Next"
+                  }
+    ```
+    1001 - errCountyNotFound |
+    -----
+    This error code is returned by the [County Lookup by FIPS](#reference/geography/county-lookup-by-fips/get) endpoint when no county is found using the  FIPS provided in the request. For example:
+      ```
+        Request:   GET /api/v1/counties/35094
+        Response:  {
+                      "code": "1001",
+                      "status": "404",
+                      "message": "county not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1002 - errStateNotFound |
+    -----
+    This error code is returned by the [Lookup State](#reference/geography/lookup-state/get) endpoint when no state is found using the state provided in the request. For example:
+      ```
+        Request:   GET /api/v1/states/NP
+        Response:  {
+                      "code": "1002",
+                      "status": "404",
+                      "message": "state not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1003 - errInvalidInput  |
+    -----
+    This error code is returned by various endpoints when the required input is invalid. The message provided in the response will assist in resolving the problem before re-sending the request. For example:
+      ```
+        Request:   GET /api/v1/issuers/1019
+        Response:  {
+                        "code": "1003",
+                        "status": "400",
+                        "message": "invalid issuers request"
+                        "error": "invalid issuer ID format"
+                    }
+    ```
+    1004 - errIssuerNotFound  |
+    -----
+    This error code is returned by the [Get Issuer](#reference/insurance-issuers/get-issuer/get-issuer) endpoint when no issuer is found using the issuer id provided in the request. For example:
+      ```
+        Request:   GET /api/v1/issuers/01922
+        Response:  {
+                      "code": "1004",
+                      "status": "404",
+                      "message": "issuer not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1005 - errCrosswalkNotFound  |
+    -----
+    This error code is returned by the [Crosswalk a previous year plan](#reference/insurance-plans/plan-crosswalk/crosswalk-a-previous-year-plan) endpoint when no crosswalk is found using the parameters provided in the request. For example:
+      ```
+        Request:   GET /api/v1/crosswalk&year=2018&plan_id=53882IL0040002&state=IN
+                   &zipcode=60647&fips=17031
+        Response:  {
+                      "code": "1005",
+                      "status": "404",
+                      "message": "No crosswalk found for those parameters"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1006 - errPlanNotFound  |
+    -----
+    This error code is returned by various endpoints when no plan is found using the parameters provided in the request. For example:
+      ```
+        Request:   GET /api/v1/plans/11512NC0100035
+        Response:  {
+                      "code": "1006",
+                      "status": "404",
+                      "message": "Plan not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1007 - errTimeout  |
+    -----
+    This error code is returned by various endpoints when the request timed out. For example:
+      ```
+        Request:   various endpoints
+        Response:  {
+                      "code": "1007",
+                      "status": "500",
+                      "message": "request timed-out, try again"
+                      "error": "db query timed-out"
+                    }
+    ```
+    1008 - errStateMedicaidNotFound  |
+    -----
+    This error code is returned by the [State Medicaid Data](#reference/geography/state-medicaid-data/get) endpoint when no medicaid is found using the parameters provided in the request. For example:
+      ```
+        Request:   GET /api/v1/states/NV/medicaid
+        Response:  {
+                      "code": "1008",
+                      "status": "404",
+                      "message": "state medicaid not found"
+                      "error": "year out of range"
+                    }
+    ```
+    1009 - errPovertyGuidelineNotFound  |
+    -----
+    This error code is returned by the [State Poverty Guidelines](#reference/geography/state-poverty-guidelines/get) endpoint when no U.S. federal poverty guidelines is found using the parameters provided in the request. For example:
+      ```
+        Request:   GET /api/v1/states/XX/poverty-guidelines
+        Response:  {
+                      "code": "1009",
+                      "status": "400",
+                      "message": "poverty guideline not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1010 - errPercentageFPLNotFound  |
+    -----
+    This error code is returned by the [Poverty Level Percentage](#reference/households-&-eligibility/poverty-level-percentage/get) endpoint when no percentage of federal poverty level is found using the parameters provided in the request. For example:
+      ```
+        Request:   GET /api/v1/households/pcfpl&year=2021&state=NV&size=2&income=14000
+        Response:  {
+                      "code": "1010",
+                      "status": "404",
+                      "message": "percentage of federal poverty level not found"
+                      "error": "guideline not found for state: NV, year: 2021"
+                    }
+    ```
+    1011 - errQualityRatingNotFound  |
+    -----
+    This error code is returned by the [Quality Ratings](#reference/insurance-plans/quality-ratings/get) endpoint when there are no quality ratings for a plan. For example:
+      ```
+        Request:   GET /api/v1/plans/XXXXXXXXXXX/quality-ratings&year=2021
+        Response:  {
+                      "code": "1011",
+                      "status": "404",
+                      "message": No quality rating found for those parameters"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1012 - errCoverageUnavailable  |
+    -----
+    This error code is returned by various endpoints when the coverage data is temporarily unavailable. For example:
+      ```
+        Request:   various endpoints
+        Response:  {
+                      "code": "1012",
+                      "status": "503",
+                      "message": "coverage data temporarily unavailable"
+                      "error": "coverage database unavailable"
+                    }
+    ```
+    1013 - errProviderNotFound  |
+    -----
+    This error code is returned by various Provider related endpoints when the provider is not found. For example:
+      ```
+        Request:   various endpoints
+        Response:  {
+                      "code": "1013",
+                      "status": "404",
+                      "message": "provider not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1014 - errDrugNotFound  |
+    -----
+    This error code is returned by various Drug related endpoints when the drug is not found. For example:
+      ```
+        Request:   various endpoints
+        Response:  {
+                      "code": "1014",
+                      "status": "404",
+                      "message": "drug not found"
+                      "error": "sql: No records found"
+                    }
+    ```
+    1015 - errMissingMedicaidCHIPEligibility  |
+    -----
+    This error code is returned when no Medicaid CHIP Eligibility plans are found using the parameters provided in the request.
+      ```
+        Request:   POST /api/v1/households/eligibility/estimates
+        Response:  {
+                      "code": "1015",
+                      "status": "404",
+                      "message": "missing medicaid eligibility data"
+                      "error": "missing eligibility for fiscal year: YYYY, quarter: Q, state: SS"
+                    }
+    ```
+    1016 - errTooFewPlans  |
+    -----
+    This error code is returned when there are not enough plans in a given service area to compute a second lowest cost silver plan for an example, the errTooFewPlans code may be returned.
+      ```
+        Request:   POST /api/v1/households/eligibility/estimates
+        Response:  {
+                      "code": "1016",
+                      "status": "404",
+                      "message": "not enough plans to calculate SLCSP/LCBP"
+                      "error": "not enough plans to calculate SLCSP/LCBP"
+                    }
+    ```
+    1017 - errRateAreaNotFound  |
+    -----
+    This error code is returned by various Drug related endpoints when the rate area is not found. For example:
+      ```
+        Request:   GET /api/v1/rate-areas?state=IN&zipcode=60647&fips=17031
+        Response:  {
+                      "code": "1017",
+                      "status": "404",
+                      "message": "rate area not found"
+                      "error": "No rate area could be determined"
+                    }
+    ```
+
+    ## Marketplace API Common Error Codes
+    ```
+    400 Bad Request - Client supplied invalid or incorrect values to the requested end-point
+    404 Not Found - End-point could not find the requested object(s)
+    ````
+
+    ## Marketplace API Uncommon Error Codes
+    ```
+    500 Internal Server Error - An unexpected error occurred
+    503 Service Unavailable - The requested service is temporarily unavailable, try again later.
+    ````
+schemes:
+  - https
+host: marketplace.api.healthcare.gov
+basePath: /api/v1
+produces:
+  - application/json
+tags:
+  - name: Geography
+    description: 'Geographic data, including information on states, counties, and zipcodes.'
+  - name: Provider & Drug Coverage
+    description: 'Lookup information on providers, drugs, and what is covered under what plans.'
+  - name: Households & Eligibility
+    description: 'Household specific calculations, including eligibility information, out of pocket costs, poverty levels, and cost benchmarks.'
+  - name: Insurance Plans
+    description: Data on both health and dental insurance plans.
+  - name: Insurance Issuers
+    description: Data related to health insurance issuers on the marketplace.
+  - name: Enrollments
+    description: Enrollment grouping validation and information.
+  - name: API Reference
+    description: Information about the state of Marketplace API.
+definitions:
+  Address:
+    properties:
+      city:
+        type: string
+      state:
+        type: string
+      street_1:
+        type: string
+      street_2:
+        type: string
+      zipcode:
+        type: string
+      countyfips:
+        description: 5-digit county FIPS code
+        type: string
+    type: object
+  ApplicationError400:
+    properties:
+      code:
+        description: Marketplace API status code
+        type: string
+        example: '1003'
+      status:
+        description: HTTP status code
+        type: string
+        example: '400'
+      msg:
+        description: Message describing the type of error
+        type: string
+        example: 'invalid get county request'
+      err:
+        description: Specific error encountered
+        type: string
+        example: 'FIPS: has invalid format'
+    type: object
+  ApplicationError404:
+    properties:
+      code:
+        description: Marketplace API status code
+        type: string
+        example: '1006'
+      status:
+        description: HTTP status code
+        type: string
+        example: '404'
+      msg:
+        description: Message describing the type of error
+        type: string
+        example: 'Plan not found'
+      err:
+        description: Specific error encountered
+        type: string
+        example: 'sql: No records found'
+    type: object
+  Benefit:
+    properties:
+      name:
+        type: string
+      covered:
+        type: boolean
+      cost_sharings:
+        items:
+          $ref: '#/definitions/CostSharing'
+        type: array
+      explanation:
+        type: string
+      exclusions:
+        type: string
+      has_limits:
+        type: boolean
+      limit_unit:
+        type: string
+      limit_quantity:
+        format: integer
+        type: number
+    type: object
+  CostSharing:
+    properties:
+      coinsurance_options:
+        type: string
+      coinsurance_rate:
+        format: float
+        type: number
+      copay_amount:
+        type: number
+      copay_options:
+        type: string
+      network_tier:
+        $ref: '#/definitions/NetworkTierEnum'
+      csr:
+        $ref: '#/definitions/CostSharingReductionEnum'
+      display_string:
+        type: string
+    type: object
+  CSRRequestEnum:
+    type: string
+    description: Cost-sharing reduction (CSR) override for requests
+    enum:
+      - CSR73
+      - CSR87
+      - CSR94
+      - LimitedCSR
+      - ZeroCSR
+  CostSharingReductionEnum:
+    type: string
+    description: Cost-sharing reduction (CSR)
+    enum:
+      - Exchange variant (no CSR)
+      - Zero Cost Sharing Plan Variation
+      - Limited Cost Sharing Plan Variation
+      - 73% AV Level Silver Plan CSR
+      - 87% AV Level Silver Plan CSR
+      - 94% AV Level Silver Plan CSR
+      - Non-Exchange variant
+      - Unknown CSR
+    properties: {}
+  CSREligibilityEnum:
+    type: string
+    description: Cost-sharing reduction (CSR)
+    enum:
+      - 73% AV Level Silver Plan CSR
+      - 87% AV Level Silver Plan CSR
+      - 94% AV Level Silver Plan CSR
+    properties: {}
+  County:
+    properties:
+      fips:
+        type: string
+        example: '04013'
+      name:
+        type: string
+        example: Maricopa County
+      state:
+        description: 2-letter USPS state abbreviation
+        example: AZ
+        type: string
+    type: object
+  CurrentEnrollment:
+    description: Current/existing enrollment information used to determine tobacco status for CiC enrollments. This will ensure rate calculation is done correctly.
+    required:
+      - plan_id
+      - effective_date
+      - uses_tobacco
+    properties:
+      plan_id:
+        $ref: '#/definitions/PlanID'
+      effective_date:
+        description: Date plan went into effect (ISO-8601 YYYY-MM-DD)
+        type: string
+        pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+        x-example: '2020-01-01'
+      uses_tobacco:
+        type: boolean
+    type: object
+  DataVersion:
+    type: object
+    properties:
+      name:
+        type: string
+      updated:
+        type: string
+        description: iso-8601 date
+  Deductible:
+    properties:
+      amount:
+        type: number
+      csr:
+        $ref: '#/definitions/CostSharingReductionEnum'
+      family_cost:
+        $ref: '#/definitions/FamilyCostEnum'
+      network_tier:
+        $ref: '#/definitions/NetworkTierEnum'
+      type:
+        enum:
+          - Medical EHB Deductible
+          - Combined Medical and Drug EHB Deductible
+          - Drug EHB Deductible
+        type: string
+      individual:
+        description: Applies to individuals
+        type: boolean
+      family:
+        description: Applies to families
+        type: boolean
+      display_string:
+        type: string
+        description: An optional human-readable description
+    type: object
+  DiseaseMgmtProgramsEnum:
+    enum:
+      - Asthma
+      - Heart Disease
+      - Depression
+      - Diabetes
+      - High Blood Pressure and High Cholesterol
+      - Low Back Pain
+      - Pain Management
+      - Pregnancy
+      - Weight Loss Programs
+    type: string
+    properties: {}
+  Drug:
+    properties:
+      id:
+        description: drug ID
+        type: string
+        pattern: '^[0-9]{1,10}$'
+      name:
+        description: normalized SAB=RXNORM name
+        type: string
+      rxcui:
+        $ref: '#/definitions/RxCUI'
+      strength:
+        description: strength information for this drug
+        type: string
+      route:
+        description: route information for this drug
+        type: string
+      full_name:
+        description: full name information for this drug
+        type: string
+      rxterms_dose_form:
+        description: rxtermsDoseForm value for this drug
+        type: string
+      rxnorm_dose_form:
+        description: rxnormDoseForm for this drug
+        type: string
+    type: object
+  Coverage:
+    type: string
+    enum:
+      - Covered
+      - NotCovered
+      - DataNotProvided
+      - GenericCovered
+    properties: {}
+  DrugCoverage:
+    properties:
+      rxcui:
+        $ref: '#/definitions/RxCUI'
+      plan_id:
+        $ref: '#/definitions/PlanID'
+      coverage:
+        $ref: '#/definitions/Coverage'
+      generic_rxcui:
+        type: string
+        description: The RxCUI for the generic equivalent of the given drug
+  Eligibility:
+    properties:
+      aptc:
+        format: float
+        type: number
+      csr:
+        $ref: '#/definitions/CSREligibilityEnum'
+      hardship_exemption:
+        type: boolean
+      is_medicaid_chip:
+        type: boolean
+    type: object
+  FamilyCostEnum:
+    description: family cost enumeration for MOOPs and deductibles
+    enum:
+      - Individual
+      - Family Per Person
+      - Family
+    type: string
+    properties: {}
+  HRA:
+    description: monthly employee HRA from employer
+    format: float
+    type: number
+  Range:
+    properties:
+      min:
+        format: float
+        type: number
+      max:
+        format: float
+        type: number
+    type: object
+  PlanSearchFilter:
+    description: plan search filter
+    properties:
+      disease_mgmt_programs:
+        type: array
+        items:
+          $ref: '#/definitions/DiseaseMgmtProgramsEnum'
+      division:
+        $ref: '#/definitions/ProductDivisionEnum'
+      issuer:
+        description: Issuer name
+        type: string
+      issuers:
+        description: A List of Issuers names
+        type: array
+        items:
+          type: string
+      metal_levels:
+        description: A list of Metalic Levels
+        type: array
+        items:
+          $ref: '#/definitions/MetalLevelEnum'
+      metal_level:
+        $ref: '#/definitions/MetalLevelEnum'
+      metal_design_types:
+        description: A list of Plan Design Type / Metalic Level Combinations
+        type: array
+        items:
+          $ref: '#/definitions/MetalDesignType'
+      design_types:
+        description: A list of Plan Design Types
+        type: array
+        items:
+          $ref: '#/definitions/DesignTypeEnum'
+      premium:
+        type: number
+      type:
+        $ref: '#/definitions/PlanTypeEnum'
+      types:
+        type: array
+        items:
+          $ref: '#/definitions/PlanTypeEnum'
+        description: a list of plan types
+      deductible:
+        type: number
+      hsa:
+        description: HSA eligibilty
+        type: boolean
+      oopc:
+        description: Out of Pocket Costs
+        type: number
+      child_dental_coverage:
+        description: Only show plans with child dental coverage
+        type: boolean
+      adult_dental_coverage:
+        description: Only show plans with adult dental coverage
+        type: boolean
+      drugs:
+        description: A list of RXCUIs
+        type: array
+        items:
+          type: string
+          pattern: '^[0-9]{5,7}$'
+      providers:
+        description: A list of NPIs
+        type: array
+        items:
+          type: string
+          pattern: '^[0-9]{10}$'
+      quality_rating:
+        description: Quality ratings for a plan
+        type: number
+      simple_choice:
+        type: boolean
+      premium_range:
+        $ref: '#/definitions/Range'
+      deductible_range:
+        $ref: '#/definitions/Range'
+    type: object
+  GenderEnum:
+    enum:
+      - Male
+      - Female
+    type: string
+  Household:
+    description: 'If a household is not included, will default to Individual household'
+    properties:
+      income:
+        description: household's yearly income in dollars
+        format: float
+        type: number
+      unemployment_received:
+        description:
+          Specifies whether a tax payer or tax dependent in the household received unemployment benefits for market year 2021.
+          May affect ATPC and CSR calulations due to income percentage capping if income is above 133% of the Federal poverty level.
+          If the person who received unemployment is a tax dependent, only the eligible CSRs will be affected.
+          Defaults to None
+        enum:
+          - Adult
+          - Dependent
+          - None
+        type: string
+      people:
+        description: people in household applying for coverage/seeking eligibility esimate; first is considered the subscriber
+        items:
+          $ref: '#/definitions/Person'
+        type: array
+      has_married_couple:
+        type: boolean
+      effective_date:
+        description: The effective date of the application (YYYY-MM-DD)
+        type: string
+        pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+    example:
+      income: 20000
+      people:
+        - age: 34
+          dob: "1984-01-06"
+          is_pregnant: false
+          is_parent: false
+          uses_tobacco: false
+          gender: Male
+      has_married_couple: false
+    type: object
+  ICHRAResponse:
+    properties:
+      affordable:
+        type: boolean
+      premium:
+        type: number
+    example:
+      affordable: 'true'
+      premium: 850.16
+    type: object
+  LowestCostPlanHousehold:
+    properties:
+      income:
+        description: household's yearly income in dollars
+        format: float
+        type: number
+      people:
+        description: people in household applying for coverage/seeking eligibility esimate
+        items:
+          $ref: '#/definitions/LowestCostPlanPerson'
+        type: array
+    example:
+      income: 60000
+      people:
+        - dob: '1979-01-06'
+          current_plan: 45127PA0020020
+          csr_variant: no_csr_eligibility
+          relationship: Self
+          uses_tobacco: false
+          age: 39
+      effective_date: '2019-01-01'
+    type: object
+  InsuranceMarketEnum:
+    enum:
+      - QHP
+      - MSP
+    type: string
+    properties: {}
+  Issuer:
+    properties:
+      eligible_dependents:
+        description: list of allowed relationship types for dependents
+        items:
+          $ref: '#/definitions/Relationship'
+        type: array
+      id:
+        description: 5-digit HIOS ID
+        type: string
+      individual_url:
+        description: URL for individual market plans
+        type: string
+      name:
+        description: issuer's name
+        type: string
+      shop_url:
+        description: URL for SHOP market plans
+        type: string
+      state:
+        description: 2-letter USPS state abbreviation
+        type: string
+      toll_free:
+        description: toll-free customer service phone number
+        type: string
+      tty:
+        description: TTY customer service number)
+        type: string
+    type: object
+  MOOP:
+    description: maximum out-of-pocket
+    properties:
+      amount:
+        type: number
+      csr:
+        $ref: '#/definitions/CostSharingReductionEnum'
+      family_cost:
+        type: string
+        enum:
+          - Individual
+          - Family
+          - Family Per Person
+      network_tier:
+        $ref: '#/definitions/NetworkTierEnum'
+      type:
+        enum:
+          - Maximum Out of Pocket for Medical and Drug EHB Benefits (Total)
+          - Maximum Out of Pocket for Medical EHB Benefits
+          - Maximum Out of Pocket for Drug EHB Benefits
+        type: string
+      individual:
+        description: Applies to individuals
+        type: boolean
+      family:
+        description: Applies to families
+        type: boolean
+      display_string:
+        type: string
+        description: An optional human-readable description
+    type: object
+  MarketYear:
+    type: number
+  MarketYears:
+    description: Current and supported market years
+    type: object
+    properties:
+      current:
+        description: Current market year
+        type: number
+      supported:
+        description: Supported market years
+        type: array
+        items:
+          $ref: '#/definitions/MarketYear'
+  MarketEnum:
+    enum:
+      - Individual
+      - SHOP
+      - Any
+    type: string
+    properties: {}
+  MarketplaceModelEnum:
+    enum:
+      - FFM
+      - FFMPartnership
+      - SBM
+      - SupportedSBM
+    type: string
+    properties: {}
+  MetalLevelEnum:
+    enum:
+      - Catastrophic
+      - Silver
+      - Bronze
+      - Gold
+      - Platinum
+    type: string
+    properties: {}
+  DesignTypeEnum:
+    enum:
+      - DESIGN1
+      - DESIGN2
+      - DESIGN3
+      - DESIGN4
+      - DESIGN5
+      - NOT_APPLICABLE
+    type: string
+    properties: {}
+  MetalDesignType:
+    properties:
+      metal_level:
+        $ref: '#/definitions/MetalLevelEnum'
+      design_types:
+        items:
+          $ref: '#/definitions/DesignTypeEnum'
+        type: array
+  NetworkTierEnum:
+    enum:
+      - In-Network
+      - In-Network Tier 2
+      - Out-of-Network
+      - Combined In-Out of Network
+    type: string
+    properties: {}
+  Person:
+    properties:
+      age:
+        format: integer
+        type: number
+        description: required if dob not provided
+      dob:
+        description: A person's date of birth (YYYY-MM-DD) required if age not provided
+        type: string
+        pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+        x-example: '2020-01-01'
+      has_mec:
+        description: has minimum essential coverage
+        type: boolean
+      is_parent:
+        type: boolean
+      is_pregnant:
+        description: 'Indicates whether the individual is pregnant or not. If this is true and `pregnant_with` is not provided, `pregnant_with` is assumed to be 1.'
+        type: boolean
+      pregnant_with:
+        description: 'The number of expected children from a pregnancy. If this value is > 0, `is_pregnant` is assumed to be true, even if specified otherwise.'
+        type: number
+      uses_tobacco:
+        type: boolean
+      last_tobacco_use_date:
+        description: The last date of regular tobacco use (YYYY-MM-DD)
+        type: string
+        pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+      gender:
+        $ref: '#/definitions/GenderEnum'
+      utilization_level:
+        $ref: '#/definitions/UtilizationEnum'
+      relationship:
+        $ref: '#/definitions/Relationship'
+      does_not_cohabitate:
+        type: boolean
+      aptc_eligible:
+        description: is the given person eligible for APTC
+        type: boolean
+      current_enrollment:
+        $ref: '#/definitions/CurrentEnrollment'
+    type: object
+    required:
+      - age
+      - dob
+  LowestCostPlanPerson:
+    properties:
+      age:
+        format: integer
+        type: number
+      uses_tobacco:
+        type: boolean
+        default: false
+    type: object
+  LowestCostPlanResponse:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      premium:
+        type: number
+      metal_level:
+        $ref: '#/definitions/MetalLevelEnum'
+    example:
+      id: 11111PA0000000
+      name: The Best Plan You Ever Did See
+      premium: 850.16
+      metal_level: Bronze
+    type: object
+  Place:
+    properties:
+      countyfips:
+        description: 5-digit county FIPS code
+        type: string
+      state:
+        description: 2-letter USPS state abbreviation
+        type: string
+      zipcode:
+        description: 5-digit ZIP Code
+        type: string
+    required:
+      - countyfips
+      - state
+      - zipcode
+    example:
+      countyfips: '51107'
+      state: VA
+      zipcode: '20103'
+    type: object
+  Plan:
+    properties:
+      id:
+        description: 14-character HIOS plan ID
+        type: string
+      name:
+        description: Name of the insurance plan
+        type: string
+      benefits:
+        items:
+          $ref: '#/definitions/Benefit'
+        type: array
+      deductibles:
+        items:
+          $ref: '#/definitions/Deductible'
+        type: array
+      disease_mgmt_programs:
+        items:
+          $ref: '#/definitions/DiseaseMgmtProgramsEnum'
+        type: array
+      has_national_network:
+        description: if plan has a national network of providers
+        type: boolean
+      quality_rating:
+        $ref: '#/definitions/QualityRating'
+      insurance_market:
+        $ref: '#/definitions/InsuranceMarketEnum'
+      issuer:
+        $ref: '#/definitions/Issuer'
+      market:
+        $ref: '#/definitions/MarketEnum'
+      max_age_child:
+        description: the maximum age a person is considered a child on their parents' plan
+        format: int32
+        type: number
+      metal_level:
+        $ref: '#/definitions/MetalLevelEnum'
+      moops:
+        items:
+          $ref: '#/definitions/MOOP'
+        type: array
+      premium:
+        description: 'monthly premium in US dollars, unsubsidized (i.e., no APTC applied)'
+        format: float
+        type: number
+      premium_w_credit:
+        description: 'monthly premium in US dollars, with APTC applied'
+        format: float
+        type: number
+      ehb_premium:
+        description: 'monthly premium in US dollars, for essential health benefits portion of total premium'
+        format: float
+        type: number
+      pediatric_ehb_premium:
+        description: monthly pediatric portion of the ehb premium in US dollars
+        type: number
+        format: float
+      aptc_eligible_premium:
+        description: the portion of the premium that is eligible for APTC
+        type: number
+        format: float
+      guaranteed_rate:
+        description: true if the premiums are guaranteed (versus estimated)
+        type: boolean
+      simple_choice:
+        description: true if the plan is a Simple Choice plan
+        type: boolean
+      product_division:
+        $ref: '#/definitions/ProductDivisionEnum'
+      specialist_referral_required:
+        type: boolean
+      state:
+        description: 2-letter USPS state abbreviation
+        type: string
+      type:
+        $ref: '#/definitions/PlanTypeEnum'
+      benefits_url:
+        type: string
+      brochure_url:
+        type: string
+      formulary_url:
+        type: string
+      network_url:
+        type: string
+      hsa_eligible:
+        description: Is this plan eligible as an HSA?
+        type: boolean
+      oopc:
+        description: 'out-of-pocket cost; calculated when age, gender and utilization_level are present, otherwise -1'
+        type: number
+      suppression_state:
+        $ref: '#/definitions/SuppressionStatus'
+      tobacco_lookback:
+        type: integer
+      certification:
+        $ref: '#/definitions/CertificationStatus'
+      network_adequacy:
+        description: Network adequacy
+        type: object
+        properties:
+          scope:
+            description: The county for which the network adequacy is in scope
+            type: string
+          networks:
+            description: Specialty networks and their network types
+            type: object
+      sbcs:
+        description: Summary of benefits and costs
+        type: object
+        properties:
+          baby:
+            description: Typical yearly costs for having a healthy pregnancy and normal delivery for one person
+            allOf:
+             - $ref: '#/definitions/SBCScenario'
+          diabetes:
+            description: Typical yearly costs for managing type 2 diabetes for one person
+            allOf:
+            - $ref: '#/definitions/SBCScenario'
+          fracture:
+            description: Typical yearly costs for treating a simple fracture
+            allOf:
+            - $ref: '#/definitions/SBCScenario'
+      rx_3mo_mail_order:
+        description: 3-month in-network mail order pharmacy benefit
+        type: boolean
+      is_ineligible:
+        description: 'If the given enrollment group/household is ineligible for the plan by business rules, it will be flagged true'
+        type: boolean
+      covers_nonhyde_abortion:
+        type: boolean
+      service_area_id:
+        description: 6-character id representing the geographic area the plan accepts members from.  The first two characters are the state's abbreviation.
+        type: string
+    type: object
+  PlanSearchRequest:
+    properties:
+      filter:
+        $ref: '#/definitions/PlanSearchFilter'
+      household:
+        $ref: '#/definitions/Household'
+      offset:
+        type: number
+      order:
+        enum:
+          - asc
+          - desc
+        type: string
+      place:
+        $ref: '#/definitions/Place'
+      sort:
+        enum:
+          - premium
+          - deductible
+          - oopc
+          - total_costs
+          - quality_rating
+        type: string
+      year:
+        description: defaults to current open enrollment year
+        x-example: 2019
+        type: number
+      market:
+        $ref: '#/definitions/MarketEnum'
+      aptc_override:
+        description: override the aptc calculation with a specific amount
+        type: number
+      csr_override:
+        $ref: '#/definitions/CSRRequestEnum'
+      catastrophic_override:
+        description: Force the display (or suppression) of catastrophic plans
+        type: boolean
+      suppressed_plan_ids:
+        $ref: '#/definitions/PlanIDList'
+    required:
+      - place
+      - market
+    type: object
+  PlanTypeEnum:
+    enum:
+      - Indemnity
+      - PPO
+      - HMO
+      - EPO
+      - POS
+    type: string
+  ProductDivisionEnum:
+    enum:
+      - HealthCare
+      - Dental
+    type: string
+  Provider:
+    properties:
+      name:
+        type: string
+      gender:
+        $ref: '#/definitions/ProviderGenderEnum'    
+      specialties:
+        type: array
+        items:
+          type: string
+      type:
+        $ref: '#/definitions/ProviderTypeEnum'
+      accepting:
+        type: string
+        enum:
+          - accepting
+          - not accepting
+          - accepting in some locations
+          - unknown
+      npi:
+        type: string
+        pattern: '^[0-9]{10}$'
+        title: National Provider Identifier
+      languages:
+        type: array
+        items:
+          type: string
+      facility_types:
+        type: array
+        items:
+          type: string
+        description: 'If provider is a facility, this is a list of the applicable facility types'
+      taxonomy:
+        type: string
+        description: provider taxonomy from National Uniform Claim Committee
+    type: object
+    required:
+      - name
+      - type
+      - npi
+  ProviderCoverage:
+    properties:
+      npi:
+        $ref: '#/definitions/NPI'
+      plan_id:
+        $ref: '#/definitions/PlanID'
+      coverage:
+        $ref: '#/definitions/Coverage'
+      addresses:
+        description: 'at which addresses this provider is covered by the plan, if any'
+        type: array
+        items:
+          $ref: '#/definitions/Address'
+      accepting:
+        type: string
+        enum:
+          - accepting
+          - not accepting
+          - accepting in some locations
+          - unknown
+  ProviderGenderEnum:
+    enum:
+      - Male
+      - Female
+      - Other
+      - Transgender-female
+      - Transgender-male
+      - Non-binary
+      - Non-disclose
+    type: string
+    properties: {}
+  NearbyProvider:
+    properties:
+      provider:
+        $ref: '#/definitions/Provider'
+      address:
+        $ref: '#/definitions/Address'
+      distance:
+        type: number
+        minimum: 0
+        title: 'Distance in miles from address, eg., from a proximity search'
+    type: object
+    required:
+      - provider
+      - distance
+  ProviderTypeEnum:
+    enum:
+      - Individual
+      - Facility
+    type: string
+    properties: {}
+  QualityRating:
+    properties:
+      available:
+        type: boolean
+        description: 'True if the plan has a quality rating, otherwise false.  A plan can still be unrated when the quality rating is available'
+      year:
+        x-example: 2019
+        type: integer
+      global_rating:
+        type: integer
+        minimum: 0
+        maximum: 5
+      global_not_rated_reason:
+        type: string
+      clinical_quality_management_rating:
+        type: integer
+        minimum: 0
+        maximum: 5
+      clinical_quality_management_not_rated_reason:
+        type: string
+      enrollee_experience_rating:
+        type: integer
+        minimum: 0
+        maximum: 5
+      enrollee_experience_not_rated_reason:
+        type: string
+      plan_efficiency_rating:
+        type: integer
+        minimum: 0
+        maximum: 5
+      plan_efficiency_not_rated_reason:
+        type: string
+    type: object
+  RateArea:
+    properties:
+      state:
+        description: 2-letter USPS abbreviation
+        type: string
+      area:
+        description: Rate area number for the given state.
+        type: integer
+    type: object
+    example:
+      state: LA
+      area: 7
+  Relationship:
+    description: 'Should match one of the [listed valid relationships](#introduction/more-information-about-households).'
+    type: string
+    properties: {}
+  SBCScenario:
+    type: object
+    properties:
+      deductible:
+        type: number
+        format: float
+      copay:
+        type: number
+        format: float
+      coinsurance:
+        type: number
+        format: float
+      limit:
+        type: number
+        format: float
+  State:
+    properties:
+      abbrev:
+        description: 2-letter USPS abbreviation
+        type: string
+      fips:
+        description: 2-digit FIPS code
+        type: string
+      hix_name:
+        type: string
+      hix_url:
+        format: uri
+        type: string
+      marketplace:
+        $ref: '#/definitions/MarketplaceModelEnum'
+      name:
+        type: string
+      shop_hix_name:
+        type: string
+      shop_hix_url:
+        format: uri
+        type: string
+      shop_marketplace:
+        $ref: '#/definitions/MarketplaceModelEnum'
+      8962_link:
+        format: uri
+        type: string
+      8965_link:
+        format: uri
+        type: string
+      assister_program_url:
+        format: uri
+        type: string
+    example:
+      name: Nevada
+      abbrev: NV
+      fips: '32'
+      marketplace_model: FFM
+      shop_marketplace_model: FFM
+      hix_name: Nevada Health Link
+      hix_url: 'https://www.nevadahealthlink.com/'
+      shop_hix_name: Nevada Health Link
+      shop_hix_url: 'https://www.nevadahealthlink.com/'
+      8962_link: ''
+      8965_link: ''
+      assister_program_url: 'https://www.nevadahealthlink.com/find-assistance/'
+    type: object
+  Guideline:
+    properties:
+      household_size:
+        description: Total size of household
+        format: integer
+        type: number
+      guideline:
+        description: Federal poverty level guideline
+        format: integer
+        type: number
+    type: object
+  PovertyGuideline:
+    properties:
+      add_per_person_after_eight:
+        description: For households over eight members add this value for each additional member
+        format: integer
+        type: number
+      guidelines:
+        description: Household guidelines
+        items:
+          $ref: '#/definitions/Guideline'
+        type: array
+    type: object
+  LowIncomeChild:
+    properties:
+      min_age:
+        description: Minimum age
+        format: integer
+        type: number
+      max_age:
+        description: Maximum age
+        format: integer
+        type: number
+      pc_fpl:
+        description: Percentage federal poverty level
+        format: float
+        type: number
+    type: object
+  StateMedicaid:
+    properties:
+      name:
+        description: Uppercase name
+        type: string
+      abbrev:
+        description: 2-letter USPS abbreviation
+        type: string
+      fiscal_year:
+        description: 4 digit fiscal year
+        format: integer
+        type: number
+      fiscal_quarter:
+        description: Fiscal quarter (1 - 4)
+        format: integer
+        type: number
+      pc_fpl_parent:
+        description: Percentage federal poverty level parent caretaker
+        format: float
+        type: number
+      pc_fpl_pregnant:
+        description: Percentage medicaid federal poverty level pregnant woman
+        format: float
+        type: number
+      pc_fpl_adult:
+        description: Percentage federal poverty level adult group
+        format: float
+        type: number
+      pc_fpl_child_newborn:
+        description: Percentage medicaid federal poverty level child
+        format: float
+        type: number
+      pc_fpl_child_1_5:
+        description: Percentage medicaid federal poverty level child 1 - 5
+        format: float
+        type: number
+      pc_fpl_child_6_18:
+        description: Percentage medicaid federal poverty level child 6 - 18
+        format: float
+        type: number
+      low_income_child:
+        description: Low income child eligibility rules
+        items:
+          $ref: '#/definitions/LowIncomeChild'
+        type: array
+      chip:
+        description: Children's Health Insurance Program eligibility rules
+        items:
+          $ref: '#/definitions/LowIncomeChild'
+        type: array
+    example:
+      name: KANSAS
+      abbrev: KS
+      fiscal_year: 2019
+      fiscal_quarter: 1
+      pc_fpl_parent: 0.33
+      pc_fpl_pregnant: 1.66
+      pc_fpl_adult: 0
+      pc_fpl_child_newborn: 1.66
+      pc_fpl_child_1_5: 1.49
+      pc_fpl_child_6_18: 1.33
+      low_income_child: []
+      chip:
+        - min_age: 0
+          max_age: 18
+          pc_fpl: 2.35
+    type: object
+  UtilizationEnum:
+    enum:
+      - Low
+      - Medium
+      - High
+    type: string
+  ZIPCounty:
+    properties:
+      fips:
+        format: '^[0-9]{5}$'
+        type: string
+      name:
+        type: string
+      state:
+        format: '^[A-Z]{2}$'
+        type: string
+      zipcode:
+        format: '^[0-9]{5}$'
+        type: string
+    type: object
+  NPI:
+    type: string
+    pattern: '^[0-9]{10}$'
+    properties: {}
+  PlanID:
+    type: string
+    pattern: '^[0-9]{5}[A-Z]{2}[0-9]{7}$'
+    properties: {}
+  RxCUI:
+    type: string
+    pattern: '^[0-9]+$'
+    properties: {}
+  Enrollment:
+    properties:
+      enrollmentGroups:
+        type: array
+        items:
+          $ref: '#/definitions/EnrollmentGroup'
+      enrollees:
+        type: array
+        items:
+          $ref: '#/definitions/Enrollee'
+    type: object
+  EnrollmentGroup:
+    properties:
+      id:
+        description: Enrollment group id
+        type: string
+        pattern: '^[a-f0-9-]+$'
+      aptc:
+        description: Advanced Premium Tax Credit amount
+        type: number
+        format: float
+      planID:
+        description: The plan id being queried
+        type: string
+    type: object
+    required:
+      - id
+      - planID
+  Enrollee:
+    properties:
+      enrollmentGroupID:
+        description: Enrollment group id
+        type: string
+        pattern: '^[a-f0-9-]+$'
+      tobaccoDate:
+        description: Date of last tobacco use (YYYY-MM-DD)
+        type: string
+    type: object
+    required:
+      - enrollmentGroupID
+  RelationshipEdge:
+    properties:
+      super_id:
+        type: string
+        description: enrollee id
+      sub_id:
+        type: string
+        description: enrollee id
+      relationship:
+        $ref: '#/definitions/Relationship'
+  ExtendedEnrollee:
+    properties:
+      id:
+        description: The enrollee's id (uuid)
+        type: string
+        pattern: '^[a-f0-9-]+$'
+      name:
+        description: The enrollee's name
+        type: string
+      gender:
+        $ref: '#/definitions/GenderEnum'
+      dob:
+        description: The enrollee's date of birth (iso8601 date)
+        type: string
+        pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+      location:
+        $ref: '#/definitions/Address'
+      csr:
+        $ref: '#/definitions/CostSharingReductionEnum'
+      is_filer:
+        type: boolean
+      effective_age:
+        type: integer
+        description: Effective age of the enrollee at time of enrollment.
+      has_hardship:
+        type: boolean
+      relationship:
+        $ref: '#/definitions/Relationship'
+      allowed_metal_levels:
+        type: array
+        items:
+          $ref: '#/definitions/MetalLevelEnum'
+      allowed_plan_ids:
+        type: array
+        items:
+          $ref: '#/definitions/PlanID'
+      current_enrollment:
+        $ref: '#/definitions/CurrentEnrollment'
+  ExtendedEnrollment:
+    properties:
+      maxAPTC:
+        description: The max aptc value for the enrollment
+        type: number
+        format: float
+      year:
+        x-example: 2019
+        description: The year coverage is being sought for
+        type: number
+        format: integer
+      is_custom:
+        description: 'Is this a default enrollment grouping provided by an FFM GetEnrollment request, or a custom grouping?'
+        type: boolean
+      division:
+        $ref: '#/definitions/ProductDivisionEnum'
+      enrollment_groups:
+        items:
+          properties:
+            id:
+              description: The enrollment group id (uuid)
+              type: string
+              pattern: '^[0-9a-f-]+$'
+            csr:
+              $ref: '#/definitions/CostSharingReductionEnum'
+            enrollees:
+              description: Enrollee ids
+              type: array
+              items:
+                type: string
+            subscriber_id:
+              type: string
+            relationships:
+              type: array
+              items:
+                $ref: '#/definitions/RelationshipEdge'
+            effective_date:
+              description: Date coverage goes into effect (ISO-8601 YYYY-MM-DD)
+              type: string
+              pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+              x-example: '2020-01-01'
+        type: array
+      enrollees:
+        type: array
+        items:
+          $ref: '#/definitions/ExtendedEnrollee'
+  APTC:
+    properties:
+      aptc_amount:
+        format: float
+        type: number
+      is_catastrophic:
+        type: boolean
+      enrollment_groups:
+        type: array
+        $ref: '#/definitions/APTCEnrollmentGroup'
+  APTCEnrollmentGroup:
+    properties:
+      id:
+        type: string
+      aptc_eligible_premium:
+        type: number
+        format: float
+      division:
+        $ref: '#/definitions/ProductDivisionEnum'
+      enrollees:
+        type: array
+        $ref: '#/definitions/APTCEnrollee'
+  APTCEnrollee:
+    properties:
+      is_pediatric:
+        type: boolean
+      aptc_percentage:
+        type: number
+        format: float
+  APTCAllocationResult:
+    properties:
+      enrollment_group_id:
+        type: number
+      amount:
+        type: number
+  FlattenedEnrollmentGroup:
+    properties:
+      id:
+        type: string
+      csr:
+        $ref: '#/definitions/CostSharingReductionEnum'
+      enrollees:
+        type: array
+        items:
+          $ref: '#/definitions/ExtendedEnrollee'
+      grouping_reason:
+        type: string
+      year:
+        x-example: 2019
+        type: number
+        format: integer
+      subscriber_id:
+        type: string
+      relationships:
+        type: array
+        items:
+          $ref: '#/definitions/RelationshipEdge'
+      effective_date:
+        type: string
+        pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+        x-example: '2020-01-01'
+  PlanIDList:
+    items:
+      type: string
+      pattern: '^[0-9]{5}[A-Z]{2}[0-9]{7}(,[0-9]{5}[A-Z]{2}[0-9]{7})*$'
+    type: array
+  SuppressionStatus:
+    type: string
+    enum:
+      - Available
+      - Suspended
+      - Closed
+      - Not Applicable
+  CertificationStatus:
+    type: string
+    enum:
+      - Certified
+      - Not Certified
+      - Decertified
+      - Certified Off-Exchange SADP
+securityDefinitions:
+  API Key:
+    x-summary: API Key Auth
+    description: 'Your API key should be included as a query parameter with the request. You can [fill out this form](https://cms.gov1.qualtrics.com/jfe/form/SV_4N2GHCJfNuX7n8x) to request an API key.'
+    type: apiKey
+    in: query
+    name: apikey
+    x-example: d687412e7b53146b2631dc01974ad0a4
+security:
+  - API Key: []
+parameters:
+  year-with-default:
+    x-example: 2019
+    name: year
+    description: 4 digit market year (Defaults to the current year when not specified).
+    in: query
+    type: number
+    format: integer
+    required: false
+  year-required:
+    x-example: 2019
+    name: year
+    description: 4 digit market year.
+    in: query
+    type: number
+    format: integer
+    required: true
+  apikey:
+    name: apikey
+    description: API key used for authentication
+    type: string
+    in: query
+    required: true
+    x-example: d687412e7b53146b2631dc01974ad0a4
+  zipcode:
+    description: 5 digit ZIP Code or 1-4 digit prefix of a ZIP Code
+    in: path
+    name: zipcode
+    type: string
+    required: true
+    x-example: '19123'
+  fips:
+    description: 5-digit county FIPS code
+    in: path
+    name: fips
+    required: true
+    type: string
+    x-example: '37057'
+paths:
+  /versions:
+    x-summary: API Version Info
+    get:
+      tags:
+        - API Reference
+      parameters:
+        - $ref: '#/parameters/apikey'
+      description: Get the last updated date for various data sets
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/DataVersion'
+  /market-years:
+    x-summary: Current and supported market years
+    get:
+      tags:
+        - API Reference
+      parameters:
+        - $ref: '#/parameters/apikey'
+      description: Get the current and supported market years
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/MarketYears'
+  '/counties/by/zip/{zipcode}':
+    x-summary: List Counties by ZIP
+    get:
+      tags:
+        - Geography
+      description: |-
+        Find counties matching ZIP Code (5 digits or prefix thereof).
+        This method is suitable for use in typeahead UI completions.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - $ref: '#/parameters/zipcode'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            properties:
+              counties:
+                items:
+                  $ref: '#/definitions/ZIPCounty'
+                example:
+                  - fips: '12345'
+                    name: Sedgwick County
+                    state: KS
+                    zipcode: '67203'
+                type: array
+            type: object
+  '/counties/{fips}':
+    x-summary: County Lookup by FIPS
+    get:
+      tags:
+        - Geography
+      description: Get information about a county by its FIPS code.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - $ref: '#/parameters/fips'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/County'
+  /crosswalk:
+    x-summary: Plan Crosswalk
+    get:
+      tags:
+        - Insurance Plans
+      description: Crosswalk a previous year plan to the next year's plan
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: Previous year
+          in: query
+          name: year
+          required: true
+          type: number
+          format: integer
+          x-example: 2018
+        - description: Previous year plan ID
+          in: query
+          name: plan_id
+          required: true
+          type: string
+          x-example: 53882IL0040002
+        - description: State abbreviation
+          in: query
+          name: state
+          required: true
+          type: string
+          x-example: IL
+        - description: ZIP Code
+          in: query
+          name: zipcode
+          required: true
+          type: string
+          x-example: '60647'
+        - description: FIPS code
+          in: query
+          name: fips
+          required: true
+          type: string
+          x-example: '17031'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              new_plan_id:
+                description: the crosswalked plan id for the next year
+                type: string
+              level:
+                description: the level code for the crosswalked plan
+                type: string
+              reason:
+                description: the reason code for the crosswalked plan
+                type: string
+            type: object
+      summary: Crosswalk a previous year plan
+  /drugs/autocomplete:
+    x-summary: Drugs Autocomplete
+    get:
+      tags:
+        - Provider & Drug Coverage
+      description: Search prescription drugs
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: name of drug to search for (minimum 3 chars)
+          in: query
+          name: q
+          required: true
+          type: string
+          x-example: ibuprof
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              drugs:
+                items:
+                  $ref: '#/definitions/Drug'
+                type: array
+            type: object
+      summary: Autocomplete drugs by name
+  /drugs/search:
+    x-summary: Drugs Search
+    get:
+      tags:
+        - Provider & Drug Coverage
+      description: Search prescription drugs
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: name of drug to search for
+          in: query
+          name: q
+          required: true
+          type: string
+          x-example: ibuprofen
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              drugs:
+                items:
+                  $ref: '#/definitions/Drug'
+                type: array
+              next:
+                description: 'URL of next page of results, if any'
+                type: string
+              prev:
+                description: 'URL of previous page of results, if any'
+                type: string
+            type: object
+      summary: Search prescription drugs
+  /drugs/covered:
+    x-summary: Drug Coverage
+    get:
+      tags:
+        - Provider & Drug Coverage
+      summary: Get a list of whether drugs are covered by plans
+      description: Get a list of whether drugs are covered by plans
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: array of drug RxCUIs
+          in: query
+          name: drugs
+          required: true
+          type: string
+          x-example: '1049589'
+        - description: array of plan IDs
+          in: query
+          name: planids
+          required: true
+          type: string
+          x-example: 11512NC0100031
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              Provider & Drug Coverage:
+                items:
+                  $ref: '#/definitions/DrugCoverage'
+                type: array
+            type: object
+  /households/eligibility/estimates:
+    x-summary: Eligibility Estimates
+    post:
+      tags:
+        - Households & Eligibility
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+              "income": 52000,
+              "people": [
+                {
+                    "dob": "1992-01-01",
+                    "aptc_eligible": true,
+                 "gender": "Female",
+                  "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                  "zipcode": "27360"
+              },
+              "year": 2019
+          }
+          ```
+        Create an eligibility estimate for a household. Index of each
+        object in response array is index into Household.people array:
+        i.e., that eligibility estimate is for that person
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: eligibility estimate request object
+          in: body
+          name: estimate
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/Household'
+              place:
+                $ref: '#/definitions/Place'
+              year:
+                format: integer
+                type: number
+            required:
+              - place
+            example:
+              place: {}
+              year: 2019
+            type: object
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            properties:
+              estimates:
+                items:
+                  $ref: '#/definitions/Eligibility'
+                example:
+                  - aptc: 448.08296071163227
+                    csr: 94% AV Level Silver Plan CSR
+                    hardship_exemption: false
+                    is_medicaid_chip: false
+                type: array
+            type: object
+  /households/ichra:
+    x-summary: Calculate ICHRA affordability
+    post:
+      tags:
+        - Households & Eligibility
+      description: |
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+                "income": 52000,
+                "people": [
+                {
+                    "dob": "1992-01-01",
+                    "aptc_eligible": true,
+                    "gender": "Female",
+                    "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                 "zipcode": "27360"
+              },
+              "hra": 500,
+              "year": 2020
+          }
+          ```
+        Get the lowest cost silver plan for a household and ICHRA affordability.
+        Response is determination of affordability and lowest cost silver plan premium set to the rate for the household.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: ichra request object
+          in: body
+          name: ichra
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/LowestCostPlanHousehold'
+              place:
+                $ref: '#/definitions/Place'
+              year:
+                format: integer
+                type: number
+              hra:
+                format: float
+                type: number
+            required:
+              - place
+            type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ICHRAResponse'
+      summary: Get affordability and premium of the lowest cost silver plan
+  /households/lcbp:
+    x-summary: Lookup LCBP
+    post:
+      tags:
+        - Households & Eligibility
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+                "income": 52000,
+                "people": [
+                {
+                    "dob": "1992-01-01",
+                    "aptc_eligible": true,
+                    "gender": "Female",
+                    "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                 "zipcode": "27360"
+              },
+              "year": 2020
+          }
+          ```
+        Get the lowest cost bronze plan for a household.
+        Response is a plan object with the premium set to the
+        rate for the household.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: lcbp request object
+          in: body
+          name: lcbp
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/LowestCostPlanHousehold'
+              place:
+                $ref: '#/definitions/Place'
+              year:
+                format: integer
+                type: number
+            required:
+              - place
+            type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LowestCostPlanResponse'
+      summary: Get lowest cost bronze plan for a household
+  /households/slcsp:
+    x-summary: Lookup SLCSP
+    post:
+      tags:
+        - Households & Eligibility
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+                "income": 52000,
+                "people": [
+                {
+                    "dob": "1992-01-01",
+                    "aptc_eligible": true,
+                    "gender": "Female",
+                    "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                 "zipcode": "27360"
+              },
+              "year": 2020
+          }
+          ```
+        Get the second lowest cost silver plan for a household.
+        Response is a plan object with the premium set to the rate for the household.
+
+        Note -- when calculating the SLCSP for a household that has members in different rating areas, the household must be split by rating area and multiple SLCSP requests must be sent, with the results summed at the end (applies only to 2019 ratings).
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: slcsp request object
+          in: body
+          name: slcsp
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/LowestCostPlanHousehold'
+              place:
+                $ref: '#/definitions/Place'
+              year:
+                format: integer
+                type: number
+            required:
+              - place
+            type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LowestCostPlanResponse'
+      summary: Get second lowest cost silver plan
+  /households/lcsp:
+    x-summary: Lookup LCSP
+    post:
+      tags:
+        - Households & Eligibility
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+                "income": 52000,
+                "people": [
+                {
+                    "dob": "1992-01-01",
+                    "aptc_eligible": true,
+                    "gender": "Female",
+                    "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                 "zipcode": "27360"
+              },
+              "year": 2020
+          }
+          ```
+        Get the lowest cost silver plan for a household.
+        Response is a plan object with the premium set to the rate for the household.
+
+        Note -- when calculating the LCSP for a household that has members in different rating areas, the household must be split by rating area and multiple LCSP requests must be sent, with the results summed at the end (applies only to 2019 ratings).
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: lcsp request object
+          in: body
+          name: lcsp
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/LowestCostPlanHousehold'
+              place:
+                $ref: '#/definitions/Place'
+              year:
+                format: integer
+                type: number
+            required:
+              - place
+            type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LowestCostPlanResponse'
+      summary: Get lowest cost silver plan
+  /households/pcfpl:
+    x-summary: Poverty Level Percentage
+    get:
+      tags:
+        - Households & Eligibility
+      description: Household income as a percentage of the federal poverty level
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-required'
+        - description: '2-letter USPS state abbreviation, uppercased.'
+          in: query
+          name: state
+          required: true
+          type: string
+          x-example: VA
+        - description: Total size of household
+          in: query
+          name: size
+          required: true
+          type: number
+          format: integer
+          x-example: 5
+        - description: Household Income
+          in: query
+          name: income
+          required: true
+          type: number
+          format: integer
+          x-example: 40000
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            properties:
+              pc_fpl:
+                description: Household income as a percentage of the Federal poverty level
+                format: float
+                type: number
+            type: object
+            example:
+              pc_fpl: 146.91
+  /issuers:
+    x-summary: List Issuers
+    get:
+      tags:
+        - Insurance Issuers
+      description: |-
+        List issuers
+
+        This API is paged. Ten results are returned for each query, and
+        the total amount of results that match your query is available as the
+        `total` attribute on the result. Use the `offset` parameter to get
+        results beyond the first page.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: 2-letter USPS state abbreviation
+          in: query
+          name: state
+          required: false
+          type: string
+          x-example: VA
+        - default: 25
+          in: query
+          name: limit
+          required: false
+          type: number
+        - default: 0
+          in: query
+          name: offset
+          required: false
+          type: number
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              issuers:
+                items:
+                  $ref: '#/definitions/Issuer'
+                type: array
+            type: object
+      summary: List issuers
+  '/issuers/{issuer_id}':
+    x-summary: Get Issuer
+    get:
+      tags:
+        - Insurance Issuers
+      description: Get issuer
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: 5-digit HIOS issuer ID
+          in: path
+          name: issuer_id
+          required: true
+          type: string
+          x-example: '10191'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              issuer:
+                $ref: '#/definitions/Issuer'
+            type: object
+      summary: Get issuer
+  /plans:
+    x-summary: Multi Plan Details
+    post:
+      tags:
+        - Insurance Plans
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results
+          ```
+        {
+          "household": {
+              "income": 20000,
+              "people": [
+              {
+                  "age": 34,
+                  "is_pregnant": false,
+                  "is_parent": false,
+                  "uses_tobacco": false,
+                  "gender": "Male"
+              }
+              ],
+              "has_married_couple": false
+          },
+          "place": {
+              "countyfips": "51107",
+              "state": "VA",
+              "zipcode": "20103"
+          },
+          "market": "Individual",
+          "plan_ids": [
+              "11512NC0100031"
+          ],
+          "year": 2019,
+          "aptc_override": 100,
+          "csr_override": "CSR73",
+          "catastrophic_override": true
+        }
+          ```
+        Get details on multiple plans, typically for plan comparison.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - in: body
+          name: request
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/Household'
+              place:
+                $ref: '#/definitions/Place'
+              market:
+                $ref: '#/definitions/MarketEnum'
+              plan_ids:
+                description: 14-character HIOS IDs
+                items:
+                  type: string
+                type: array
+              year:
+                format: integer
+                type: number
+              aptc_override:
+                description: override the aptc calculation with a specific amount
+                type: number
+              csr_override:
+                $ref: '#/definitions/CSRRequestEnum'
+              catastrophic_override:
+                description: Force the display (or suppression) of catastrophic plans
+                type: boolean
+            required:
+              - place
+              - plan_ids
+            type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              plans:
+                items:
+                  $ref: '#/definitions/Plan'
+                type: array
+            type: object
+      summary: Get multiple plans
+
+  /plans/search:
+    x-summary: Plan Search
+    post:
+      produces:
+        - application/json
+      tags:
+        - Insurance Plans
+      summary: Search for insurance plans
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+        {
+              "household": {
+                "income": 42000,
+                "people": [
+                  {
+                    "aptc_eligible": true,
+                    "dob": "1992-01-01",
+                    "has_mec": false,
+                    "is_pregnant": false,
+                    "is_parent": false,
+                    "uses_tobacco": false,
+                    "gender": "Male",
+                    "utilization_level": "Low"
+                  }
+                ],
+                "has_married_couple": false
+              },
+              "market": "Individual",
+              "place": {
+                "countyfips": "17031",
+                "state": "IL",
+                "zipcode": "60647"
+              },
+              "limit": 10,
+              "offset": 0,
+              "order": "asc",
+              "year": 2020
+        }
+          ```
+        Search insurance plans. Each plan object has only the “top” expanded
+        Benefit objects in benefits array (ER visit, generic RX, specialist
+        visit, primary care visit, dental coverage) - to get other benefits, call the Plan Details API endpoint; for moops and deductibles, only the in-network and
+        combined in-out of network tiers are available, other tiers are not
+        currently supported.
+
+        This API is paged. Ten results are returned for each query, and
+        the total amount of results that match your query is available as the
+        `total` attribute on the result. Use the `offset` parameter to get
+        results beyond the first page.
+        Including the `current_enrollment` property implies a CIC type enrollment is being performed. The `current_enrollment` object is used to provide their current plan id and the tobacco rating they had originally upon enrollment of that plan. This will be used as their tobacco status for the purposes of calculating the premium for their enrolled plan. All other plans will use the persons top level tobacco usage as a basis of rate calculations.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PlanSearchRequest'
+          x-examples: '{"household":{"income":52000,"people":[{"age":27,"aptc_eligible":true,"gender":"Female","uses_tobacco":false}]},"market":"Individual","place":{"countyfips":"37057","state":"NC","zipcode":"27360"},"year":2019}'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              plans:
+                type: array
+                items:
+                  $ref: '#/definitions/Plan'
+              total:
+                type: number
+              facet_groups:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    facets:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                          count:
+                            type: number
+              rate_area:
+                $ref: '#/definitions/RateArea'
+              ranges:
+                description: The lowest and highest values of premiums and deductibles of all the included plans are calculated and returned here. Premiums range is calculated from the premium_w_credit field
+                type: object
+                properties:
+                  premiums:
+                    $ref: '#/definitions/Range'
+                  deductibles:
+                    $ref: '#/definitions/Range'
+            type: object
+  /plans/search/stats:
+    x-summary: Plan Search Stats
+    post:
+      tags:
+        - Insurance Plans
+      summary: Retrieve stats on groups of insurance plans
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+              "income": 52000,
+              "people": [
+                {
+                    "dob": "1992-01-01",
+                    "aptc_eligible": true,
+                 "gender": "Female",
+                  "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                  "zipcode": "27360"
+              },
+              "year": 2019
+          }
+          ```
+        Retrieve stats (avg premium, oopc, etc) on a group of insurance plans. The input is identical to /plans/search, but the return value does not contain any actual plan data.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - in: body
+          name: search
+          required: true
+          schema:
+            $ref: '#/definitions/PlanSearchRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                metal_level:
+                  $ref: '#/definitions/MetalLevelEnum'
+                total:
+                  type: number
+                simple_choice:
+                  description: The number of simple choice plans available
+                  type: number
+                premiums:
+                  type: object
+                  properties:
+                    min:
+                      type: number
+                    max:
+                      type: number
+                    mean:
+                      type: number
+                oopc:
+                  type: object
+                  properties:
+                    min:
+                      type: number
+                    max:
+                      type: number
+                    mean:
+                      type: number
+                quality_ratings:
+                  type: object
+                  description: Quality ratings will not always be available
+                  properties:
+                    five_star_rating:
+                      type: number
+                    four_star_rating:
+                      type: number
+                    three_star_rating:
+                      type: number
+                    two_star_rating:
+                      type: number
+                    one_star_rating:
+                      type: number
+            example:
+              - metal_level: Catastrophic
+                total: 1
+                simple_choice: 0
+                premiums:
+                  min: 302.29
+                  max: 302.29
+                  mean: 302.29
+                oopc:
+                  min: -1
+                  max: 0
+                  mean: -1
+                quality_ratings:
+                  five_star_rating: 0
+                  four_star_rating: 0
+                  three_star_rating: 0
+                  two_star_rating: 0
+                  one_star_rating: 0
+              - metal_level: Bronze
+                total: 5
+                simple_choice: 0
+                premiums:
+                  min: 358.32
+                  max: 466.6
+                  mean: 413.1
+                oopc:
+                  min: -1
+                  max: 0
+                  mean: -1
+                quality_ratings:
+                  five_star_rating: 0
+                  four_star_rating: 0
+                  three_star_rating: 0
+                  two_star_rating: 0
+                  one_star_rating: 0
+              - metal_level: Silver
+                total: 3
+                simple_choice: 0
+                premiums:
+                  min: 491.63
+                  max: 564.6
+                  mean: 520.64
+                oopc:
+                  min: -1
+                  max: 0
+                  mean: -1
+                quality_ratings:
+                  five_star_rating: 0
+                  four_star_rating: 0
+                  three_star_rating: 0
+                  two_star_rating: 0
+                  one_star_rating: 0
+              - metal_level: Gold
+                total: 2
+                simple_choice: 0
+                premiums:
+                  min: 463.5
+                  max: 517.18
+                  mean: 490.34
+                oopc:
+                  min: -1
+                  max: 0
+                  mean: -1
+                quality_ratings:
+                  five_star_rating: 0
+                  four_star_rating: 0
+                  three_star_rating: 0
+                  two_star_rating: 0
+                  one_star_rating: 0
+  '/plans/{plan_id}':
+    x-summary: Plan Details
+    get:
+      tags:
+        - Insurance Plans
+      description: 'Get a plan''s basic details, no premium or APTC calculated.'
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: 14-character HIOS plan ID
+          in: path
+          name: plan_id
+          type: string
+          required: true
+          x-example: 11512NC0100031
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              plan:
+                $ref: '#/definitions/Plan'
+            type: object
+      summary: Get a plan
+    post:
+      description: |-
+        #### Note
+        Use this JSON example in the **POST** Body in the request pane to view results:
+          ```
+          {
+              "household": {
+              "income": 52000,
+              "people": [
+                {
+                    "age": 27,
+                    "aptc_eligible": true,
+                 "gender": "Female",
+                  "uses_tobacco": false
+                 }
+               ]
+              },
+              "market": "Individual",
+              "place": {
+                 "countyfips": "37057",
+                 "state": "NC",
+                  "zipcode": "27360"
+              },
+              "year": 2019
+          }
+          ```
+        Get a plan's details, with premium and tax credit calculated.
+        Including the `current_enrollment` property implies a CIC type enrollment is being performed. The `current_enrollment` object is used to provide their current plan id and the tobacco rating they had originally upon enrollment of that plan. This will be used as their tobacco status for the purposes of calculating the premium for their enrolled plan. All other plans will use the persons top level tobacco usage as a basis of rate calculations.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: 14-character HIOS plan ID
+          in: path
+          name: plan_id
+          type: string
+          required: true
+          x-example: 11512NC0100031
+        - in: body
+          name: request
+          required: true
+          schema:
+            properties:
+              household:
+                $ref: '#/definitions/Household'
+              place:
+                $ref: '#/definitions/Place'
+              year:
+                description: defaults to current open enrollment year
+                type: number
+              market:
+                $ref: '#/definitions/MarketEnum'
+              aptc_override:
+                description: override the aptc calculation with a specific amount
+                type: number
+              csr_override:
+                $ref: '#/definitions/CSRRequestEnum'
+            required:
+              - place
+              - market
+            type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              plan:
+                $ref: '#/definitions/Plan'
+              rate_area:
+                $ref: '#/definitions/RateArea'
+            type: object
+      summary: Get plan details with premiums for a household
+  '/plans/{plan_id}/quality-ratings':
+    x-summary: Quality Ratings
+    get:
+      tags:
+        - Insurance Plans
+      description: 'Quality ratings for a plan. If a rating value is missing or is 0, then the rating is considered ''Not Rated'' and the corresponding reason value will indicate the reason for the non-rating.'
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-required'
+        - description: Plan ID
+          in: path
+          name: plan_id
+          required: true
+          type: string
+          x-example: 95185VA0530001
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            properties:
+              quality_rating:
+                $ref: '#/definitions/QualityRating'
+            type: object
+  /coverage/stats:
+    x-summary: Coverage Stats
+    get:
+      tags:
+        - Provider & Drug Coverage
+      parameters:
+        - $ref: '#/parameters/apikey'
+      description: Return statistics related to the number of coverage (drugs and providers) records.
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              issuers:
+                type: integer
+              drugs:
+                type: integer
+              providers:
+                type: integer
+              providers_plans:
+                type: integer
+              drugs_plans:
+                type: integer
+              last_refreshed_at:
+                type: string
+            type: object
+      summary: Coverage statistics
+  /coverage/search:
+    x-summary: Coverage Search
+    get:
+      tags:
+        - Provider & Drug Coverage
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: search query
+          in: query
+          name: q
+          required: true
+          type: string
+          x-example: hospital
+        - description: User's ZIP Code for searching nearby
+          in: query
+          name: zipcode
+          required: true
+          type: string
+          x-example: '19123'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              providers:
+                items:
+                  $ref: '#/definitions/NearbyProvider'
+                type: array
+              drugs:
+                items:
+                  $ref: '#/definitions/Drug'
+                type: array
+            type: object
+            required:
+              - providers
+              - drugs
+      summary: Search providers
+  /providers/autocomplete:
+    x-summary: Provider Autocomplete
+    get:
+      tags:
+        - Provider & Drug Coverage
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: search query (minimum 3 characters)
+          in: query
+          name: q
+          required: true
+          type: string
+          x-example: hospital
+        - description: 5-digit US zipcode
+          in: query
+          name: zipcode
+          required: true
+          type: string
+          x-example: '19123'
+        - description: 'Provider type, comma separated to specify multiple'
+          in: query
+          required: true
+          name: type
+          enum:
+            - Individual
+            - Facility
+            - Group
+          type: string
+          x-example: Facility
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              providers:
+                items:
+                  $ref: '#/definitions/Provider'
+                type: array
+      summary: Autocomplete nearby providers
+  /providers/search:
+    x-summary: Provider Search
+    get:
+      tags:
+        - Provider & Drug Coverage
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+        - description: search query
+          in: query
+          name: q
+          required: true
+          type: string
+          x-example: hospital
+        - description: User's ZIP Code for searching nearby
+          in: query
+          name: zipcode
+          required: true
+          type: string
+          x-example: '19123'
+        - in: query
+          name: type
+          description: 'Provider type, comma separated to specify multiple'
+          required: true
+          enum:
+            - Individual
+            - Facility
+          type: string
+          x-example: Facility
+        - in: query
+          name: specialty
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              next:
+                description: 'URL of next page of results, if any'
+                type: string
+              prev:
+                description: 'URL of previous page of results, if any'
+                type: string
+              providers:
+                items:
+                  $ref: '#/definitions/NearbyProvider'
+                type: array
+            type: object
+            required:
+              - providers
+      summary: Search providers
+  /providers/covered:
+    x-summary: Provider Coverage
+    get:
+      tags:
+        - Provider & Drug Coverage
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: array of provider NPIs
+          in: query
+          name: providerids
+          required: true
+          type: string
+          x-example: '1407884893'
+        - description: array of plan IDs
+          in: query
+          name: planids
+          required: true
+          type: string
+          x-example: 83761GA0040002
+        - $ref: '#/parameters/year-with-default'
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              Provider & Drug Coverage:
+                items:
+                  $ref: '#/definitions/ProviderCoverage'
+                type: array
+            type: object
+      summary: Get a list of whether a set of providers are covered by given plans
+  /states:
+    x-summary: List States
+    get:
+      tags:
+        - Geography
+      description: List all U.S. states.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - $ref: '#/parameters/year-with-default'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            properties:
+              states:
+                items:
+                  $ref: '#/definitions/State'
+                type: array
+                example:
+                  - name: Nevada
+                    abbrev: NV
+                    fips: '32'
+                    marketplace_model: SBM
+                    shop_marketplace_model: SBM
+                    hix_name: Nevada Health Link
+                    hix_url: 'https://www.nevadahealthlink.com/'
+                    shop_hix_name: Nevada Health Link
+                    shop_hix_url: 'https://www.nevadahealthlink.com/'
+                    8962_link: ''
+                    8965_link: ''
+                    assister_program_url: 'https://www.nevadahealthlink.com/find-assistance/'
+                  - name: New York
+                    abbrev: NY
+                    fips: '36'
+                    marketplace_model: SBM
+                    shop_marketplace_model: SBM
+                    hix_name: NY State of Health
+                    hix_url: 'https://nystateofhealth.ny.gov/'
+                    shop_hix_name: NY State of Health
+                    shop_hix_url: 'https://nystateofhealth.ny.gov/'
+                    8962_link: ''
+                    8965_link: ''
+                    assister_program_url: 'https://nystateofhealth.ny.gov/agent/assistors'
+            type: object
+  '/states/{abbrev}':
+    x-summary: Lookup State
+    get:
+      tags:
+        - Geography
+      description: Get a U.S. state from its 2-letter USPS abbreviation.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: '2-letter USPS state abbreviation, uppercased.'
+          in: path
+          name: abbrev
+          required: true
+          type: string
+          x-example: NV
+        - $ref: '#/parameters/year-with-default'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/State'
+  '/states/{abbrev}/medicaid':
+    x-summary: State Medicaid Data
+    get:
+      tags:
+        - Geography
+      description: Get Medicaid data for a U.S. state for a specific fiscal year.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: '2-letter USPS state abbreviation, uppercased.'
+          in: path
+          name: abbrev
+          required: true
+          type: string
+          x-example: NV
+        - $ref: '#/parameters/year-with-default'
+        - description: 1-4 A specific fiscal quarter. When not specified it defaults to the most current data for the specified year
+          in: query
+          name: quarter
+          required: false
+          type: string
+          x-example: '2'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/StateMedicaid'
+  '/states/{abbrev}/poverty-guidelines':
+    x-summary: State Poverty Guidelines
+    get:
+      tags:
+        - Geography
+      description: Get U.S. federal poverty guidelines for the provided state.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: '2-letter USPS state abbreviation, uppercased.'
+          in: path
+          name: abbrev
+          required: true
+          type: string
+          x-example: NV
+        - $ref: '#/parameters/year-required'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/PovertyGuideline'
+  /rate-areas:
+    x-summary: Rate Area Lookup
+    get:
+      tags:
+        - Geography
+      description: Get market year rate area for a given zip/fips/state.
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: 2-letter USPS state abbreviation
+          in: query
+          name: state
+          required: true
+          type: string
+        - description: 5-digit county FIPS code
+          in: query
+          name: fips
+          required: true
+          type: number
+          format: integer
+        - description: 5-digit ZIP Code
+          in: query
+          name: zipcode
+          required: true
+          type: number
+          format: integer
+        - description: Insurance market
+          in: query
+          name: market
+          required: false
+          default: Individual
+          type: string
+          enum:
+            - Individual
+            - SHOP
+            - Any
+        - $ref: '#/parameters/year-required'
+      responses:
+        '200':
+          description: Successful response
+          schema:
+            $ref: '#/definitions/RateArea'
+  /enrollment/validate:
+    x-summary: Validate Enrollment Groups
+    post:
+      tags:
+        - Enrollments
+      description: |
+        Verify extended enrollment groups. The endpoint assumes an effective date of Jan 1 on enrollees ages unless effective_age is provided on the enrollees.
+
+        If `is_custom` is true, the endpoint will validate that each group has available plans for enrollment, otherwise it will only verify that there are no address, hardship, or CSR conflicts.
+        ### Note
+        Use this JSON example in the **POST** Body in the request pane to view results
+          ```
+          {
+              "maxAPTC": 0,
+              "year": 2019,
+              "is_custom": false,
+              "division": "HealthCare",
+              "enrollment_groups": [
+                  {
+                  "id": "a8007732-1425-43e3-81fc-f0e7b9331474",
+                  "effective_date": "2019-01-01",
+                  "csr": "Exchange variant (no CSR)",
+                  "enrollees": [
+                      "1"
+                  ],
+                  "subscriber_id": "xxxxxxxxxx",
+                  "relationships": [
+                      {
+                      "super_id": "1234567",
+                      "sub_id": "7654321",
+                      "relationship": ""
+                      }
+                  ]
+                  }
+              ],
+              "enrollees": [
+                  {
+                  "id": "1234567",
+                  "name": "John",
+                  "gender": "Male",
+                  "dob": "1975-01-01",
+                  "location": {
+                      "city": "Philadelphia",
+                      "state": "PA",
+                      "street_1": "123 Fake Street",
+                      "street_2": "Apt. 237",
+                      "zipcode": "19123",
+                      "countyfips": "42101"
+                  },
+                  "csr": "Exchange variant (no CSR)",
+                  "is_filer": true,
+                  "has_hardship": true,
+                  "relationship": "",
+                  "allowed_metal_levels": [
+                      "Catastrophic"
+                  ],
+                  "allowed_plan_ids": [
+                      "15614PA0010004"
+                  ],
+                  "current_enrollment": {
+                      "plan_id": "15614PA0010004",
+                      "effective_date": "2018-07-07",
+                      "is_smoker": false
+                  }
+                  }
+              ]
+          }
+          ```
+      parameters:
+        - $ref: '#/parameters/apikey'
+        - description: Extended enrollment information
+          in: body
+          name: body
+          schema:
+            $ref: '#/definitions/ExtendedEnrollment'
+      responses:
+        '200':
+          description: The extended enrollment info is valid
+          schema:
+            properties:
+              suggested_groups:
+                type: array
+                items:
+                  $ref: '#/definitions/FlattenedEnrollmentGroup'
+        '400':
+          description: The extended enrollment info is not valid
+          schema:
+            properties:
+              suggested_groups:
+                type: array
+                items:
+                  $ref: '#/definitions/FlattenedEnrollmentGroup'
