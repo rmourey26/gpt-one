@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Popover from '@radix-ui/react-popover';
-import './styles.css';
+
 
 const PopoverOne = () => (
   <Popover.Root>
