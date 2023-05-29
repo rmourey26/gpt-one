@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { headers } from 'next/headers';
+
 
 
 
@@ -17,7 +17,7 @@ import { headers } from 'next/headers';
  
 
 export default function Ai() {
-const referer = headersList.get('referer');
+
 
  
 
