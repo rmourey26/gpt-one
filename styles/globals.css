@@ -175,25 +175,11 @@ body {
   background: #F5F5F5;
 }
 
-.question-answered {
-  background-color: rgba(25, 161, 179, 0.05);
-}
 
-.question-content .question-root {
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  border-left: 4px solid #60bbf0;
-  padding: 20px;
-  margin: 10px 0;
-}
 
-.question-content .question-root-checkboxes {
-  border-left: 4px solid skyblue;
-}
 
-.question-title-required {
-  color: #e60a3e;
-}
+
+
 a {
   color: inherit;
   text-decoration: none;
