@@ -89,7 +89,13 @@ export default function Example() {
                         {item.name}
                       </a>
                     ))}
-                     
+                     <div className="relative mr-3">
+
+                    <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
+
+                      <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
+
+                    
                     <input
 
 type="text"
@@ -105,6 +111,7 @@ onBlur={handleBlur}
 />
 
                   </div>
+</div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
@@ -205,8 +212,16 @@ onBlur={handleBlur}
             
                 <div className="items-center px-4 flex justify-center" >
                   <div className="relative mr-3">
-                   
-                      <button type="button" className="text-sm font-semi-bold leading-6 bg-sky-400 hover-sky-700 text-gray-900 rounded-full">AI Assistant</button>
+                   <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+
+  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+
+      Try AntHeatlh AI!
+
+  </span>
+
+</button>
+           
                     </div>
                   </div>
                 </div>
