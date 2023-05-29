@@ -31,7 +31,7 @@ export default function Example() {
 
       </Head>
     <form>
-      <div className="space-y-12 mx-36 my-16">
+      <div className="space-y-12 mx-36 my-16 sm:mx-16 my-8">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
