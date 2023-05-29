@@ -415,8 +415,8 @@ const toggle = (index) => {
             </form>
           </div>
           <div> 
-          </div>
-          </div>
+        </div>
+      </div>
         
           
 <footer aria-label="Site Footer" class="bg-transparent">

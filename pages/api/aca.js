@@ -2,15 +2,36 @@ import { defineEndpoints } from 'next-rest-framework/client';
 import { z } from 'zod';
 
 
-const todoSchema = z.object({
+const householdSchema = z.object({
 
   id: z.string(),
 
-  household: z.array([]),
+  effective_date: z.string(),
 
-  name: z.string(),
+  has_married_couple: z.string(),
+  
+  income: z.string(),
+  
+  unemployment_received: z.string(),
 
-  completed: z.boolean()
+  people: z.array([
+    age,
+    dob,
+    aptc_eligible,
+    does_not_cohabitate,
+    gender,
+    has_mec,
+    is_parent,
+    is_pregnant,
+    relationship,
+    uses_tobacco,
+    utilization,
+  ]),
+
+  market: z.string(),
+  place: z.object(countyfips, state, zipcode),
+  year: z.string(),
+  completed: z.boolean(),
 
 });
 
@@ -63,7 +84,7 @@ export default defineEndpoints({
 
         contentType: 'application/json',
 
-        schema: z.array(todoSchema)
+        schema: z.array(householdSchema)
 
       }
 
@@ -83,9 +104,23 @@ export default defineEndpoints({
 
           id: 'foo',
 
-          name: 'bar',
+          effective_date: 'bar',
 
-          completed: true
+          has_married_couple: '',
+
+          income:'',
+          
+          unemployment_received: '',
+
+          people: (['']),
+
+          market: '',
+
+          place: ([{}]),
+
+          year: '',
+
+          completed: true,
 
         }
 
@@ -103,13 +138,13 @@ export default defineEndpoints({
 
       body: z.object({
 
-        name: z.string()
+        market: z.string(),
 
       }),
 
       query: z.object({
 
-        page: z.string()
+        place: z.object()
 
       })
 
@@ -123,7 +158,7 @@ export default defineEndpoints({
 
         contentType: 'application/json',
 
-        schema: todoSchema
+        schema: householdSchema
 
       }
 
@@ -137,13 +172,13 @@ export default defineEndpoints({
 
         body: {
 
-          name // Any other attribute will lead to TS error.
+          market // Any other attribute will lead to TS error.
 
         },
 
         query: {
 
-          page // Any other attribute will lead to TS error.
+          place // Any other attribute will lead to TS error.
 
         }
 
@@ -161,7 +196,7 @@ export default defineEndpoints({
 
         id: 'foo',
 
-        name,
+        market: '',
 
         completed: false
 
