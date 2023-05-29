@@ -254,7 +254,7 @@ onBlur={handleBlur}
         
     <div className="bg-transparent py-24 sm:py-32 items-center">
       <div className="grid grid-col-1 span-1 mx-auto max-w-7xl px-6 lg:px-8 content-center">
-        < Tabshui />
+        < Tabshui className="hidden"/>
       </div>
     </div>
   
