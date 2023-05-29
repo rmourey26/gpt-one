@@ -1,7 +1,6 @@
 import { useState } from "react";
-import Tabshui from "../components/Tabshui";
-import PopoverOne from "../components/popover"
-import RadixTabs from "components/RadixTabs";
+import PopoverOne from "../components/popover";
+import RadixTabs from "../components/RadixTabs";
 
 const Post = () => {
   const [title, setTitle] = useState("");
@@ -28,7 +27,7 @@ const Post = () => {
 
   return (
 <>
-    <Tabshui />
+    
     <>
     <PopoverOne />
     </>
