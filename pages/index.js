@@ -82,7 +82,7 @@ export default function Home() {
                           href={item.href}
                           className={classNames(
                             item.current ? 'bg-sky-900 text-white' : 'text-gray-300 hover:bg-sky-700 hover:text-white',
-                            'rounded-md px-3 py-2 text-sm font-medium'
+                            'rounded-sm px-3 py-2 text-sm font-medium'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -98,7 +98,7 @@ export default function Home() {
 
 type="text"
 
-className="block lg:w-65 sm:w-45 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
+className="block sm:w-30 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
 
 placeholder="Search..."
 
@@ -194,7 +194,7 @@ onBlur={handleBlur}
                   href={item.href}
                   className={classNames(
                     item.current ? 'bg-sky-900 text-white' : 'text-sky-300 hover:bg-sky-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    'block rounded-sm px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
@@ -212,9 +212,9 @@ onBlur={handleBlur}
               <div class="mx-auto place-self-center lg:col-span-7 md:col-span-4 sm:col-span-1">
               <h1 class="max-w-2xl text-center mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">AI Powered Benefits</h1>
               <p class="max-w-2xl text-center mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Empowering intelligent health plan and employer benefit design.</p>
-            
-                <div className="items-center px-4 flex justify-center" >
+              <div className="items-center px-4 flex justify-center" >
                   <div className="relative mr-3">
+                
                    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
 
   <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
@@ -224,9 +224,10 @@ onBlur={handleBlur}
   </span>
 
 </button>
-           
-                    </div>
-                  </div>
+           </div>
+                    
+                  
+                </div>
                 </div>
                 <div class="md:mt-0 md:col-span-4 md:flex flex lg:mt-0 lg:col-span-5 lg:flex sm:col-span-1 place-self-center">
                   <>{View}</>
