@@ -4,7 +4,7 @@ import { useLottie } from 'lottie-react';
 import docrxAnimation from "docrx.json";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import Content from '../components/Content'
-import { Tabshui } from '../components/Tabshui';
+import Tabshui from '../components/Tabshui';
 import Head from 'next/head'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
