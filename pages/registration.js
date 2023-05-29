@@ -19,19 +19,12 @@ export default function Example() {
   return (
   
     <>
-      <Head>
-        <title>Anthealth</title>
-        <meta name="description" content="Anthealth AI" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-  
-
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8a43adc3-5c36-4cb7-bc9b-bc7dfe86162d"> </script>
 
 
-      </Head>
+
+    
     <form>
-      <div className="space-y-12 mx-36 my-16 sm:mx-16 my-8">
+      <div className="space-y-12 lg:mx-36 my-16 sm:mx-8 my-4">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
