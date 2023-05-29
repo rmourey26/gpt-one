@@ -28,7 +28,7 @@ const Questionaire = () => {
     
         
     <form>
-      <div className="space-y-12 mx-36 my-16">
+      <div className="space-y-12 lg:mx-36 my-16 sm:mx-8 my:4">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Benefit Questionaire</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
@@ -39,7 +39,9 @@ const Questionaire = () => {
         </div>
 
         <div className="border-b border-gray-900/10 pb-12">
+    <div className="grid grid-cols-1 span-1 self-aligned-csnter">
         <><SurveyComponent color="inherit" /></>
+    </div>
           <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
 
