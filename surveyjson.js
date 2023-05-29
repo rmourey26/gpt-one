@@ -10,7 +10,7 @@ export const json = {
           "High Blood Pressure Management",
           "High Cholesterol Management",
           "Remote Employee Health Monitoring",
-        ]
+        ],
       },
       {
         "name": "Fund-Allocation",

@@ -1,20 +1,12 @@
-import { useState, useRef, useEffect } from 'react'
-
-
-import { Combobox } from '@headlessui/react'
-
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
-import CircularProgress from '@mui/material/CircularProgress';
-import { Fragment } from 'react'
+import { useState, useRef, useEffect, Fragment } from 'react'
+import { Dialog } from '@headlessui/react'
+import { useLottie } from 'lottie-react';
+import docrxAnimation from "docrx.json";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
+import Content from '../components/Content'
+import Tabshui from '../components/Tabshui';
+import Head from 'next/head'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Content from '../components/Content';
-import RadixTabs from '../components/RadixTabs';
-import Tabshui from "../components/Tabshui";
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -27,94 +19,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const people = [
-
-  { id: 1, name: 'Wade Cooper' },
-
-  { id: 2, name: 'Arlene Mccoy' },
-
-  { id: 3, name: 'Devon Webb' },
-
-  { id: 4, name: 'Tom Cook' },
-
-  { id: 5, name: 'Tanya Fox' },
-
-  { id: 6, name: 'Hellen Schmidt' },
-
-]
-
 export default function Home() {
-  
-  const [household, setHousehold] = useState([""]);
-  const householdData=(
-   
-   { "effective_date": "", 
-     "has_married_couple": "",
-     "income": "",
-     "unemployment_received":"",
-     "people": [ 
-      { 
-        "age": 27, 
-        "dob": "1992-01-01", 
-        "aptc_eligible": true,
-        "does_not_cohabitate": false, 
-        "gender": "Female", 
-        "has_mec": false, 
-        "is_parent": false, 
-        "is_pregnant": false, 
-        "relationship": "Self", 
-        "uses_tobacco": false, 
-        "utilization": "Medium",
-      }, 
-      { 
-        "age": 25,
-        "dob": "1994-03",
-        "aptc_eligible": true, 
-        "does_not_cohabitate": false, 
-        "gender": "Male", 
-        "has_mec": false, 
-        "is_parent": false, 
-        "is_pregnant": false, 
-        "relationship": "Spouse", 
-        "uses_tobacco": false, 
-        "utilization": "Medium" } ] }, 
-        {
-        "market": "Individual", "place": { "countyfips": "37057", "state": "NC", "zipcode": 27360 }, "year": 2019}
-        );
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const [selected, setSelected] = useState(people[0])
-
-  const [query, setQuery] = useState('')
-
-  const filteredPeople =
-
-    query === ''
-
-      ? people
-
-      : people.filter((person) =>
-
-          person.name
-
-            .toLowerCase()
-
-            .replace(/\s+/g, '')
-
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
-
-        )
-  
-  const [open, setOpen] = useState(false);
-
-const toggle = (index) => {
-    if (open === index) {
-        return setOpen(null)
-    }
-
-    setOpen(index)
-}
-  
-    const clickPoint = useRef();
+  const clickPoint = useRef();
     const handleFocus = () => {
         clickPoint.current.style.display = "none";
     };
@@ -122,107 +30,25 @@ const toggle = (index) => {
     const handleBlur = () => {
         clickPoint.current.style.display = "block";
     };
-  const [content, setContent] = useState([]);
-  const [userInput, setUserInput] = useState("");
- 
-  const [loading, setLoading] = useState(false);
-  const [messages, setMessages] = useState([
-    {role: "assistant", content: "Welcome to AntHealth.ai!"}
-    ]);
   
-      const messageListRef = useRef(null);
-      const textAreaRef = useRef(null);
-
-  // Auto scroll chat to bottom
-  useEffect(() => {
-    const messageList = messageListRef.current;
-    messageList.scrollTop = messageList.scrollHeight;
-  }, [messages]);
-
-  // Focus on text field on load
-  useEffect(() => {
-    textAreaRef.current.focus();
-  }, []);
-
-  // Handle errors
-  const handleError = () => {
-    setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Oops! There seems to be an error. Please try again." }]);
-    setLoading(false);
-    setUserInput("");
-  }
-  
-  // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-
-    if (userInput.trim() === "") {
-      return;
-    }
-    
-    
-    setLoading(true);
-    const context = [...messages, { role: "user", content: userInput }];
-    setMessages(context);
-
-    // Send chat history to API
-    const response = await fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ messages: context}),
-    });
-
-    // Reset user input
-    setUserInput("");
-
-    const data = await response.json();
-  
-    
-    if (!data) {
-      handleError();
-      return;
-    }
-      
-    setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: data.result.content }]);
-
-    
-    setLoading(false);
-      
+  const options = {
+    animationData: docrxAnimation,
+    loop: true
   };
   
-
-  // Prevent blank submissions and allow for multiline input
-  const handleEnter = (e) => {
-    if (e.key === "Enter" && userInput) {
-      if (!e.shiftKey && userInput) {
-        handleSubmit(e);
-      }
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-    }
+  const style = {
+    height: 320,
   };
+  const { View } = useLottie(options, style);
 
-  
 
   return (
     <>
-      <Head>
-        <title>Anthealth</title>
-        <meta name="description" content="Anthealth AI" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-  
-
-
-
-
-      </Head>
-      <Disclosure as="nav" className={styles.navcolor}>
+    
+    <Disclosure as="nav" className="twindnav">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 py-2 lg:px-8 py-2">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -235,7 +61,7 @@ const toggle = (index) => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-stretch justify-between sm:items-start sm:justify-start">
+              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="block h-8 w-auto lg:hidden"
@@ -249,38 +75,48 @@ const toggle = (index) => {
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
-                  
-                   <div className="flex space-x-5 items-start">
-                      
-                        {navigation.map((item) => (
-                          <a
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                              'rounded-md px-3 py-2 text-sm font-medium'
-                            )}
-                            aria-current={item.current ? 'page' : undefined}
-                          >
-                            {item.name}
-                          </a>
-                        ))}
-                          <input
+                  <div className="flex space-x-4">
+                     {navigation.map((item) => (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-sky-900 text-white' : 'text-gray-300 hover:bg-sky-700 hover:text-white',
+                            'rounded-md px-3 py-2 text-sm font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </a>
+                      ))}
+                      <div className="" ref={clickPoint}>
 
-                            type="text"
 
-                            className="px-3 py-2 block lg:w-65 sm:w-45 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
 
-                            placeholder="Search..."
 
-                            onFocus={handleFocus}
+<input
 
-                            onBlur={handleBlur}
+type="text"
 
-                          />
+className="block lg:w-65 sm:w-45 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
+
+placeholder="Search..."
+
+onFocus={handleFocus}
+
+onBlur={handleBlur}
+
+/>
+
+</div>
                       </div>
-                  </div>
-               </div>
+                     
+
+                      
+                
+          
+                </div>
+              </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
@@ -357,7 +193,7 @@ const toggle = (index) => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                    item.current ? 'bg-sky-900 text-white' : 'text-sky-300 hover:bg-sky-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -370,90 +206,60 @@ const toggle = (index) => {
         </>
       )}
     </Disclosure>
-      
-      <main className={styles.main}>
-      
-     < Tabshui />
-      
-
-
-
-
-
-
-     
-
-        
-
-
-        <div className={styles.cloud}>
-          
-          <div ref={messageListRef} className={styles.messagelist}>
+      <div>
+        <section class="my-20 bg-transparent dark:bg-gray-900">
+            <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
+              <div class="mx-auto place-self-center lg:col-span-7 md:col-span-4 sm:col-span-1">
+              <h1 class="max-w-2xl text-center mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">AI Powered Benefits</h1>
+              <p class="max-w-2xl text-center mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Empowering intelligent health plan and employer benefit design.</p>
             
-            {messages.map((message, index) => {
-              return (
-                // The latest message sent by the user will be animated while waiting for a response
-                <div key={index} className={message.role === "user" && loading && index === messages.length - 1 ? styles.usermessagewaiting : message.role === "assistant" ? styles.apimessage : styles.usermessage}>
-                  {/* Display the correct icon depending on the message type */}
-                  {message.role === "assistant" ? <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/favicon.png" alt="AI" width={30} height={30} className={styles.boticon} priority={true} /> : <Image src="/usericon.png" alt="Me" width="30" height="30" className={styles.usericon} priority={true} />}
-                  <div className={styles.markdownanswer}>
-                    {/* Messages are being rendered in Markdown format */}
-                        <ReactMarkdown linkTarget={"_blank"}> 
-                       {message.content}</ReactMarkdown>
-                    
-          
-                     </div>
-                  
+                <div className="items-center px-4 flex justify-center" >
+                  <div className="relative mr-3">
+                   <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+
+  <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+
+      Try AntHeatlh AI!
+
+  </span>
+
+</button>
+           
+                    </div>
                   </div>
-                
-      
-                    
-                  
-                
-              )
-            })}
-          </div>
-          
+                </div>
+                <div class="md:mt-0 md:col-span-4 md:flex flex lg:mt-0 lg:col-span-5 lg:flex sm:col-span-1 place-self-center">
+                  <>{View}</>
+                </div>                
+            </div>
+          </section>
+       </div>
+      <div className="relative isolate px-6 pt-14 lg:px-8">
+        <div
+          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+          aria-hidden="true"
+        >
+          <div
+            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#60bbf0] to-[#0079bf] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+          />
         </div>
+           
         
-        <div className={styles.center}>
         
-          <div className={styles.cloudform}>
-            <form onSubmit={handleSubmit}>
-              <textarea
-                disabled={loading}
-                onKeyDown={handleEnter}
-                ref={textAreaRef}
-                autoFocus={false}
-                rows={1}
-                maxLength={512}
-                type="text"
-                id="userInput"
-                name="userInput"
-                placeholder={loading ? "Waiting for response..." : "Ask me about ABPM or your chronic condition..."}
-                value={userInput}
-                onChange={e => setUserInput(e.target.value)}
-                className={styles.textarea}
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className={styles.generatebutton}
-              >
-                {loading ? <div className={styles.loadingwheel}><CircularProgress color="inherit" size={20} /> </div> :
-                  // Send icon SVG in input field
-                  <svg viewBox='0 0 20 20' className={styles.svgicon} xmlns='http://www.w3.org/2000/svg'>
-                    <path d='M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z'></path>
-                  </svg>}
-              </button>
-            </form>
-          </div>
-          <div> 
-          </div>
-          </div>
         
-          
-<footer aria-label="Site Footer" class="bg-transparent">
+    <div className="bg-transparent py-24 sm:py-32 items-center">
+      <div className="grid grid-col-1 span-1 mx-auto max-w-7xl px-6 lg:px-8 content-center">
+        < Tabshui />
+      </div>
+    </div>
+  
+  
+    </div>
+    <footer aria-label="Site Footer" class="bg-transparent brightness-100">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">
       <div class="flex justify-center text-sky-600 sm:justify-start">
@@ -507,7 +313,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                AI
+                Employee Handbook
               </a>
             </li>
 
@@ -533,7 +339,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                SMART on FHIR
+                Web Development
               </a>
             </li>
 
@@ -542,7 +348,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                
+                Web Design
               </a>
             </li>
 
@@ -551,7 +357,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                HL7
+                Marketing
               </a>
             </li>
 
@@ -560,7 +366,7 @@ const toggle = (index) => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                CMS
+                Google Ads
               </a>
             </li>
           </ul>
@@ -628,7 +434,7 @@ const toggle = (index) => {
             <li>
               <a
                 class="text-gray-700 transition hover:text-gray-700/75"
-                href="/FAQs"
+                href="/"
               >
                 FAQs
               </a>
@@ -685,7 +491,7 @@ const toggle = (index) => {
               <label for="email" class="sr-only">Email</label>
 
               <input
-                class="w-full rounded-full border-sky-400 px-6 py-3 shadow-sm"
+                class="w-full rounded-full border-gray-200 px-6 py-3 shadow-sm"
                 type="email"
                 placeholder="Enter your email"
               />
@@ -705,15 +511,17 @@ const toggle = (index) => {
     <div
       class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
-      
-     
+      <p class="text-center text-sm text-gray-500 sm:text-left">
+        Copyright &copy; AntHealth 2023. All rights reserved.
+      </p>
+
       <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
         <li>
           <a
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Facebook</span>
             <svg
@@ -736,7 +544,7 @@ const toggle = (index) => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Instagram</span>
             <svg
@@ -759,7 +567,7 @@ const toggle = (index) => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Twitter</span>
             <svg
@@ -777,10 +585,10 @@ const toggle = (index) => {
 
         <li>
           <a
-            href="https://github.com/AntHealth"
+            href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">GitHub</span>
             <svg
@@ -803,7 +611,7 @@ const toggle = (index) => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-sky-700 transition hover:text-sky-700/75"
           >
             <span class="sr-only">Dribbble</span>
             <svg
@@ -817,22 +625,29 @@ const toggle = (index) => {
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
                 clip-rule="evenodd"
               />
-             </svg>
-          </a>
-        </li>
-      </ul>
-    </div>
-    </div>
-<div className="text-center text-xs text-lightgray"> 
-                  <p>AntHealth Group Inc. A Protocol Platforms Inc company. ALL RIGHTS RESERVED.AntHealth.ai is a non-government website that is owned and operated by AntHealth Operating LLC, which is an affiliate of AntHealth Group Inc. Both are licensed health insurance agencies and each does business as AntHealth Group.AntHealth Group is not affiliated with or endorsed by the U.S. government, Healthcare.gov or the federal Medicare program. The purpose of this site is the solicitation of insurance. Contact may be made by an insurance agent/producer or insurance company.Not all products are available in all States. AntHealth represents various Insurance Carriers, Medicare Advantage plans, Medicare Supplement plans, Dental plans, Vision plans, Hospital Gap Coverage plans and Prescription Drug Plans (PDP).We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE (TTY users should call 1-877-486-2048) to get information on all of your options. Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.By using this site, you acknowledge that you have read and agree to our Privacy Policy, Do Not Call Policy and Terms of Service. </p>
-</div>
-<><img src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={16} height={16} className="inline-block flex-end" /></>
-      <p class="text-center text-sm text-gray-500 sm:text-left">
-        Copyright &copy; AntHealth 2023. All rights reserved.
-      </p> 
-      </footer>
-      </main>
+            </svg>
+            </a>
+          </li>
+          </ul>
+         </div>
+        </div>
+        </footer>
+        <div
+          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+          aria-hidden="true"
+        >
+          <div
+            className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#60bbf0] to-[#60afce] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+          />
+        </div>
+        
+      
+      </>
+      
     
-    </>
   )
 }
