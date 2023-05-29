@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .navcolor {
-bg: linear-gradient(to right, rgb(156, 163, 175), rgb(75, 85, 99), rgb(30, 64, 175))
+background-color: linear-gradient(to right, rgb(156, 163, 175), rgb(75, 85, 99), rgb(30, 64, 175))
 }
 
 

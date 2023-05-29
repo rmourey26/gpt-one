@@ -89,6 +89,21 @@ export default function Example() {
                         {item.name}
                       </a>
                     ))}
+                     
+                    <input
+
+type="text"
+
+className="px-3 py-2 block lg:w-65 sm:w-45 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
+
+placeholder="Search..."
+
+onFocus={handleFocus}
+
+onBlur={handleBlur}
+
+/>
+
                   </div>
                 </div>
               </div>
@@ -182,7 +197,7 @@ export default function Example() {
       )}
     </Disclosure>
       <div>
-        <section class="my-20 bg-white dark:bg-gray-900">
+        <section class="my-20 bg-transparent dark:bg-gray-900">
             <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
               <div class="mx-auto place-self-center lg:col-span-7 md:col-span-4 sm:col-span-1">
               <h1 class="max-w-2xl text-center mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">AI Powered Benefits</h1>
@@ -190,16 +205,8 @@ export default function Example() {
             
                 <div className="items-center px-4 flex justify-center" >
                   <div className="relative mr-3">
-                    <div className="absolute top-3 left-3 items-center" ref={clickPoint}>
-                      <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
-                    </div>
-                      <input
-                        type="text"
-                        className="block p-2 pl-10 w-80 text-gray-900 bg-gray-50 rounded-lg border border-sky-500 focus:pl-3"
-                        placeholder="Search plans, chronic diseases, etc...."
-                        onFocus={handleFocus}
-                        onBlur={handleBlur}
-                      />
+                   
+                      <button type="button" className="text-sm font-semi-bold leading-6 bg-sky-400 hover-sky-700 text-gray-900 rounded-full">AI Assistant</button>
                     </div>
                   </div>
                 </div>
@@ -226,15 +233,15 @@ export default function Example() {
         
         
         
-    <div className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="bg-transparent py-24 sm:py-32 items-center">
+      <div className="grid grid-col-1 span-1 mx-auto max-w-7xl px-6 lg:px-8 content-center">
         < Tabshui />
       </div>
     </div>
   
   
     </div>
-    <footer aria-label="Site Footer" class="bg-white brightness-100">
+    <footer aria-label="Site Footer" class="bg-transparent brightness-100">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">
       <div class="flex justify-center text-sky-600 sm:justify-start">
