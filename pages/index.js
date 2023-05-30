@@ -82,7 +82,7 @@ export default function Home() {
                           href={item.href}
                           className={classNames(
                             item.current ? 'bg-sky-900 text-white' : 'text-gray-300 hover:bg-sky-700 hover:text-white',
-                            'rounded-lg px-3 py-2 text-xs font-medium'
+                            'rounded-lg px-3 py-2 text-sm font-medium'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -193,8 +193,8 @@ onBlur={handleBlur}
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-sky-900 text-white' : 'text-sky-300 hover:bg-sky-700 hover:text-white',
-                    'block rounded-sm px-3 py-2 text-base font-medium'
+                    item.current ? 'bg-sky-600 text-white' : 'text-sky-300 hover:bg-sky-700 hover:text-white',
+                    'block rounded-lg px-3 py-2 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
