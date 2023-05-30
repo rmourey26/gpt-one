@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import { Popover } from 'flowbite';
 import Button from 'components/Button';
-
+import CircularProgress from '@mui/material/CircularProgress';
  
 
   
@@ -20,6 +20,7 @@ const AI = () => {
 
   const [content, setContent] = useState([]);
   const [userInput, setUserInput] = useState("");
+  const [ sysInput, setSysInput ] = useState("");
  
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
@@ -40,6 +41,7 @@ const AI = () => {
     setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Oops! There seems to be an error. Please try again." }]);
     setLoading(false);
     setUserInput("");
+    setSysInput("");
   }
 
   const handleSubmit = async (e) => {
@@ -53,27 +55,52 @@ const AI = () => {
 
     
 
-    const postData = async () => {
+    
       const data = {
-        market: market,
-        place: place,
-      };
-
+        "household": {
+          "income": 52000,
+          "people": [
+            {
+              "age": 27,
+              "aptc_eligible": true,
+              "gender": "Female",
+              "uses_tobacco": false
+            }
+          ]
+        },
+        "market": "Individual",
+        "place": {
+          "countyfips": "37057",
+          "state": "NC",
+          "zipcode": "27360"
+        },
+        "year": 2019
+      }
+       
+      
       const response = await fetch("https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=WYm5KaoiTFESYFkdf63m8bAfsB5Aw0ec", {
         method: "POST",
-        body: JSON.stringify(data),
+        headers: {
+          "Accept": "application/json",
+          "Content-type": "application/json",
+
+        },
+        body: data,
       });
-      return response.json();
-    };
-    postData().then((data) => {
-      alert(data.message);
-    });
+      
+      const rdata = await response.json();
 
-    // Reset user input
-    setUserInput("");
+      if (!data) {
+        handleError();
+        return;
+      } 
+    
+    
+  };
+  // Reset user input
+  
 
-    setLoading(false);
-  }
+  
 
   // Prevent blank submissions and allow for multiline input
   const handleEnter = (e) => {
@@ -89,43 +116,10 @@ const AI = () => {
 return (
   <div class="antialiased bg-gray-50 dark:bg-gray-900">
     <div className={styles.center}>
-      <Button />
+      <Button type="submit" onSubmit={handleSubmit}/>
         
-        <div className={styles.cloudform}>
-          <form onSubmit={handleSubmit}>
-            <textarea
-              disabled={loading}
-              onKeyDown={handleEnter}
-              ref={textAreaRef}
-              autoFocus={false}
-              rows={1}
-              maxLength={512}
-              type="text"
-              id="userInput"
-              name="userInput"
-              placeholder={loading ? "Waiting for response..." : "Enter your market type and location..."}
-              value={userInput}
-              onChange={e => setUserInput(e.target.value)}
-              className={styles.textarea}
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className={styles.generatebutton}
-            >
-              {loading ? <div className={styles.loadingwheel}><CircularProgress color="inherit" size={20} /> </div> :
-                // Send icon SVG in input field
-                <svg viewBox='0 0 20 20' className={styles.svgicon} xmlns='http://www.w3.org/2000/svg'>
-                  <path d='M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z'></path>
-                </svg>}
-            </button>
-          </form>
-         </div>
-        <div> 
-      </div>
-  
-     </div>
-
+          
+ </div>
      </div>
 
   )
