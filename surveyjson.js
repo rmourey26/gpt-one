@@ -3,7 +3,7 @@ export const json = {
       {
         "type": "ranking",
         "name": "Health-Benefits",
-        "title": "Please rank the following health benefits from 1 to 7 in terms of their importance to you and your family.",
+        "title": "Please rank the following health benefits in terms of their importance to you and your family. From a mobile device, long press and drag into position ",
         "isRequired": true,
         "choices": [
           "Diabetes Management",

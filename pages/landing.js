@@ -15,6 +15,7 @@ import RadixTabs from '../components/RadixTabs';
 import Tabshui from "../components/Tabshui";
 import Head from 'next/head';
 import styles from "../styles/Home.module.css"
+import Image from 'next/image';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
