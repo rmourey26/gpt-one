@@ -186,13 +186,13 @@ export default defineEndpoints({
 
           household,
           market,
-          place                 // Any other attribute will lead to TS error.
+                          // Any other attribute will lead to TS error.
 
         },
 
         query: {
 
-          place // Any other attribute will lead to TS error.
+          place, // Any other attribute will lead to TS error.
 
         }
 

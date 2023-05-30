@@ -219,6 +219,8 @@
 .boticon, .usericon {
   margin-right: 1rem;
   border-radius: 0.1rem;
+  width: 20px;
+  height: 20px;
 }
 
 .markdownanswer h1, .markdownanswer h2, .markdownanswer h3 {
