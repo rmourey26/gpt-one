@@ -88,10 +88,11 @@ export default defineEndpoints({
       {
 
         status: 200,
-
+        
+        Accept: 'application/json',
         contentType: 'application/json',
 
-        schema: z.array(householdSchema)
+        schema: z.object(householdSchema)
 
       }
 
@@ -101,7 +102,7 @@ export default defineEndpoints({
 
       // Any other content type will lead to TS error.
 
-      res.setHeader('content-type', 'application/json');
+      res.setHeader(['Accept', 'application/json'],['content-type', 'application/json']);
 
       // Any other status or JSON format will lead to TS error.
 
@@ -141,7 +142,7 @@ export default defineEndpoints({
   POST: {
 
     input: {
-
+      Accept: 'application/json',
       contentType: 'application/json',
 
       body: z.object({
@@ -203,7 +204,7 @@ export default defineEndpoints({
       // Any other content type will lead to TS error.
 
       res.setHeader('content-type', 'application/json');
-
+res.setHeader('Accept', 'application/json');
       // Any other status or JSON format will lead to TS error.
 
       res.status(201).json({
