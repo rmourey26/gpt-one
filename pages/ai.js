@@ -59,7 +59,7 @@ const AI = () => {
         place: place,
       };
 
-      const response = await fetch("/api/aca", {
+      const response = await fetch("https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=WYm5KaoiTFESYFkdf63m8bAfsB5Aw0ec", {
         method: "POST",
         body: JSON.stringify(data),
       });
