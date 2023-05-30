@@ -7,23 +7,23 @@ function classNames(...classes) {
 
 export default function Tabshui() {
   let [categories] = useState({
-    Recent: [
+    ToDo: [
       {
         id: 1,
-        title: 'Does drinking coffee make you smarter?',
-        date: '5h ago',
-        commentCount: 5,
-        shareCount: 2,
+        title: 'Register and complete the questionaire.',
+        time: '15 minutes',
+        url: 'https://anthealth.ai/registration',
+
       },
       {
         id: 2,
-        title: "So you've bought coffee... now what?",
-        date: '2h ago',
-        commentCount: 3,
-        shareCount: 2,
+        title: "Chat Health with our AI assistant",
+        time: '10 minutes',
+        url: 'AntHealth.ai/chat'
+
       },
     ],
-    Popular: [
+    Health: [
       {
         id: 1,
         title: 'Is tech making coffee better or worse?',
@@ -39,7 +39,7 @@ export default function Tabshui() {
         shareCount: 12,
       },
     ],
-    Trending: [
+    Feedback: [
       {
         id: 1,
         title: 'Ask Me Anything: 10 answers to your questions about coffee',
