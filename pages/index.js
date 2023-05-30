@@ -82,7 +82,7 @@ export default function Home() {
                           href={item.href}
                           className={classNames(
                             item.current ? 'bg-sky-900 text-white' : 'text-gray-300 hover:bg-sky-700 hover:text-white',
-                            'rounded-sm px-3 py-2 text-sm font-medium'
+                            'rounded-lg px-3 py-2 text-xs font-medium'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -254,7 +254,7 @@ onBlur={handleBlur}
         
     <div className="bg-transparent py-24 sm:py-32 items-center">
       <div className="grid grid-col-1 span-1 mx-auto max-w-7xl px-6 lg:px-8 content-center">
-        < Tabshui className="hidden"/>
+        
       </div>
     </div>
   

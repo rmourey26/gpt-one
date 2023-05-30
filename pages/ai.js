@@ -3,7 +3,7 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import { Popover } from 'flowbite';
-
+import Button from 'components/Button';
 
  
 
@@ -89,6 +89,7 @@ const AI = () => {
 return (
   <div class="antialiased bg-gray-50 dark:bg-gray-900">
     <div className={styles.center}>
+      <Button />
         
         <div className={styles.cloudform}>
           <form onSubmit={handleSubmit}>
