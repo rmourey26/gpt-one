@@ -8,6 +8,14 @@ export default function PageWithJSbasedForm() {
       const data = {
         first: event.target.first.value,
         last: event.target.last.value,
+        income: event.target.income.value,
+        age: event.target.age.value,
+        gender: event.target.gender.value,
+        usesTobacco: event.target.usesTobacco.value,
+        market: event.target.market.value,
+        state: event.target.state.value,
+        zipcode: event.target.zipcode.value,
+        year: event.trigger.year.value, 
       };
    
       // Send the data to the server in JSON format.
@@ -73,7 +81,7 @@ export default function PageWithJSbasedForm() {
       </div>
 
      <div>
-        <label htmlFor="market">Market type?</label>
+        <label htmlFor="market">Individual | Family</label>
         <input type="text" id="market" name="market" required />
     </div>
     <div>
@@ -83,7 +91,7 @@ export default function PageWithJSbasedForm() {
 
     <div>
         <label htmlFor="zipcode">Zipcode</label>
-        <input type="text" id="gender" name="gender" required />
+        <input type="text" id="zipcode" name="zipcode" required />
      </div>
 
      <div>
