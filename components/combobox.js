@@ -4,44 +4,38 @@ import { useState, useRef, useEffect } from 'react'
 import { Combobox } from '@headlessui/react'
 
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
-import CircularProgress from '@mui/material/CircularProgress';
+
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
-const people = [
 
-    { id: 1, name: 'Wade Cooper' },
-  
-    { id: 2, name: 'Arlene Mccoy' },
-  
-    { id: 3, name: 'Devon Webb' },
-  
-    { id: 4, name: 'Tom Cook' },
-  
-    { id: 5, name: 'Tanya Fox' },
-  
-    { id: 6, name: 'Hellen Schmidt' },
-  
+
+const states = [
+
+  { id: 1, name: "Alabama"},
+  { id: 2, name: "Alaska"},
+  { id: 3, name: "Arizona"},
+  { id: 4, name: "Arkansas"},
+  { id: 5, name: "California"},
   ]
-  export default function Example() {
-    const [selected, setSelected] = useState(people[0])
+
+
+  
+  const StateCombo = () => {
+    
+    const [selected, setSelected] = useState(states[[0]])
   
     const [query, setQuery] = useState('')
   
-    const filteredPeople =
+    const filteredStates =
   
       query === ''
   
-        ? people
+        ? states
   
-        : people.filter((person) =>
+        : states.filter((state) =>
   
-            person.name
+            state.name
   
               .toLowerCase()
   
@@ -61,13 +55,13 @@ const people = [
 
         <div className="relative mt-1">
 
-          <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
+          <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm">
 
             <Combobox.Input
 
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
 
-              displayValue={(person) => person.name}
+              displayValue={(state) => state.name}
 
               onChange={(event) => setQuery(event.target.value)}
 
@@ -103,7 +97,7 @@ const people = [
 
             <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
 
-              {filteredPeople.length === 0 && query !== '' ? (
+              {filteredStates.length === 0 && query !== '' ? (
 
                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
 
@@ -113,23 +107,23 @@ const people = [
 
               ) : (
 
-                filteredPeople.map((person) => (
+                filteredStates.map((state) => (
 
                   <Combobox.Option
 
-                    key={person.id}
+                    key={state.id}
 
                     className={({ active }) =>
 
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
 
-                        active ? 'bg-teal-600 text-white' : 'text-gray-900'
+                        active ? 'bg-sky-600 text-white' : 'text-gray-900'
 
                       }`
 
                     }
 
-                    value={person}
+                    value={state}
 
                   >
 
@@ -147,7 +141,7 @@ const people = [
 
                         >
 
-                          {person.name}
+                          {state.name}
 
                         </span>
 
@@ -157,7 +151,7 @@ const people = [
 
                             className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
 
-                              active ? 'text-white' : 'text-teal-600'
+                              active ? 'text-white' : 'text-sky-600'
 
                             }`}
 
@@ -192,3 +186,5 @@ const people = [
     
 )
 }
+
+export default StateCombo

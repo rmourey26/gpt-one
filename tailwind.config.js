@@ -10,6 +10,20 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      'body': [
+        'Inter', 
+        'ui-sans-serif', 
+        'system-ui',
+        // other fallback fonts
+      ],
+      'sans': [
+        'Inter', 
+        'ui-sans-serif', 
+        'system-ui',
+        // other fallback fonts
+      ]
+    },
     extend: {},
   },
   plugins: [
