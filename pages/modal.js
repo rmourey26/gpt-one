@@ -1,4 +1,4 @@
-const Modal = () => {
+export default function Modal() {
   return (
     <>
     <section class="bg-gray-50 dark:bg-gray-900">
@@ -45,4 +45,4 @@ const Modal = () => {
     )
 };
 
-export default Modal;
+
