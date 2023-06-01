@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Arrow  from "../public/icon-arrow-down.svg";
 
-const Accordion = ({ title, content, index }) => (
+const Accordion = ({ title, content, index }) => {
   const [active, setActive] = useState(null);
   const handleToggle = (index) => {
     active === index ? setActive(null) : setActive(index);
@@ -52,6 +52,6 @@ const Accordion = ({ title, content, index }) => (
       </p>
     </div>
   );
-);
+};
 
 export default Accordion;
