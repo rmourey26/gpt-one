@@ -1,4 +1,4 @@
-export default function Login() {
+const Login = () => {
   return (
     <>
     <section class="bg-gray-50 dark:bg-gray-900">
@@ -44,3 +44,5 @@ export default function Login() {
 </>
     )
 };
+
+export default Login;
