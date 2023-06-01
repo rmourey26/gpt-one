@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import Arrow  from "../public/icon-arrow-down.svg";
+import Arrow from "../public/icon-arrow-down.svg";
 
 const Accordion = ({ title, content, index }) => {
   const [active, setActive] = useState(null);
@@ -22,7 +22,7 @@ const Accordion = ({ title, content, index }) => {
             {title}
           </p>
 
-          <img
+          <Image
             src={Arrow}
             alt='arrow-icon'
             onClick={() => handleToggle(index)}
