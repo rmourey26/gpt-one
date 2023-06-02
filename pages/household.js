@@ -64,6 +64,7 @@ return(
   < Navbar />
   <div class="mx-16 my-4">
   <h1 className="text-center mt-2"> ACA Marketplace API - Household </h1>
+  <p className="text-center mt-2 text-sm">This form demonstrates an API call to the ACA Marketplace API. </p>
       <form>
     
         <div>
