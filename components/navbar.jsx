@@ -21,6 +21,7 @@ const navigation = [
   { name: 'SMART App', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
   { name: 'Registration', href: '/registration', current: false },
   { name: 'Questionaire', href: '/questionaire', current: false },
+  { name: 'Household', href: '/household', current: false },
 ]
 
 function classNames(...classes) {

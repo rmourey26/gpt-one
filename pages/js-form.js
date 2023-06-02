@@ -18,7 +18,7 @@ export default function PageWithJSbasedForm() {
         market: event.target.market.value,
         state: event.target.state.value,
         zipcode: event.target.zipcode.value,
-        year: event.trigger.year.value, 
+        year: event.target.year.value, 
       };
    
       // Send the data to the server in JSON format.
@@ -82,7 +82,7 @@ export default function PageWithJSbasedForm() {
 
      <div>
         <label htmlFor="usesTobacco">Do you use tobacco?</label>
-        <input type="text" id="gender" name="gender" required />
+        <input type="text" id="usesTobacco" name="usesTobacco" required />
       </div>
 
      <div>
