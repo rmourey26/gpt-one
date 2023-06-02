@@ -304,6 +304,7 @@ export default function Example() {
                 </div>
               </div>
             </fieldset>
+    </form>
           </div>
         </div>
       </div>
