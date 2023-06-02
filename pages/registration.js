@@ -69,7 +69,7 @@ export default function Example() {
                 />
               </div>
             </div>
-<div className="sm:col-span-2">
+           <div className="sm:col-span-2">
 
               <label htmlFor="suffix" className="block text-sm font-medium leading-6 text-gray-900">
 
@@ -318,7 +318,7 @@ export default function Example() {
         >
           Save
         </button>
-      
+      </div>
     </form>
     </div>
     </>
