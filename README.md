@@ -1,6 +1,6 @@
 
 
-Don't have early access to GPT-4? Replace `gpt-4` with `
+Don't have early access to GPT-4? Replace `gpt-4` with 'gpt-3.5-turbo' `
 
 ## Getting Started
 
