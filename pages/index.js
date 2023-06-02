@@ -7,6 +7,7 @@ import Content from '../components/Content'
 import Tabshui from '../components/Tabshui';
 import Head from 'next/head'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import VoiceSearch from 'components/voicesearch';
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
@@ -89,26 +90,10 @@ export default function Home() {
                           {item.name}
                         </a>
                       ))}
-                      <div className="" ref={clickPoint}>
+                < VoiceSearch />
+                      
 
 
-
-
-<input
-
-type="text"
-
-className="block sm:w-30 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
-
-placeholder="Search..."
-
-onFocus={handleFocus}
-
-onBlur={handleBlur}
-
-/>
-
-</div>
                       </div>
                      
 

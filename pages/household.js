@@ -2,8 +2,9 @@ import StateCombo from "../components/combobox";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
 
+ const apikey=WYm5KaoiTFESYFkdf63m8bAfsB5Aw0ec
   // API endpoint where we send form data.
-  const endpoint = "https://marketplace.api.healthcare.gov/api/v1"
+  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey"
   // Handles the submit event on form submit.
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
@@ -50,6 +51,8 @@ import Footer from "components/footer";
     // If server returns the name submitted, that means the form works.
     const result = await response.json();
     alert(`Is this your full name: ${result.data}`);
+    console.log({result});
+    console.log({JSONdata});
   };
 
 export default function FormDemo () {
@@ -78,11 +81,11 @@ return(
         </div>  
         <div>
             <label for="age" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">age </label>
-            <input type="tel" id="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="45" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
+            <input type="number" id="age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="45" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
         </div>
         <div>
             <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">gender</label>
-            <input type="url" id="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="male" required />
+            <input type="text" id="gender" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="male" required />
         </div>
         <div>
             <label for="uses_tobacco" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tobacco User</label>
