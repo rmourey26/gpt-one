@@ -8,6 +8,8 @@ import docrxAnimation from "docrx.json";
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 
+import VoiceSearch from "../components/voicesearch";
+
 
 
 
@@ -98,26 +100,7 @@ const Navbar = () => {
                           {item.name}
                         </a>
                       ))}
-                      <div className="" ref={clickPoint}>
-
-
-
-
-<input
-
-type="text"
-
-className="block sm:w-30 text-gray-900 text-sm font-medium bg-gray-50 rounded-md border border-sky-500 focus:pl-3"
-
-placeholder="Search..."
-
-onFocus={handleFocus}
-
-onBlur={handleBlur}
-
-/>
-
-</div>
+                      < VoiceSearch />
                       </div>
                      
 
