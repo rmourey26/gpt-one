@@ -15,9 +15,45 @@
 import Navbar from "../components/navbar"
 import Head from 'next/head'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import { Footer } from "flowbite-react"
+import Footer from "../components/footer"
 
 export default function Example() {
+    const handleSubmit = async (event) => {
+    // Stop the form from submitting and refreshing the page.
+    event.preventDefault();
+ 
+    // Get data from the form.
+    const data = {
+      first: event.target.firstName.value,
+      last: event.target.lastName.value,
+    };
+ 
+    // Send the data to the server in JSON format.
+    const JSONdata = JSON.stringify(data);
+ 
+    // API endpoint where we send form data.
+    const endpoint = '/api/form';
+ 
+    // Form the request for sending data to the server.
+    const options = {
+      // The method is POST because we are sending data.
+      method: 'POST',
+      // Tell the server we're sending JSON.
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // Body of the request is the JSON data we created above.
+      body: JSONdata,
+    };
+ 
+    // Send the form data to our forms API on Vercel and get a response.
+    const response = await fetch(endpoint, options);
+ 
+    // Get the response data from server as JSON.
+    // If server returns the name submitted, that means the form works.
+    const result = await response.json();
+    alert(`Is this your full name: ${result.data}`);
+  
   return (
   
     <>
@@ -30,7 +66,7 @@ export default function Example() {
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
-           To test this API, complete the form and save. If successful, you will see the name you entered on the next page. If you receive an error, please let me know.
+           To test this API, complete the form and save. If successful, you will see the name you entered on the next page. If you receive an error, it means I am updating this page.
           </p>
 
          
