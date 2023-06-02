@@ -1,11 +1,6 @@
-##  gpt-one
-## Live Prod [App](https://main.d3jb1dmvjh3vyd.amplifyapp.com/) ..
-Enter your healthcare scenario in one simple sentence and receive your recommended health care plan type for the healthcare market place. Try the sample scenario to get an idea of how it works:
 
-## Sample Scenario
-"I'm a 39 year old male with a 37 year old wife, 2 children ages 4 and 2, budget of $600 per month, no diseases or disabilities, need prescription coverage, want to save with healthy lifestyle choices"
 
-Don't have early access to GPT-4? Replace `gpt-4` with `gpt-3.5-turbo` in `pages/api/chat.js`.
+Don't have early access to GPT-4? Replace `gpt-4` with `
 
 ## Getting Started
 
