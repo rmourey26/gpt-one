@@ -2,7 +2,7 @@ import StateCombo from "../components/combobox";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
 
- const apikey=WYm5KaoiTFESYFkdf63m8bAfsB5Aw0ec
+ const apikey=process.env.ACA_API_KEY
   // API endpoint where we send form data.
   const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey"
   // Handles the submit event on form submit.
