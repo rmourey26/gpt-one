@@ -12,12 +12,12 @@ import Footer from "components/footer";
  
     // Get data from the form.
     const data = {
-      first: event.target.first.value,
-      last: event.target.last.value,
+      first: event.target.first_name.value,
+      last: event.target.last_name.value,
       income: event.target.income.value,
       age: event.target.age.value,
       gender: event.target.gender.value,
-      usesTobacco: event.target.usesTobacco.value,
+      uses_Tobacco: event.target.uses_tobacco.value,
       market: event.target.market.value,
       state: event.target.state.value,
       zipcode: event.target.zipcode.value,
@@ -50,7 +50,7 @@ import Footer from "components/footer";
     // Get the response data from server as JSON.
     // If server returns the name submitted, that means the form works.
     const result = await response.json();
-    alert(`Is this your full name: ${result.data}`);
+    alert(`Marketplace Response: ${result}`);
     console.log({result});
     console.log({JSONdata});
   };
@@ -64,8 +64,8 @@ return(
   < Navbar />
   <div class="mx-16 my-4">
   <h1 className="text-center mt-2"> ACA Marketplace API - Household </h1>
-  <p className="text-center mt-2 text-sm">This form demonstrates an API call to the ACA Marketplace API. </p>
-      <form>
+  <p className="text-center mt-2 text-sm">This form demonstrates an API call to the ACA Marketplace API. If you do not receive an alert containing the response, it means I am updating this page</p>
+      <form onSubmit={handleSubmit}>
     
         <div>
             <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
