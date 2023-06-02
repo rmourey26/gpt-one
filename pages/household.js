@@ -3,61 +3,111 @@ import Navbar from "components/navbar";
 import Footer from "components/footer";
 
  
-  // API endpoint where we send form data.
-  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${ACA_API_KEY}"
-  // Handles the submit event on form submit.
-  const handleSubmit = async (event) => {
-    // Stop the form from submitting and refreshing the page.
-    event.preventDefault();
- 
-    // Get data from the form.
-    const data = {
-      first: event.target.first_name.value,
-      last: event.target.last_name.value,
-      income: event.target.income.value,
-      age: event.target.age.value,
-      gender: event.target.gender.value,
-      uses_Tobacco: event.target.uses_tobacco.value,
-      market: event.target.market.value,
-      state: event.target.state.value,
-      zipcode: event.target.zipcode.value,
-      year: event.target.year.value, 
-    };
- 
-    // Send the data to the server in JSON format.
-    const JSONdata = JSON.stringify(data);
- 
-    
-  
- 
-    // Form the request for sending data to the server.
-    const options = {
-      // The method is POST because we are sending data.
-      method: 'POST',
-      // Tell the server we're sending JSON.
-      headers: {
-        'Accept': 'application/json',
-        'mode': 'cors',
-        'Content-Type': 'application/json',
-      },
-      // Body of the request is the JSON data we created above.
-      body: JSONdata,
-    };
- 
-    // Send the form data to our forms API on Vercel and get a response.
-    const response = await fetch(endpoint, options);
- 
-    // Get the response data from server as JSON.
-    // If server returns the name submitted, that means the form works.
-    const result = await response.json();
-    alert(`Marketplace Response: ${result}`);
-    console.log({result});
-    console.log({JSONdata});
-  };
+
 
 export default function FormDemo () {
 
+  // API endpoint where we send form data.
 
+  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${ACA_API_KEY}"
+
+  // Handles the submit event on form submit.
+
+  const handleSubmit = async (event) => {
+
+    // Stop the form from submitting and refreshing the page.
+
+    event.preventDefault();
+
+ 
+
+    // Get data from the form.
+
+    const data = {
+
+      first: event.target.first_name.value,
+
+      last: event.target.last_name.value,
+
+      income: event.target.income.value,
+
+      age: event.target.age.value,
+
+      gender: event.target.gender.value,
+
+      uses_Tobacco: event.target.uses_tobacco.value,
+
+      market: event.target.market.value,
+
+      state: event.target.state.value,
+
+      zipcode: event.target.zipcode.value,
+
+      year: event.target.year.value, 
+
+    };
+
+ 
+
+    // Send the data to the server in JSON format.
+
+    const JSONdata = JSON.stringify(data);
+
+ 
+
+    
+
+  
+
+ 
+
+    // Form the request for sending data to the server.
+
+    const options = {
+
+      // The method is POST because we are sending data.
+
+      method: 'POST',
+
+      // Tell the server we're sending JSON.
+
+      headers: {
+
+        'Accept': 'application/json',
+
+        'mode': 'cors',
+
+        'Content-Type': 'application/json',
+
+      },
+
+      // Body of the request is the JSON data we created above.
+
+      body: JSONdata,
+
+    };
+
+ 
+
+    // Send the form data to our forms API on Vercel and get a response.
+
+    const response = await fetch(endpoint, options);
+
+ 
+
+    // Get the response data from server as JSON.
+
+    // If server returns the name submitted, that means the form works.
+
+    const result = await response.json();
+
+    alert(`Marketplace Response: ${result}`);
+
+    console.log({result});
+
+    console.log({JSONdata});
+
+  };
 
 return(
   <>
