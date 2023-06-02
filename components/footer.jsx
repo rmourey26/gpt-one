@@ -1,7 +1,7 @@
 import react from 'react';
 import Image from 'next/image';
 
-const Footer = () => (
+const Footer = () => {
   return (
     
   <footer aria-label="Site Footer" class="bg-transparent">
@@ -383,6 +383,6 @@ const Footer = () => (
       </p> 
       </footer>
 )
-);
+  }
 
 export default Footer;
