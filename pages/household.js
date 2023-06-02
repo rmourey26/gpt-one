@@ -4,7 +4,7 @@ import Footer from "components/footer";
 
  
   // API endpoint where we send form data.
-  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${ACA_API_KEY}
+  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${ACA_API_KEY}"
   // Handles the submit event on form submit.
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
