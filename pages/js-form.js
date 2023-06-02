@@ -1,4 +1,7 @@
 export default function PageWithJSbasedForm() {
+
+    // API endpoint where we send form data.
+    const endpoint = "https://marketplace.api.healthcare.gov/api/v1"
     // Handles the submit event on form submit.
     const handleSubmit = async (event) => {
       // Stop the form from submitting and refreshing the page.
@@ -21,8 +24,8 @@ export default function PageWithJSbasedForm() {
       // Send the data to the server in JSON format.
       const JSONdata = JSON.stringify(data);
    
-      // API endpoint where we send form data.
-      const endpoint = '/api/form';
+      
+    
    
       // Form the request for sending data to the server.
       const options = {
@@ -30,6 +33,8 @@ export default function PageWithJSbasedForm() {
         method: 'POST',
         // Tell the server we're sending JSON.
         headers: {
+          'Accept': 'application/json',
+          'mode': 'cors',
           'Content-Type': 'application/json',
         },
         // Body of the request is the JSON data we created above.
