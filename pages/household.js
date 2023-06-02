@@ -2,9 +2,9 @@ import StateCombo from "../components/combobox";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
 
- const apikey=process.env.ACA_API_KEY
+ apikey=process.env.ACA_API_KEY
   // API endpoint where we send form data.
-  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey"
+  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey="+{apikey};
   // Handles the submit event on form submit.
   const handleSubmit = async (event) => {
     // Stop the form from submitting and refreshing the page.
