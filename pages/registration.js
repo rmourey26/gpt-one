@@ -61,7 +61,7 @@ export default function Example() {
 
 
 <Navbar />
-<div className="space-y-12 lg:m-36 md:m-20 sm:m-10">
+<div className="space-y-12 lg:m-36 md:m-20 sm:mx-16 my-16">
     <form action="/api/form" method="post">
       <div className="space-y-12 lg:mx-36 my-16 sm:mx-10 my-5">
         <div className="border-b border-gray-900/10 pb-12">
