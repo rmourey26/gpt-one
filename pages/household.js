@@ -1,11 +1,15 @@
 import StateCombo from "../components/combobox";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
+import {useState} from 'react';
 
  
 
 
 export default function FormDemo () {
+
+  // loading state control
+  const [loading, setLoading ] = useState(false);
 
   // API endpoint where we send form data.
 
@@ -19,8 +23,11 @@ export default function FormDemo () {
 
     event.preventDefault();
 
- 
-
+    if (userInput.trim() === "") {
+      return;
+    }
+    
+    setLoading(true);
     // Get data from the form.
 
     const data = {
@@ -49,16 +56,16 @@ export default function FormDemo () {
 
  
 
-    // Send the data to the server in JSON format.
-
-    const JSONdata = JSON.stringify(data);
+    
 
  
 
     
 
   
+    // Format data as JSON
 
+    const JSONdata = JSON.stringify(data);
  
 
     // Form the request for sending data to the server.
@@ -75,7 +82,7 @@ export default function FormDemo () {
 
         'Accept': 'application/json',
 
-        'mode': 'cors',
+        'Access-Control-Allow-Origin': '*',
 
         'Content-Type': 'application/json',
 
@@ -89,7 +96,7 @@ export default function FormDemo () {
 
  
 
-    // Send the form data to our forms API on Vercel and get a response.
+    // Send the form data to ACA Marketplace
 
     const response = await fetch(endpoint, options);
 
@@ -114,7 +121,7 @@ return(
   < Navbar />
   <div class="mx-16 my-4">
   <h1 className="text-center mt-2"> ACA Marketplace API - Household </h1>
-  <p className="text-center mt-2 text-sm">This form demonstrates an API call to the ACA Marketplace API. If you do not receive an alert containing the response, it means I am updating this page</p>
+  <p className="text-center mt-2 text-sm">This form demonstrates an API call to the ACA Marketplace API. If you receive an error message on submit, it means updates are in progress.</p>
       <form onSubmit={handleSubmit}>
     
         <div>
@@ -154,6 +161,10 @@ return(
     <div class="mb-6">
         <label for="zipcode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zipcode</label>
         <input type="zipcode" id="zipcode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="35681" required />
+    </div> 
+    <div class="mb-6">
+        <label for="year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
+        <input type="number" id="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="35681" required />
     </div> 
     <div class="flex items-start mb-6">
         <div class="flex items-center h-5">
