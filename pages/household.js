@@ -13,7 +13,7 @@ export default function FormDemo () {
 
   // API endpoint where we send form data.
 
-  const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=${ACA_API_KEY}"
+  const endpoint = "/api/acahhapi"
 
   // Handles the submit event on form submit.
 
