@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     },
     year: 2019,
   };
-  };
+  
 
   const response = await fetch(
     "https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=WYm5KaoiTFESYFkdf63m8bAfsB5Aw0ec",
