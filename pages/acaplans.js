@@ -17,6 +17,14 @@ export default function AcaPlans () {
 
   const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/${plan_id}?year=${year}&apikey=${ACA_API_KEY}"
 
+  function handleplan_idChange(e) {
+    setPlan_id(e.target.value);
+  }
+
+  function handleyearChange(e) {
+    setYear(e.target.value);
+  }
+
   // Handles the submit event on form submit.
 
   const handleSubmit = async (event) => {
@@ -31,13 +39,7 @@ export default function AcaPlans () {
     
     setLoading(true);
 
-    function handleplan_idChange(e) {
-      setPlan_id(e.target.value);
-    }
-
-    function handleyearChange(e) {
-      setYear(e.target.value);
-    }
+    
     // Get data from the form.
 
     const data = {
