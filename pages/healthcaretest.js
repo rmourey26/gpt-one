@@ -9,7 +9,7 @@ export default function Healthcare({ initialData }) {
   return (
     <div>
       <NoSSR>
-      <h1>Healthcare Data</h1>
+    
       {/* Render the data here */}
       {JSON.stringify(data, null, 2)}
       </NoSSR>

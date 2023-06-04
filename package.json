@@ -46,6 +46,7 @@
     "react-markdown": "^8.0.4",
     "survey-core": "^1.9.89",
     "survey-react-ui": "^1.9.89",
+    "swr": "^2.1.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
