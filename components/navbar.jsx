@@ -75,12 +75,12 @@ const Navbar = () => {
               <div className="flex flex-1 items-center justify-center">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="block h-8 w-auto lg:hidden"
+                    className="block h-6 w-auto lg:hidden"
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
                     alt="AntHealth"
                   />
                   <img
-                    className="hidden h-8 w-auto lg:block"
+                    className="hidden h-6 w-auto lg:block"
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
                     alt="AntHealth"
                   />

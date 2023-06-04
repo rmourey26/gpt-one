@@ -3,100 +3,68 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import { Popover } from 'flowbite';
-import Button from 'components/Button';
 import CircularProgress from '@mui/material/CircularProgress';
  
 
   
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+
 
 
 const AI = () => {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
   const [market, setMarket] = useState("");
   const [place, setPlace] = useState("");
 
   const [content, setContent] = useState([]);
+  const [result, setResult ] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [ sysInput, setSysInput ] = useState("");
+  const [response, setResponse ] = useState("");
  
   const [loading, setLoading] = useState(false);
-  const [messages, setMessages] = useState([
-    {role: "assistant", content: "Welcome to AntHealth.ai!"}
-    ]);
+   
+     
   
-      const messageListRef = useRef(null);
-      const textAreaRef = useRef(null);
 
-  
-  // Focus on text field on load
-  useEffect(() => {
-    textAreaRef.current.focus();
-  }, []);
+      const getACAResponse = async () => {
+        const data = [];
 
-  // Handle errors
-  const handleError = () => {
-    setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Oops! There seems to be an error. Please try again." }]);
-    setLoading(false);
-    setUserInput("");
-    setSysInput("");
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (userInput.trim() === "") {
-      return;
-    }
-
-    setLoading(true);
+        setLoading(true);
+        
+        
+      const response = await fetch("/api/acahhapi", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          body: data,
+        });
+    
+        const result = await response.json();
+        if (!result) {
+          handleError();
+          return;
+        } 
+        setResult(result);
+        console.log(response);
+        console.log({result});
+        setLoading(false);
+      };
 
     
 
     
-      const data = {
-        "household": {
-          "income": 52000,
-          "people": [
-            {
-              "age": 27,
-              "aptc_eligible": true,
-              "gender": "Female",
-              "uses_tobacco": false
-            }
-          ]
-        },
-        "market": "Individual",
-        "place": {
-          "countyfips": "37057",
-          "state": "NC",
-          "zipcode": "27360"
-        },
-        "year": 2019
-      }
-       
+
+    
       
-      const response = await fetch("https://marketplace.api.healthcare.gov/api/v1/plans/search?apikey=WYm5KaoiTFESYFkdf63m8bAfsB5Aw0ec", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-type": "application/json",
-
-        },
-        body: data,
-      });
       
-      const rdata = await response.json();
+    
+    
 
-      if (!data) {
-        handleError();
-        return;
-      } 
-    
-    
-  };
   // Reset user input
   
 
@@ -116,9 +84,8 @@ const AI = () => {
 return (
   <div class="antialiased bg-gray-50 dark:bg-gray-900">
     <div className={styles.center}>
-      <Button type="submit" onSubmit={handleSubmit}/>
-        
-          
+      <button className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" onClick={getACAResponse} type="submit" onSubmit={getACAResponse} ></button>
+      
  </div>
      </div>
 

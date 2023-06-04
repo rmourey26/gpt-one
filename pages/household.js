@@ -10,6 +10,7 @@ export default function FormDemo () {
 
   // loading state control
   const [loading, setLoading ] = useState(false);
+  const [userInput, setUserInput ] = useState("");
 
   // API endpoint where we send form data.
 
@@ -66,6 +67,8 @@ export default function FormDemo () {
     // Format data as JSON
 
     const JSONdata = JSON.stringify(data);
+
+    console.log(JSONdata);
  
 
     // Form the request for sending data to the server.
@@ -74,7 +77,7 @@ export default function FormDemo () {
 
       // The method is POST because we are sending data.
 
-      method: 'POST',
+      method: 'GET',
 
       // Tell the server we're sending JSON.
 
@@ -94,7 +97,7 @@ export default function FormDemo () {
 
     };
 
- 
+    console.log(JSONdata);
 
     // Send the form data to ACA Marketplace
 
@@ -164,7 +167,7 @@ return(
     </div> 
     <div class="mb-6">
         <label for="year" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
-        <input type="number" id="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="35681" required />
+        <input type="number" id="year" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2023" required />
     </div> 
     <div class="flex items-start mb-6">
         <div class="flex items-center h-5">
