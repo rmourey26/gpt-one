@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import NoSSR from 'components/nossr';
 import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar, Tool } from '@mui/x-data-grid';
 
 export default function Healthcare({ initialData }) {
   const [data, setData] = useState(initialData);
@@ -31,6 +31,9 @@ export default function Healthcare({ initialData }) {
       columns={columns}
       getRowId={(row) => row.plans_0_id + row.plans_0_name }
       height={500}
+      components={{
+        Toolbar: GridToolbar
+    }}
     
        />
       </div>
