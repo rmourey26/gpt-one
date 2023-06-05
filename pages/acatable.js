@@ -1,4 +1,4 @@
-// pages/healthcare.js
+// pages/acatable.js
 import { useState, useEffect } from 'react';
 import NoSSR from 'components/nossr';
 import * as React from 'react';
@@ -25,7 +25,11 @@ export default function Healthcare({ initialData }) {
       <NoSSR>
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
-      <h1 className='text-center mb-10'>Flattened ACA Response in Table</h1>
+      <h1 className='text-center mb-10'>ACA API Demo</h1>
+<p> The data below is obtained by calling the ACA marketplace API endpoint https://marketplace.api.healthcare.gov/api/v1/plans 
+     For demo purposes, we see the original response at the very bottom that is flattened midstream to establish a unique ID field comprised of hoth the plan ID and name. The data is then passed into the table directly below. Toggle between column views using the 
+     column button on the left. 
+     </p>
       <DataGrid className='overflow-x:scroll h-100'
       rows={rows} 
       columns={columns}
