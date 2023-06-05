@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import NoSSR from "../components/nossr";
 
 // initialize OpenAI with your API key
-import { Configuration, OpenAIApi, openai } from "openai";
+import { Configuration, OpenAIApi} from "openai";
 
 const configuration = new Configuration({
 
