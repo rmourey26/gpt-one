@@ -18,60 +18,28 @@ import Image from 'next/image';
 import Navbar from 'components/navbar';
 import Footer from 'components/footer';
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'SMART App', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
-  { name: 'Registration', href: '/registration', current: false },
-  { name: 'Questionaire', href: '/questionaire', current: false },
-]
+
+  
+
+
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const people = [
 
-  { id: 1, name: 'Wade Cooper' },
 
-  { id: 2, name: 'Arlene Mccoy' },
 
-  { id: 3, name: 'Devon Webb' },
-
-  { id: 4, name: 'Tom Cook' },
-
-  { id: 5, name: 'Tanya Fox' },
-
-  { id: 6, name: 'Hellen Schmidt' },
-
-]
 
 export default function Example() {
   
   const [household, setHousehold] = useState([""]);
   
 
-  const [selected, setSelected] = useState(people[0])
-
-  const [query, setQuery] = useState('')
-
-  const filteredPeople =
-
-    query === ''
-
-      ? people
-
-      : people.filter((person) =>
-
-          person.name
-
-            .toLowerCase()
-
-            .replace(/\s+/g, '')
-
-            .includes(query.toLowerCase().replace(/\s+/g, ''))
-
-        )
   
+
   const [open, setOpen] = useState(false);
 
 const toggle = (index) => {
@@ -80,7 +48,7 @@ const toggle = (index) => {
     }
 
     setOpen(index)
-}
+   }
   
     const clickPoint = useRef();
     const handleFocus = () => {
