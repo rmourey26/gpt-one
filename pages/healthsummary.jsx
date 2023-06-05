@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import openai from 'openai';
-import NoSSR from 'components/NoSSR;
+import NoSSR from 'components/NoSSR';
 
 // initialize OpenAI with your API key
 openai.setApiKey(process.env.OPENAI_API_KEY);
