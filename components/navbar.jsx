@@ -19,9 +19,8 @@ import Head from 'next/head'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Dashboard', href: '/', current: true },
   { name: 'SMART App', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
-  { name: 'Registration', href: '/registration', current: false },
   { name: 'Questionaire', href: '/questionaire', current: false },
   { name: 'Medical History', href: '/medicalhistory', current: false },
   { name: 'ACA API Demo', href: '/acatable', current: false },
@@ -93,8 +92,8 @@ const Navbar = () => {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current ? 'inline-flex items-center text-sm justify-center bg-sky-600 text-white px-5 py-2.5' : 'text-sm px-5 py-2.5 inline-flex items-center justify-center text-gray-300 hover:bg-sky-700 hover:text-white',
-                            'rounded-lg px-5 py-2.5 text-sm font-medium text-center items-center'
+                            item.current ? 'inline-flex items-center text-sm justify-center bg-sky-600 text-white px-3 py-2.5' : 'text-sm px-3 py-2.5 inline-flex items-center justify-center text-gray-300 hover:bg-sky-700 hover:text-white',
+                            'rounded-lg px-3 py-2.5 text-sm font-medium text-center items-center'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
