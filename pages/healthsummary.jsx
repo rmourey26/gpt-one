@@ -1,9 +1,18 @@
 import { useEffect, useState } from 'react';
-import openai from 'openai';
+
 import NoSSR from "../components/nossr";
 
 // initialize OpenAI with your API key
-openai.setApiKey(process.env.OPENAI_API_KEY);
+import { Configuration, OpenAIApi, openai } from "openai";
+
+const configuration = new Configuration({
+
+  apiKey: process.env.OPENAI_API_KEY,
+
+});
+
+const openai = new OpenAIApi(configuration);
+
 
 const HealthSummary = ({ healthData }) => {
   const [summary, setSummary] = useState(null);
