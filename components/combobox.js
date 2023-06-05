@@ -10,32 +10,32 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 
 
 
-const states = [
+const plans = [
 
-  { id: 1, name: "Alabama"},
-  { id: 2, name: "Alaska"},
-  { id: 3, name: "Arizona"},
-  { id: 4, name: "Arkansas"},
-  { id: 5, name: "California"},
+  { id: 1, name: "Plan 1"},
+  { id: 2, name: "Plan 2"},
+  { id: 3, name: "PLan 3"},
+  { id: 4, name: "Plan 4"},
+  { id: 5, name: "Plan 5"},
   ]
 
 
   
-  const StateCombo = () => {
+  const PlanCombo = () => {
     
-    const [selected, setSelected] = useState(states[[0]])
+    const [selected, setSelected] = useState(plans[[0]])
   
     const [query, setQuery] = useState('')
   
-    const filteredStates =
+    const filteredPlans =
   
       query === ''
   
-        ? states
+        ? plans
   
-        : states.filter((state) =>
+        : plans.filter((plan) =>
   
-            state.name
+            plan.name
   
               .toLowerCase()
   
@@ -61,7 +61,7 @@ const states = [
 
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
 
-              displayValue={(state) => state.name}
+              displayValue={(plan) => plan.name}
 
               onChange={(event) => setQuery(event.target.value)}
 
@@ -97,7 +97,7 @@ const states = [
 
             <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
 
-              {filteredStates.length === 0 && query !== '' ? (
+              {filteredPlans.length === 0 && query !== '' ? (
 
                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
 
@@ -107,11 +107,11 @@ const states = [
 
               ) : (
 
-                filteredStates.map((state) => (
+                filteredPlans.map((plan) => (
 
                   <Combobox.Option
 
-                    key={state.id}
+                    key={plan.id}
 
                     className={({ active }) =>
 
@@ -123,7 +123,7 @@ const states = [
 
                     }
 
-                    value={state}
+                    value={plan}
 
                   >
 
@@ -141,7 +141,7 @@ const states = [
 
                         >
 
-                          {state.name}
+                          {plan.name}
 
                         </span>
 
@@ -187,4 +187,4 @@ const states = [
 )
 }
 
-export default StateCombo
+export default PlanCombo

@@ -20,27 +20,20 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
-  { name: 'SMART App', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
+  { name: 'SMARTApp', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
   { name: 'Questionaire', href: '/questionaire', current: false },
-  { name: 'Medical History', href: '/medicalhistory', current: false },
-  { name: 'ACA API Demo', href: '/acatable', current: false },
+  { name: 'Med History', href: '/medicalhistory', current: false },
+  { name: 'ACA API', href: '/acatable', current: false },
 ]
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+
 
 const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
-  const clickPoint = useRef();
-    const handleFocus = () => {
-        clickPoint.current.style.display = "none";
-    };
-
-    const handleBlur = () => {
-        clickPoint.current.style.display = "block";
-    };
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  };
+  
   
   const options = {
     animationData: docrxAnimation,
@@ -112,7 +105,7 @@ const Navbar = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="rounded-full bg-sky-800 p-1 text-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-800"
+                  className="rounded-full bg-sky-600 p-1 text-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-800"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -185,7 +178,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-sky-600 text-white' : 'text-sky-300 hover:bg-sky-700 hover:text-white',
+                    item.current ? 'bg-sky-600 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
                     'block rounded-lg px-3 py-2 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -193,6 +186,7 @@ const Navbar = () => {
                   {item.name}
                 </Disclosure.Button>
               ))}
+              < VoiceSearch />
             </div>
           </Disclosure.Panel>
         </>
