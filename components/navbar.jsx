@@ -24,6 +24,7 @@ const navigation = [
   { name: 'Registration', href: '/registration', current: false },
   { name: 'Questionaire', href: '/questionaire', current: false },
   { name: 'Medical History', href: '/medicalhistory', current: false },
+  { name: 'ACA API Demo', href: '/acatable', current: false },
 ]
 
 function classNames(...classes) {
