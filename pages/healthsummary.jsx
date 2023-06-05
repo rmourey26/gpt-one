@@ -52,10 +52,10 @@ const HealthSummary = ({ healthData }) => {
 
   return (
     <div>
-     <NoSSR>
+     
       <h2>Health Summary</h2>
       <p>{summary}</p>
-      </NoSSR>
+     
     </div>
   );
 };
