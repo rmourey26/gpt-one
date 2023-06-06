@@ -10,6 +10,10 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 
 import VoiceSearch from "../components/voicesearch";
 
+import LogAuth from "../components/login-btn";
+
+import LoginModal from "../components/loginmodal"
+
 
 
 
@@ -154,15 +158,17 @@ const Navbar = () => {
                         )}
                       </Menu.Item>
                       <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Sign out
-                          </a>
+                        {({ active }) => ( 
+                        
+                          <><LogAuth /><a
+                              href="#"
+                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            >
+
+                            </a></>
                         )}
                       </Menu.Item>
+                      
                     </Menu.Items>
                   </Transition>
                 </Menu>
@@ -187,7 +193,9 @@ const Navbar = () => {
                 </Disclosure.Button>
               ))}
               < VoiceSearch />
-            </div>
+              </div>
+              <LogAuth />
+
           </Disclosure.Panel>
         </>
       )}

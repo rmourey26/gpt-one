@@ -10,6 +10,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import VoiceSearch from 'components/voicesearch';
 import Navbar from 'components/navbar';
 import Footer from 'components/footer';
+import PlanCombo from 'components/combobox';
 
 
 
@@ -20,15 +21,7 @@ function classNames(...classes) {
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const clickPoint = useRef();
-    const handleFocus = () => {
-        clickPoint.current.style.display = "none";
-    };
-
-    const handleBlur = () => {
-        clickPoint.current.style.display = "block";
-    };
-  
+    
   const options = {
     animationData: docrxAnimation,
     loop: true
@@ -42,7 +35,7 @@ export default function Home() {
 
   return (
     <>
-    
+    <Head/>
     <Navbar />
       <div>
         <section class="my-20 bg-transparent dark:bg-gray-900">
@@ -62,6 +55,7 @@ export default function Home() {
   </span>
 
 </button>
+
            </div>
                     
                   
@@ -73,11 +67,12 @@ export default function Home() {
             </div>
           </section>
        </div>
+       
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
-        >
+        > 
           <div
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#60bbf0] to-[#0079bf] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style={{
@@ -98,6 +93,7 @@ export default function Home() {
   
   
     </div>
+    
     <Footer />
         <div
           className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"

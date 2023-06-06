@@ -10,6 +10,9 @@ background-color: linear-gradient(to right, rgb(156, 163, 175), rgb(75, 85, 99),
 
 
 
+*:focus {
+  @apply outline-none ring-2 ring-pink-500 ring-opacity-50;
+}
 
 
 
