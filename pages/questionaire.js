@@ -45,10 +45,15 @@ const Questionaire = () => {
     <div className="grid grid-cols-1 span-1 self-aligned-center">
         <><SurveyComponent color="inherit" /></>
     </div>
-     </div>
-      </div>
+    
+    
+
+           </div>
+           </div>       
     </form>
     < Footer />
+    
+    
     </>
     
   )
