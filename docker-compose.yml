@@ -5,9 +5,10 @@ services:
       context: ./
       target: runner
     volumes:
-      - .:/
+      - .:/app
     command: npm run dev
     ports:
       - "3003:3003"
     environment:
       NODE_ENV: development
+
