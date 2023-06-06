@@ -2,7 +2,7 @@ import Image from 'next/image';
 import react from 'react'; 
 
 
-const LoginModal = () => (
+export default function LoginModal() {
   return (
    
     <section class="bg-gray-50 dark:bg-gray-900">
@@ -10,7 +10,7 @@ const LoginModal = () => (
       <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"> AntHealth
           
       </a>
-    <Image class="w-8 h-8 mr-2" src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg" alt="logo" />
+    <Image class="w-8 h-8 mr-2" src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg" alt="logo" width={2227} height={884}/>
 
           
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -52,9 +52,8 @@ const LoginModal = () => (
 </section>
 
     )
-);
+  };
 
-export default LoginModal; 
 
 
 
