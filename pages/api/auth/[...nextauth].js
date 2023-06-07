@@ -12,14 +12,14 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorization: {
         params: {
-          scope: "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/fitness.blood_glucose.read https://www.googleapis.com/auth/fitness.blood_pressure.read	https://www.googleapis.com/auth/fitness.body.read"                 
+          scope: "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/fitness.blood_glucose.read"                
           },
         },
     }),
     OktaProvider({
       clientId: process.env.OKTA_CLIENT_ID,
       clientSecret: process.env.OKTA_CLIENT_SECRET,
-      issuerID: "https://dev-86853365.okta.com/oauth2/default",	
+      issuer: process.env.OKTA_ISSUER,
 
     })
     // ...add more providers here
