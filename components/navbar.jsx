@@ -194,8 +194,9 @@ const Navbar = () => {
               ))}
               < VoiceSearch />
               </div>
+             <div className="px-2 pb-3 pt-2">
               <LogAuth />
-
+             </div>
           </Disclosure.Panel>
         </>
       )}
