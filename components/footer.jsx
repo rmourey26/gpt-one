@@ -375,15 +375,14 @@ const Footer = () => {
     </div>
     </div>
 <div className="text-center text-xs text-lightgray"> 
-                  <p>AntHealth Group Inc. A Protocol Platforms Inc company. ALL RIGHTS RESERVED.AntHealth.ai is a non-government website that is owned and operated by AntHealth Operating LLC, which is an affiliate of AntHealth Group Inc. Both are licensed health insurance agencies and each does business as AntHealth Group.AntHealth Group is not affiliated with or endorsed by the U.S. government, Healthcare.gov or the federal Medicare program. The purpose of this site is the solicitation of insurance. Contact may be made by an insurance agent/producer or insurance company.Not all products are available in all States. AntHealth represents various Insurance Carriers, Medicare Advantage plans, Medicare Supplement plans, Dental plans, Vision plans, Hospital Gap Coverage plans and Prescription Drug Plans (PDP).We do not offer every plan available in your area. Any information we provide is limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE (TTY users should call 1-877-486-2048) to get information on all of your options. Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.By using this site, you acknowledge that you have read and agree to our Privacy Policy, Do Not Call Policy and Terms of Service. </p>
+                  <p>AntHealth Group a UWIC Holdings Inc company. All Rights Reserved.</p>
 </div>
       <p class="text-center lg:text-center text-xs text-gray-900 sm:text-left">
-        Copyright
+        
         <span class="inline-flex items-baseline">
         <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={12} height={12} className="self-center rounded-full mx-1" />
         <span> AntHealth 2023.</span>
-        </span>
-        All Rights Reserved 
+        </span> 
         </p>
       
       </footer>
