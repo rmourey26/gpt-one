@@ -13,6 +13,7 @@ export default function AI() {
   const [budgetMin, setBudgetMin] = useState(25);
   const [budgetMax, setBudgetMax] = useState(100);
   const [chronic, setChronic] = useState('');
+  const [zipcode, setZipcode] = useState(12345);
   const [loading, setLoading] = useState(false);
 
   const [result, setResult] = useState('');
@@ -29,7 +30,7 @@ export default function AI() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ budgetMin, budgetMax, gender, age, chronic }),
+      body: JSON.stringify({ budgetMin, budgetMax, gender, age, chronic, zipcode }),
     });
     const data = await response.json();
     setResult(data.result.replaceAll('\\n', '<br />'));
@@ -39,7 +40,8 @@ export default function AI() {
   return (
 <>
     <Navbar />
-    <div className="mx-20 my-6">
+ <div className="w-full md:w-96 md:max-w-full mx-auto">
+  <div className="p-6 border border-gray-300 sm:rounded-md">
     <h1 className="text-center mt-2"> ACA AI </h1>
   <p className="text-center mt-2 text-sm">This demos ChatGPT's ACA health plan analysis. We send GPT the info below and it returns a few ACA Marketplace plan options.</p>
       
@@ -101,7 +103,20 @@ export default function AI() {
     onChange={(e) => setChronic(e.target.value)}
   />
   </div>
-
+  <div class="mb-6">
+  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zip Code</label>
+            
+  <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    type="number"
+    min={0}
+    max={99999}
+    name="zipcode"
+    placeholder="12345"
+    value={zipcode}
+    pattern="[0-9]{5}" 
+    onChange={(e) => setZipcode(Number.parseInt(e.target.value))}
+    />
+    </div>
   <div class="flex items-start mb-6">
         <div class="flex items-center h-5">
         <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
@@ -117,10 +132,10 @@ export default function AI() {
   </div>
 )}
 <div 
-  className={styles.result}
+  className={styles.acaanswer}
   dangerouslySetInnerHTML={{ __html: result }}
 />
-
+</div>
 </div>
 <Footer />
 </>
