@@ -39,7 +39,7 @@ export default function AI() {
   return (
 <>
     <Navbar />
-    <div className="mx-36 my-12">
+    <div className="mx-20 my-6">
     <h1 className="text-center mt-2"> ACA AI </h1>
   <p className="text-center mt-2 text-sm">This demos ChatGPT's ACA health plan analysis. We send GPT the info below and it returns a few ACA Marketplace plan options.</p>
       
