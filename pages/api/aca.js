@@ -1,7 +1,7 @@
 import { defineEndpoints } from 'next-rest-framework/client';
 import { z } from 'zod';
 
-
+//in house aca data api 
 const householdSchema = z.object({
 
   household: z.object(
