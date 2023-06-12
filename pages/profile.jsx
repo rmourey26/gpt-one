@@ -2,6 +2,8 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 import { useRouter } from 'next/router';
 
+import NoSSR from "components/nossr"; 
+
 import styles from '../styles/Home.module.css';
 
 import LogAuth from "components/login-btn";
@@ -16,6 +18,7 @@ export default function Login() {
   if (session) {
 
     return (
+      <NoSSR>
 <div className={styles.center}>
       <div className={styles.container}>
 
@@ -27,7 +30,7 @@ export default function Login() {
         <div className={styles.content}>
 
              <h2> Hi {session.user.name}, welcome to Anthealth! <br /></h2> 
-             
+             <img src={session.user.image} />
              <p>  Primary email: {session.user.email} </p>
              <h2> Blood Glucose .. {session.user.blood_glucose} ..<br /></h2>
              <h2> Blood Pressure .. {session.user.blood_pressure} ..<br /></h2>
@@ -44,7 +47,7 @@ export default function Login() {
 
       </div>
       </div>
-
+      </NoSSR>
     )
 
   }
