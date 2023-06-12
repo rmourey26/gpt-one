@@ -1,14 +1,20 @@
 
 import Head from 'next/head';
+import { useSession, signIn, signOut } from "next-auth/react"
+
+import { useRouter } from 'next/router';
+
 import React from 'react';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Navbar from 'components/navbar';
 import Footer from 'components/footer';
-import DOMPurify from 'dompurify';
+import LogAuth from 'components/login-btn';
+import PopoverProfile from 'components/popoverprofile';
 
 
 export default function AI() {
+  const { data: session } = useSession()
   const [gender, setGender] = useState('male');
   const [age, setAge] = useState(30);
   const [budgetMin, setBudgetMin] = useState(25);
@@ -37,16 +43,35 @@ export default function AI() {
     setResult(data.result.replaceAll('\\n', '<br />'));
     setLoading(false);
   }
-
+  if (session) {
   return (
 <>
     <Navbar />
- <div className="w-full md:w-96 md:max-w-full mx-auto">
+ <div className="mt-10 w-full md:w-96 md:max-w-full mx-auto">
   <div className="p-6 border border-gray-300 sm:rounded-md">
     <h1 className="text-center mt-2"> ACA AI </h1>
-  <p className="text-center mt-2 text-sm">This demos ChatGPT's ACA health plan analysis. We send GPT the info below and it returns a few ACA Marketplace plan options.</p>
-      
+  <p className="mb-6 text-justify mt-2 text-sm">This demos ChatGPT's ACA health plan analysis and optionally includes the users health data within the request. GPT returns 3 to 4 plans based on the input. The goal is to show conceptual functionality within a basic, pre-production UI. </p>
+  <div className="mb-6 w-full md:w-84 md:max-w-full mx-auto">
+  <div className="p-4 border border-gray-300 sm:rounded-md">
+    
+  <h2> Hi {session.user.name}! <br /></h2>
   
+  <p className="text-xs mt-2">Check the box to opt-in and use your health data in our analysis for optimal results</p>   
+             
+             <div className='mb-4 mt-4'>
+             <h2> Blood Glucose .. {session.user.blood_glucose} ..<br /></h2>
+             <h2> Blood Pressure .. {session.user.blood_pressure} ..<br /></h2>
+             <h2> Activity .. {session.user.activity} ..<br /></h2>
+             <h2> Body .. {session.user.body} ..<br /></h2>
+             </div>
+             <div class="flex items-start mb-2">
+        <div class="flex items-center h-5">
+        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" />
+        </div>
+        <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to submit my device data and our <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
+    </div>
+  </div>
+  </div>
   <form onSubmit={onSubmit}>
   <div class="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
@@ -143,12 +168,37 @@ export default function AI() {
 />
 </div>
 )}
+
 </div>
 </div>
 <Footer />
 </>
-);
+)
 }
+
+return (
+  <div className={styles.center}>
+  <div className={styles.container}>
+
+<div className="mt-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+     <h1 className="title">Welcome to AntHealth</h1>
+
+    <div className={styles.content}>
+
+        <h2> To continue, please sign in</h2>
+
+    <LogAuth />
+
+    </div>
+ </div>
+  </div>
+  </div>
+
+)
+
+}
+
   
 
 
