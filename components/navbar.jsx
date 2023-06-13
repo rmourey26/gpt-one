@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect, Fragment } from 'react'
 
+import { useSession, signIn, signOut } from "next-auth/react"
+
 import { Dialog } from '@headlessui/react'
 
 import { useLottie } from 'lottie-react';
@@ -33,6 +35,7 @@ const navigation = [
 
 
 const Navbar = () => {
+  const { data: session } = useSession()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -72,12 +75,12 @@ const Navbar = () => {
               <div className="flex flex-1 items-center justify-center">
                 <div className="flex flex-shrink-0 items-center sm:flex-start">
                   <img
-                    className="block h-6 w-auto lg:hidden"
+                    className="block h-7 w-auto lg:hidden"
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
                     alt="AntHealth"
                   />
                   <img
-                    className="hidden h-6 w-auto lg:block"
+                    className="hidden h-7 w-auto lg:block"
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
                     alt="AntHealth"
                   />
@@ -121,9 +124,7 @@ const Navbar = () => {
                     <Menu.Button className="flex rounded-full bg-sky-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600">
                       <span className="sr-only">Open user menu</span>
                       <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                       src={session.user.image} width={44} height={44} className="flex rounded-full"
                       />
                     </Menu.Button>
                   </div>
@@ -140,7 +141,7 @@ const Navbar = () => {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/profile"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Your Profile
