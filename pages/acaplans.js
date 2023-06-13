@@ -1,11 +1,13 @@
 import Navbar from "components/navbar";
 import Footer from "components/footer";
 import { useState } from 'react';
+import { useSession, signIn, signOut } from "next-auth/react"
 
- 
+import { useRouter } from 'next/router';
 
 
 export default function AcaPlans () {
+  const { data: session } = useSession()
 
   // loading state control
   const [loading, setLoading ] = useState(false);
@@ -111,7 +113,7 @@ export default function AcaPlans () {
     console.log({JSONdata});
 
   };
-
+  if (session) {
 return(
   <>
   < Navbar />
@@ -145,3 +147,27 @@ return(
 
 )
 }
+
+return (
+  <div className={styles.center}>
+  <div className={styles.container}>
+
+<div className="mt-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+     <h1 className="title">Welcome to AntHealth</h1>
+
+    <div className={styles.content}>
+
+        <h2> To continue, please sign in</h2>
+
+    <LogAuth />
+
+    </div>
+ </div>
+  </div>
+  </div>
+
+)
+
+}
+
