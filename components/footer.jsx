@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   return (
-    
+    <>
 <footer aria-label="Site Footer" class="bg-transparent">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">
@@ -254,7 +254,7 @@ const Footer = () => {
     </div>
 
     <div
-      class="mt-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
+      class="mt-16 mb-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
       
      
@@ -371,21 +371,35 @@ const Footer = () => {
              </svg>
           </a>
         </li>
-      </ul>
+       </ul>
+      </div>
     </div>
-    </div>
-<div className="text-center text-xs text-lightgray"> 
+
+
+<div className="text-center text-sm text-lightgray"> 
                   <p>AntHealth Group a UWIC Holdings Inc company. All Rights Reserved.</p>
 </div>
-      <p class="text-center lg:text-center text-xs text-gray-900 sm:text-left">
+      <p class="text-center lg:text-center text-sm text-gray-900 sm:text-left">
         
         <span class="inline-flex items-baseline">
         <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={12} height={12} className="self-center rounded-full mx-1" />
         <span> AntHealth 2023.</span>
         </span> 
         </p>
+        <hr class="w-64 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+        <div className="p-4 text-justified text-xs">
+          <p> AntHealth.ai is a non-government website that is owned and operated by AntHealth Operating LLC, which is an affiliate of AntHealth Group Inc. 
+            Both are licensed health insurance agencies and each does business as AntHealth Group.AntHealth Group is not affiliated with or endorsed by the U.S. government, 
+            Healthcare.gov or the federal Medicare program. The purpose of this site is the solicitation of insurance. Contact may be made by an insurance agent/producer or 
+            insurance company.Not all products are available in all States. AntHealth represents various Insurance Carriers, Medicare Advantage plans, Medicare Supplement plans, 
+            Dental plans, Vision plans, Hospital Gap Coverage plans and Prescription Drug Plans (PDP).We do not offer every plan available in your area. Any information we provide is 
+            limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE (TTY users should call 1-877-486-2048) to get information on all of your options. 
+            Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.By using this site, you acknowledge that you have read 
+            and agree to our Privacy Policy, Do Not Call Policy and Terms of Service. </p>        
+            </div>
       
       </footer>
+      </>
   )
 };
 
