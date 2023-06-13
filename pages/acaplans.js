@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 import { useRouter } from 'next/router';
 import LogAuth from "components/login-btn";
-
+import styles from "styles/Home.module.css"
 
 export default function AcaPlans () {
   const { data: session } = useSession()
@@ -15,6 +15,7 @@ export default function AcaPlans () {
   const [userInput, setUserInput] = useState("");
   const [plan_id, setPlan_id] = useState("");
   const [year, setYear] = useState("");
+  
 
   // API endpoint where we send form data.
 
