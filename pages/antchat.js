@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useRouter } from 'next/router';
 
 import { Combobox } from '@headlessui/react'
 
@@ -6,6 +8,11 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
+import styles from "../styles/Home.module.css"
+import Image from 'next/image';
+import Navbar from 'components/navbar';
+import Footer from 'components/footer';
+import LogAuth from 'components/login-btn'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -13,11 +20,6 @@ import Content from '../components/Content';
 import RadixTabs from '../components/RadixTabs';
 import Tabshui from "../components/Tabshui";
 import Head from 'next/head';
-import styles from "../styles/Home.module.css"
-import Image from 'next/image';
-import Navbar from 'components/navbar';
-import Footer from 'components/footer';
-
 
   
 
@@ -34,6 +36,7 @@ function classNames(...classes) {
 
 
 export default function Example() {
+  const { data: session } = useSession()
   
   const [household, setHousehold] = useState([""]);
   
@@ -141,7 +144,7 @@ const toggle = (index) => {
   };
 
   
-
+  if (session) {
   return (
     <>
       < Navbar />
@@ -233,4 +236,27 @@ const toggle = (index) => {
     
     </>
   )
+}
+
+return (
+  <div className={styles.center}>
+  <div className={styles.container}>
+
+<div className="mt-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+
+     <h1 className="title">Welcome to AntHealth</h1>
+
+    <div className={styles.content}>
+
+        <h2> To continue, please sign in</h2>
+
+    <LogAuth />
+
+    </div>
+ </div>
+  </div>
+  </div>
+
+)
+
 }
