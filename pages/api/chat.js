@@ -2,6 +2,14 @@
 
 import { Configuration, OpenAIApi } from "openai";
 
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "./auth/[...nextauth]"
+
+ 
+    
+     
+    
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -30,6 +38,8 @@ global.messages = [
   },
 ];
 export default async function(req, res) {
+  const session = await getServerSession(req, res, authOptions)
+  if (session) {
   const requestMethod = req.method;
   const completion = await openai.createChatCompletion({
     // You need early access to GPT-4, otherwise use "gpt-3.5-turbo"
@@ -47,10 +57,14 @@ export default async function(req, res) {
   console.log(JSON.stringify(completion.data.choices[0].message)+"that was json stringified")
 }
     
+}
+
+else {
+  res.send({
+    error: "You must be signed in to view the protected content on this page.",
+  })
+}
 };
-
-
-
 
 
 

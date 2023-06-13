@@ -4,6 +4,7 @@ import Footer from "components/footer";
 import {useState} from 'react';
 import { useSession, signIn, signOut } from "next-auth/react"
 import LogAuth from 'components/login-btn'; 
+import { useRouter } from 'next/router';
 
 
 export default function FormDemo () {
