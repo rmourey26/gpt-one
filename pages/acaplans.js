@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import { useRouter } from 'next/router';
+import LogAuth from "components/login-btn";
 
 
 export default function AcaPlans () {
