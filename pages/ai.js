@@ -49,14 +49,14 @@ export default function AI() {
     <Navbar />
  <div className="mt-10 w-full md:w-96 md:max-w-full mx-auto">
   <div className="p-6 border border-gray-300 sm:rounded-md">
-    <h1 className="text-center mt-2"> ACA AI </h1>
-  <p className="mb-6 text-justify mt-2 text-sm">This demos ChatGPT's ACA health plan analysis and optionally includes the users health data within the request. GPT returns 3 to 4 plans based on the input. The goal is to show conceptual functionality within a basic, pre-production UI. </p>
+    <h1 className="text-center mt-2"> AntHealth's Actuarial AI </h1>
+  <p className="mb-6 text-justify mt-2 text-sm"> Include your personal health data from your device for optimal results! </p>
   <div className="mb-6 w-full md:w-84 md:max-w-full mx-auto">
   <div className="p-4 border border-gray-300 sm:rounded-md">
     
   <h2> Hi {session.user.name}! <br /></h2>
   
-  <p className="text-xs mt-2">Check the box to opt-in and use your health data in our analysis for optimal results</p>   
+  <p className="text-xs mt-2">Please check to personal health data opt-in</p>   
              
              <div className='mb-4 mt-4'>
              <h2> Blood Glucose .. {session.user.blood_glucose} ..<br /></h2>
