@@ -107,7 +107,7 @@ function transformData(data) {
                   }
 
 export async function getServerSideProps(context) {
-  const session = await getSession(ctx)
+  const session = await getSession(context)
   const data = {
 
     "aggregateBy": [{
