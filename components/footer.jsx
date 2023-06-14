@@ -58,7 +58,7 @@ const Footer = () => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                AI
+                Careers
               </a>
             </li>
 
@@ -67,7 +67,7 @@ const Footer = () => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Careers
+                Suggestions
               </a>
             </li>
           </ul>
@@ -137,7 +137,7 @@ const Footer = () => {
                 class="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
-                Conference Notes
+                Actuarial AI
               </a>
             </li>
 
@@ -159,14 +159,7 @@ const Footer = () => {
               </a>
             </li>
 
-            <li>
-              <a
-                class="text-gray-700 transition hover:text-gray-700/75"
-                href="/"
-              >
-                Upcoming Events
-              </a>
-            </li>
+           
           </ul>
         </nav>
       </div>
@@ -196,7 +189,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="group flex justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                class="group flex justify-left gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
                 href="/"
               >
                 <span
@@ -377,7 +370,14 @@ const Footer = () => {
 
 
 <div className="text-center text-sm text-lightgray"> 
-                  <p>AntHealth Group a UWIC Holdings Inc company. All Rights Reserved.</p>
+<p class="text-center lg:text-center text-sm text-gray-900 sm:text-left">
+        
+        <span class="inline-flex items-baseline">
+        <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={12} height={12} className="self-center rounded-full mx-1" />
+        <span>AntHealth Group a UWIC Holdings Inc company. All Rights Reserved.</span>
+        </span> 
+        </p>
+                
 </div>
       <p class="text-center lg:text-center text-sm text-gray-900 sm:text-left">
         

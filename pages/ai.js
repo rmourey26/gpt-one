@@ -50,7 +50,8 @@ export default function AI() {
  <div className="mt-10 w-full md:w-96 md:max-w-full mx-auto">
   <div className="p-6 border border-gray-300 sm:rounded-md">
     <h1 className="text-center mt-2"> AntHealth's Actuarial AI </h1>
-  <p className="mb-6 text-justify mt-2 text-sm"> Include your personal health data from your device for optimal results! </p>
+  <p className="mb-6 text-justify mt-2 text-sm"> This demos Large Language Models' (LLMs) ACA health plan analysis. We send LLMs the info below and it returns a few ACA Marketplace plan options.
+ </p>
   <div className="mb-6 w-full md:w-84 md:max-w-full mx-auto">
   <div className="p-4 border border-gray-300 sm:rounded-md">
     
