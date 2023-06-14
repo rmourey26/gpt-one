@@ -1,11 +1,11 @@
 // pages/acatable.js
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut, getSession } from "next-auth/react"
 
 import { useRouter } from 'next/router';
 
 
 import { useState, useEffect } from 'react';
-import AccessToken from 'components/AccessToken';
+import { AccessToken } from 'components/AccessToken';
 import styles from "../styles/Home.module.css"
 import NoSSR from 'components/nossr';
 import * as React from 'react';
@@ -107,34 +107,71 @@ function transformData(data) {
                   }
 
 export async function getServerSideProps(context) {
+  const session = await getSession(ctx)
   const data = {
-    "aggregateBy": [{
-      "dataTypeName": "com.google.step_count.delta",
-      "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
-    }],
-    "bucketByTime": { "durationMillis": 86400000 },
-    "startTimeMillis": 1438705622000,
-    "endTimeMillis": 1439310422000
-  }
 
-  const res = await fetch(
-    "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: {AccessToken},
-      },
-      body: JSON.stringify(data)
+    "aggregateBy": [{
+
+      "dataTypeName": "com.google.step_count.delta",
+
+      "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+
+    }],
+
+    "bucketByTime": { "durationMillis": 86400000 },
+
+    "startTimeMillis": 1438705622000,
+
+    "endTimeMillis": 1439310422000
+
+  }
+  if (!session) {
+    return {
+      props: {}
     }
+  }
+  const res = await fetch(
+
+    "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate",
+
+    {
+
+      method: "POST",
+
+      headers: {
+
+        "Content-Type": "application/json",
+
+        "Authorization": 'Bearer ${AccessToken}',
+
+      },
+
+      body: JSON.stringify(data)
+
+    }
+
   );
   
+  const { user } = session;
   const initialData = await res.json();
 
   if (!res.ok) {
+
     console.error("Error fetching data", initialData);
+
     return { props: {} };
+
   }
 
-  return { props: { initialData } };
+  return { props: { user:{ initialData } } };
+
 }
+
+ 
+
+
+  
+
+  
+  
+  
