@@ -32,10 +32,10 @@ export default function Login() {
              <h2> Hi {session.user.name}, welcome to Anthealth! <br /></h2> 
              <img src={session.user.image} />
              <p>  Primary email: {session.user.email} </p>
-             <h2> Blood Glucose .. {session.user.blood_glucose} ..<br /></h2>
-             <h2> Blood Pressure .. {session.user.blood_pressure} ..<br /></h2>
-             <h2> Activity .. {session.user.activity} ..<br /></h2>
-             <h2> Body .. {session.user.body} ..<br /></h2>
+             <h2> Blood Glucose .. {data.user.blood_glucose} ..<br /></h2>
+             <h2> Blood Pressure .. {data.user.blood_pressure} ..<br /></h2>
+             <h2> Activity .. {data.user.activity} ..<br /></h2>
+             <h2> Body .. {data.user.body} ..<br /></h2>
               
 
            <div>
