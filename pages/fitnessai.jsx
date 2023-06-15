@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 
 import { useState, useEffect } from 'react';
-import { AccessToken } from 'components/AccessToken';
+
 import styles from "../styles/Home.module.css"
 import NoSSR from 'components/nossr';
 import * as React from 'react';
@@ -19,7 +19,7 @@ import LogAuth from "components/login-btn";
 export default function FitnessAi({ initialData }) {
   const [data, setData] = useState(initialData);
   const { data: session } = useSession()
-
+  const { ACCESS_TOKEN } = session;
   const router = useRouter();
 
 
@@ -142,7 +142,7 @@ export async function getServerSideProps(context) {
 
         "Content-Type": "application/json",
 
-        "Authorization": 'Bearer ${AccessToken}',
+        authorization: `Bearer ${ACCESS_TOKEN}`,
 
       },
 
