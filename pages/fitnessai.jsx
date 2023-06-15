@@ -11,6 +11,7 @@ import NoSSR from 'components/nossr';
 import * as React from 'react';
 import { DataGrid, GridToolbar, Toolbar } from '@mui/x-data-grid';
 import LogAuth from "components/login-btn";
+import { getToken } from "next-auth/jwt";
 
   
 
@@ -19,7 +20,7 @@ import LogAuth from "components/login-btn";
 export default function FitnessAi({ initialData }) {
   const [data, setData] = useState(initialData);
   const { data: session } = useSession()
-  const { ACCESS_TOKEN } = session;
+  
   const router = useRouter();
 
 
@@ -38,12 +39,12 @@ export default function FitnessAi({ initialData }) {
   if (session) {
 // Render logic can go here. For example, you might want to map over the data array
   return (
-    <div>
+    <NoSSR>
       
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
       <h1 className='text-center mb-10'>GoogleFit Aggregate</h1>
-<p> Testing...
+<p> Testing...{session.user.name} ....{session.accessToken}
      </p>
       <DataGrid className='overflow-x:scroll h-100'
       rows={rows} 
@@ -61,7 +62,7 @@ export default function FitnessAi({ initialData }) {
       {JSON.stringify(data, null, 2)}
       </div>
       
-    </div>
+    </NoSSR>
   );
 }
 
@@ -108,6 +109,9 @@ function transformData(data) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context)
+  console.log({session})
+  const { accessToken } = session;
+  console.log({accessToken});
   const data = {
 
     "aggregateBy": [{
@@ -142,7 +146,7 @@ export async function getServerSideProps(context) {
 
         "Content-Type": "application/json",
 
-        authorization: `Bearer ${ACCESS_TOKEN}`,
+        authorization: `Bearer ${accessToken}`,
 
       },
 
@@ -163,7 +167,7 @@ export async function getServerSideProps(context) {
 
   }
 
-  return { props: { user:{ initialData } } };
+  return { props: { initialData } } ;
 
 }
 
