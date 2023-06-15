@@ -29,6 +29,8 @@ export const authOptions = {
     // ...add more providers here
   ],
   
+  secret: process.ENV.NEXTAUTH_SECRET,
+  
   session: {
 
   strategy: 'jwt',
