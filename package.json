@@ -30,6 +30,7 @@
     "dompurify": "^3.0.3",
     "fhirclient": "^2.3.11",
     "file-saver": "^2.0.5",
+    "firebase": "^9.22.2",
     "firebase-admin": "^11.9.0",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
