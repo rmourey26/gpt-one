@@ -29,7 +29,7 @@ export const authOptions = {
     // ...add more providers here
   ],
   
-  secret: process.ENV.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
   
   session: {
 
