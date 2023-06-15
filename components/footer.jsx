@@ -370,7 +370,7 @@ const Footer = () => {
 
 
 <div className="text-center text-sm text-lightgray"> 
-<p class="text-center lg:text-center text-sm text-gray-900 sm:text-center">
+<p class="text-center lg:text-center text-xs text-gray-900 sm:text-center">
         
         <span class="inline-flex items-baseline">
         <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={12} height={12} className="self-center rounded-full mx-1" />
