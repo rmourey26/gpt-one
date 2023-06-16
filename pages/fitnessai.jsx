@@ -45,12 +45,12 @@ export default function FitnessAi({ initialData }) {
       {/* Render the data here */}
       <h1 className='text-center mb-10'>GoogleFit Aggregate</h1>
 <p className="text-xs"> Hi...{session.user.name} ..your accessToken is currently: {session.accessToken}</p>
-<p className="text-xs"> Below, we are querying `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate` to access your GoogleFit and Health Connect data. 
+<p className="text-xs"> Below, we are querying `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate` to obtain your `estimated step count`. 
      </p>
       <DataGrid className='overflow-x:scroll h-100'
       rows={rows} 
       columns={columns}
-      getRowId={(row) => row.dataSourceId + row.startTimeMills }
+      getRowId={(row) => row.startTimeMillis + row.endTimeMillis }
       height={500}
       components={{
         Toolbar: GridToolbar
