@@ -60,7 +60,7 @@ export default function AI() {
     
   <h2> Hi {session.user.name}! <br /></h2>
   
-  <p className="text-xs mt-2">Please check to personal health data opt-in</p>   
+  <p className="text-xs mt-2">Please check the box below to opt-in and allow us to include ypur personal health data stored by Google Fit and Samsung Health</p>   
              
              <div className='mb-4 mt-4'>
              
@@ -68,7 +68,7 @@ export default function AI() {
               sign out and sign back in and you will see a different access token. Selecting the box will trigger a separate api call along with this access token to the Google Fit API . Head to the {''}
               <a href="/fitnessai" className="text-sky-600">Fitnessai page </a>
               to view the raw response data. </p>
-             <div className="m-1 text-xs">
+             <div className="m-4 text-xs">
              < AccessToken />
              </div>
              </div>
