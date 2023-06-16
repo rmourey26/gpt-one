@@ -39,17 +39,18 @@ export default function FitnessAi({ initialData }) {
   if (session) {
 // Render logic can go here. For example, you might want to map over the data array
   return (
-    <NoSSR>
+    <>
       
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
       <h1 className='text-center mb-10'>GoogleFit Aggregate</h1>
-<p> Testing...{session.user.name} ....{session.accessToken}
+<p className="text-xs"> Hi...{session.user.name} ..your accessToken is currently: {session.accessToken}</p>
+<p className="text-xs"> Below, we are querying `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate` to access your GoogleFit and Health Connect data. 
      </p>
       <DataGrid className='overflow-x:scroll h-100'
       rows={rows} 
       columns={columns}
-      getRowId={(row) => row.plans_0_id + row.plans_0_name }
+      getRowId={(row) => row.dataSourceId + row.startTimeMills }
       height={500}
       components={{
         Toolbar: GridToolbar
@@ -62,7 +63,7 @@ export default function FitnessAi({ initialData }) {
       {JSON.stringify(data, null, 2)}
       </div>
       
-    </NoSSR>
+    </>
   );
 }
 
