@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, Fragment } from 'react'
+import Link from 'next/link';
 import { Dialog } from '@headlessui/react'
 import { useLottie } from 'lottie-react';
 import docrxAnimation from "docrx.json";
