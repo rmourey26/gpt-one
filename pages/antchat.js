@@ -65,7 +65,7 @@ const toggle = (index) => {
  
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
-    {role: "assistant", content: "Welcome to AntHealth.ai!"}
+    {role: "assistant", content: "Hi, my name is YADI. I'm here to help you design the optimal healthplan for your unique needs. Please tell me your age, gender, income, monthly budget, coverage needs ie. medical, dental, prescription, chronic diseases, zipcode, and preferred providers"}
     ]);
   
       const messageListRef = useRef(null);
@@ -199,7 +199,7 @@ const toggle = (index) => {
                 type="text"
                 id="userInput"
                 name="userInput"
-                placeholder={loading ? "Waiting for response..." : "Ask me about ABPM or your chronic condition..."}
+                placeholder={loading ? "Waiting for response..." : "Enter your needs..."}
                 value={userInput}
                 onChange={e => setUserInput(e.target.value)}
                 className={styles.textarea}
