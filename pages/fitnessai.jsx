@@ -44,8 +44,9 @@ export default function FitnessAi({ initialData }) {
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
       <h1 className='text-center mb-10'>GoogleFit Aggregate</h1>
-<p className="text-xs"> Hi...{session.user.name} ..your accessToken is currently: {session.accessToken}</p>
-<p className="text-xs"> Below, we are querying `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate` to obtain your `estimated step count`. 
+<p className="text-xs"> Hi...{session.user.name} ..your accessToken is currently: {session.accessToken} </p>
+<p>  Rendering the Access Token is just an exercise to show a test of the two step authorization process required to access device data. This is not meant for the user.</p>
+<p className="text-xs"> Below, we are querying `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate` to obtain your `estimated step count`. The main point here is that we have have enabled access to Google Fitness API scopes in accordance with the oauth2 protocol. When patching the data over to LLM's, retaining the original data format - in this case milliseconds - is preferred because otherwise, the app would have to convert it too and from multiple times before sending and while receiving and or rendering the response.    
      </p>
       <DataGrid className='overflow-x:scroll h-100'
       rows={rows} 
