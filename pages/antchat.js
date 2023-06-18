@@ -71,17 +71,9 @@ const toggle = (index) => {
       const messageListRef = useRef(null);
       const textAreaRef = useRef(null);
 
-  // Auto scroll chat to bottom
-  useEffect(() => {
-    const messageList = messageListRef.current;
-    messageList.scrollTop = messageList.scrollHeight;
-  }, [messages]);
-
-  // Focus on text field on load
-  useEffect(() => {
-    textAreaRef.current.focus();
-  }, []);
-
+  
+  
+  
   // Handle errors
   const handleError = () => {
     setMessages((prevMessages) => [...prevMessages, { role: "assistant", content: "Oops! There seems to be an error. Please try again." }]);
