@@ -84,7 +84,7 @@
 .textarea {
   position: relative;
   resize: none;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   padding: 1rem 2rem 1rem 2rem;
   width: 75vw;
   border-radius: 0.5rem;
@@ -273,7 +273,7 @@
 
 .cloud {
   width: 75vw;
-  height: 25vh;
+  height: 46.35vh;
   background: #070809;
   border-radius: 0.5rem;
   border: 1px solid #30373d;
