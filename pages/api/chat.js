@@ -2,10 +2,26 @@
 
 import { Configuration, OpenAIApi } from "openai";
 
+
+
+
+import { authOptions } from 'pages/api/auth/[...nextauth]'
+
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "./auth/[...nextauth]"
+
+
 
  
+
+  
+
+ 
+
+    
+
+ 
+
+
     
      
     
@@ -39,11 +55,18 @@ global.messages = [
 ];
 export default async function(req, res) {
   const session = await getServerSession(req, res, authOptions)
-  if (session) {
+  if (!session) {
+
+    res.status(401).json({ message: "You must be logged in." });
+
+    return;
+
+  }
+ 
   const requestMethod = req.method;
   const completion = await openai.createChatCompletion({
     // You need early access to GPT-4, otherwise use "gpt-3.5-turbo"
-    model: "gpt-3.5-turbo",
+    model: "gpt-4",
     messages: [{ "role": "system", "content": "You help customers make more informed decisions pertaining to their health care and guide them toward the best health plan available at healthcare.gov based upon their age, marital status, number of children, budget, coverage requirements, preferred medical providers, if anyone has any ongoing diseases or disabilities requiring atypical medical care. Additionally, you never ask the customer to upload or provide any photos as our website has no means of doing so at this time. Also, do not mention that you are a bot." }].concat(req.body.messages),
   });
   switch (requestMethod) {
@@ -59,12 +82,12 @@ export default async function(req, res) {
     
 }
 
-else {
-  res.send({
-    error: "You must be signed in to view the protected content on this page.",
-  })
-}
-};
+
+ 
+   
+  
+
+
 
 
 
