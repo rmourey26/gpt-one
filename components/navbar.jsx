@@ -65,8 +65,9 @@ const Navbar = () => {
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-lg p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
+                <Disclosure.Button className="inline-flex items-center inline-flex items-center justify-center rounded-lg p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+
+                 <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
@@ -189,7 +190,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-sky-600 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
+                    item.current ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
                     'block rounded-lg px-3 py-2 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -284,9 +285,15 @@ const Navbar = () => {
                                         
                                         <Menu.Button className="flex rounded-full bg-sky-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600">
                                           <span className="sr-only">Open user menu</span>
-                                          <img
-                                           src="usericon.png" width={44} height={44} className="flex rounded-full"
-                                          />
+                                          
+                                          
+                                          
+                                             
+                                             
+<div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+    <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+</div>
+
                                         </Menu.Button>
                                       
                                       </div>
