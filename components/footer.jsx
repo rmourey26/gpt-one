@@ -189,21 +189,21 @@ const Footer = () => {
 
             <li>
               <a
-                class="group flex gap-1.5 ltr:sm:justify-start rtl:sm:justify-end"
+                class="text-center group gap-1.5"
                 href="/"
               >
                 <span
-                  class="text-gray-700 transition group-hover:text-gray-700/75"
+                  class="text-gray-700 text-center transition group-hover:text-gray-700/75"
                 >
                   Live Chat
                 </span>
 
-                <span class="relative flex h-2 w-2">
+                <span class="absolute h-2 w-2">
                   <span
-                    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
+                    class="absolute h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
                   ></span>
                   <span
-                    class="relative inline-flex h-2 w-2 rounded-full bg-sky-500"
+                    class="relative flex h-2 w-2 rounded-full ml-1 bg-sky-500"
                   ></span>
                 </span>
               </a>
