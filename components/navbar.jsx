@@ -190,7 +190,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-sky-600 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
+                    item.current ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
                     'block rounded-lg px-3 py-2 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
