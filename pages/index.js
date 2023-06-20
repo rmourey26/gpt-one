@@ -61,7 +61,10 @@ export default function Home() {
                 </div>
                 <div className="md:mt-0 md:col-span-4 md:flex flex lg:mt-0 lg:col-span-5 lg:flex sm:col-span-1 place-self-center">
                   <>{View}</>
-                </div>                
+                </div>
+     <div className="md:mt-0 md:col-span-4 md:flex flex lg:mt-0 lg:col-span-5 lg:flex sm:col-span-1 place-self-center">
+      < PlanCombo /> 
+    </div> 
             </div>
           </section>
        </div>
