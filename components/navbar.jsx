@@ -18,12 +18,10 @@ import LogAuth from "../components/login-btn";
 
 import NoSSR from 'components/nossr'
 
-
-
-
 import Head from 'next/head'
 
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Avatarph from './avatarph';
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
@@ -287,7 +285,7 @@ const Navbar = () => {
                                              
                                              
 <div class="relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-    <svg class="absolute w-12 h-12 text-gray-400 -left-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
+    <Avatarph />
 </div>
 
                                         </Menu.Button>
