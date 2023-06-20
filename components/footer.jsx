@@ -387,7 +387,9 @@ const Footer = () => {
         </span> 
         </p>
         <hr class="w-64 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
-        <div className="p-4 text-justified text-xs">
+        <div className="relative"> <a href="https://www.uschamber.com"><img alt="U.S. Chamber of Commerce Member 2021" src="https://www.uschamber.com/assets/images/USCC_Webstickers_2022_234x75.png" title="U.S. Chamber of Commerce Member"></a>
+        </div>
+          <div className="p-4 text-justified text-xs">
           <p> AntHealth.ai is a non-government website that is owned and operated by AntHealth Operating LLC, which is an affiliate of AntHealth Group Inc. 
             Both are licensed health insurance agencies and each does business as AntHealth Group.AntHealth Group is not affiliated with or endorsed by the U.S. government, 
             Healthcare.gov or the federal Medicare program. The purpose of this site is the solicitation of insurance. Contact may be made by an insurance agent/producer or 
