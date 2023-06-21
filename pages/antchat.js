@@ -65,7 +65,7 @@ const toggle = (index) => {
  
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
-    {role: "assistant", content: "Hi, my name is YADI. I'm here to help you design the optimal healthplan for your unique needs. Please tell me your age, gender, annual income, monthly budget, coverage needs, chronic diseases, zipcode, and preferred providers. "}
+    {role: "assistant", content: "Hi, my name is YADI. I'm here to help you design the optimal healthplan for your unique needs. Please tell me your age, gender, annual income, monthly budget, coverage needs, chronic diseases, zipcode, and preferred providers. If you receive an unexpected response, please call or message us using the support button at the bottom right of the page "}
     ]);
   
       const messageListRef = useRef(null);
@@ -96,7 +96,7 @@ const toggle = (index) => {
     setMessages(context);
 
     // Send chat history to API
-    const response = await fetch("/api/chat", {
+    const response = await fetch("/api/uhonechat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -49,7 +49,7 @@ const plans = [
             <>
             
 
-<div className="top-16 align-self-center mb-2 w-72">
+<div className="z-50 top-16 align-self-center mb-2 w-72">
 
       <Combobox value={selected} onChange={setSelected}>
 
