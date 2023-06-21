@@ -23,6 +23,8 @@ import Head from 'next/head'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Avatarph from './avatarph';
 
+import Image from 'next/image';
+
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
   { name: 'SMARTApp', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
@@ -76,12 +78,12 @@ const Navbar = () => {
               <div className="flex flex-1 items-center justify-center">
                 <div className="flex flex-shrink-0 items-center sm:flex-start">
                   <img
-                    className="block h-7 w-auto lg:hidden"
+                    className="block h-8 w-auto lg:hidden"
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
                     alt="AntHealth"
                   />
                   <img
-                    className="hidden h-7 w-auto lg:block"
+                    className="hidden h-8 w-auto lg:block"
                     src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
                     alt="AntHealth"
                   />
@@ -125,7 +127,7 @@ const Navbar = () => {
                     
                     <Menu.Button className="flex rounded-full bg-sky-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600">
                       <span className="sr-only">Open user menu</span>
-                      <img
+                      <Image
                        src={session.user.image} width={44} height={44} className="flex rounded-full"
                       />
                     </Menu.Button>
