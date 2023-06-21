@@ -30,7 +30,7 @@ const navigation = [
   { name: 'Med History', href: '/medicalhistory', current: false },
   { name: 'ACA API', href: '/acatable', current: false },
   { name: 'Fitness API', href: '/fitnessai', current: false },
-  { name: 'ACA AI', href: 'ai', current: false},
+  { name: 'ACA AI', href: '/ai', current: false},
 ]
 
 
