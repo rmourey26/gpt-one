@@ -144,7 +144,7 @@ const Navbar = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-blue ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-white ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
                           <a
@@ -234,12 +234,12 @@ const Navbar = () => {
                                   <div className="flex flex-1 items-center justify-center">
                                     <div className="flex flex-shrink-0 items-center sm:flex-start">
                                       <img
-                                        className="block h-7 w-auto lg:hidden"
+                                        className="block h-8 w-auto lg:hidden"
                                         src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
                                         alt="AntHealth"
                                       />
                                       <img
-                                        className="hidden h-7 w-auto lg:block"
+                                        className="hidden h-8 w-auto lg:block"
                                         src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
                                         alt="AntHealth"
                                       />
