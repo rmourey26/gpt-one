@@ -29,6 +29,8 @@ const navigation = [
   { name: 'Questionaire', href: '/questionaire', current: false },
   { name: 'Med History', href: '/medicalhistory', current: false },
   { name: 'ACA API', href: '/acatable', current: false },
+  { name: 'Fitness API', href: '/fitnessai', current: false },
+  { name: 'ACA AI', href: 'ai', current: false},
 ]
 
 
