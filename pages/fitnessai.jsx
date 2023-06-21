@@ -1,4 +1,4 @@
-// pages/acatable.js
+// pages/fitnessai.js
 import { useSession, signIn, signOut, getSession } from "next-auth/react"
 
 import { useRouter } from 'next/router';
