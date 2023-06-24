@@ -17,5 +17,5 @@ export default async function (req, res) {
 }
 
 function generatePrompt(budgetMin, budgetMax, gender, age, chronic, zipcode) {
-  return `Suggest ACA Marketplace Healthplans priced between ${budgetMin}$ and ${budgetMax}$ for a ${age} years old ${gender} with ${chronic} residing in zipcode ${zipcode}.`;
+  return `Suggest healthplans from healthcare.gov, uhone.com, and aetna.com priced between ${budgetMin}$ and ${budgetMax}$ for a ${age} years old ${gender} with ${chronic} residing in zipcode ${zipcode}.`;
 }
