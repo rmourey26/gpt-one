@@ -46,7 +46,7 @@ const Questionaire = () => {
     <form>
       <div className="space-y-12 lg:mx-36 my-16 sm:mx-10 my:4">
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Benefit Questionaire</h2>
+          <h2 className="text-base font-semibold text-center text-gray-900">Hearti Benefit Questionaire</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
            What benefits are most important to you and your family?
           </p>
@@ -78,7 +78,7 @@ return (
 
 <div className="mt-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-     <h1 className="title">Welcome to AntHealth</h1>
+     <h1 className="title">Welcome to Hearti</h1>
 
     <div className={styles.content}>
 

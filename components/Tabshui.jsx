@@ -12,14 +12,14 @@ export default function Tabshui() {
         id: 1,
         title: 'Register and complete the questionaire.',
         time: '15 minutes',
-        url: 'https://anthealth.ai/registration',
+        url: 'https://hearti.ai/registration',
 
       },
       {
         id: 2,
         title: "Chat Health with our AI assistant",
         time: '10 minutes',
-        url: 'AntHealth.ai/chat'
+        url: 'Hearti.ai/chat'
 
       },
     ],

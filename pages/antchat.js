@@ -65,7 +65,7 @@ const toggle = (index) => {
  
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
-    {role: "assistant", content: "Hi, my name is YADI. I'm here to help you design the optimal healthplan for your unique needs. Please tell me your age, gender, annual income, monthly budget, coverage needs, chronic diseases, zipcode, and preferred providers. If you receive an unexpected response, please call or message us using the support button at the bottom right of the page "}
+    {role: "assistant", content: "Hi, my name is RUMI. I'm here to help you design the optimal healthplan for your unique needs. Please tell me your age, gender, annual income, monthly budget, coverage needs, chronic diseases, zipcode, and preferred providers. If you receive an unexpected response, please call or message us using the support button at the bottom right of the page "}
     ]);
   
       const messageListRef = useRef(null);
@@ -164,7 +164,7 @@ const toggle = (index) => {
                 // The latest message sent by the user will be animated while waiting for a response
                 <div key={index} className={message.role === "user" && loading && index === messages.length - 1 ? styles.usermessagewaiting : message.role === "assistant" ? styles.apimessage : styles.usermessage}>
                   {/* Display the correct icon depending on the message type */}
-                  {message.role === "assistant" ? <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/favicon.png" alt="AI" width={20} height={20} className={styles.boticon} priority={true} /> : <Image src="/usericon.png" alt="Me" width="30" height="30" className={styles.usericon} priority={true} />}
+                  {message.role === "assistant" ? <Image src="https://quantumone.b-cdn.net/flippa/medical-sign.svg" alt="AI" width={20} height={20} className={styles.boticon} priority={true} /> : <Image src="/usericon.png" alt="Me" width="30" height="30" className={styles.usericon} priority={true} />}
                   <div className={styles.markdownanswer}>
                     {/* Messages are being rendered in Markdown format */}
                         <ReactMarkdown linkTarget={"_blank"}> 
@@ -235,7 +235,7 @@ return (
 
 <div className="mt-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-     <h1 className="title">Welcome to AntHealth</h1>
+     <h1 className="title">Welcome to Hearti</h1>
 
     <div className={styles.content}>
 

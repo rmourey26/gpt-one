@@ -30,8 +30,8 @@ export default function Example() {
                 Username
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-sky-600 sm:max-w-md">
-                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">anthealth.ai/</span>
+                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-violet-600 sm:max-w-md">
+                  <span className="flex select-none items-center pl-3 text-gray-500 sm:text-sm">hearti.ai/</span>
                   <input
                     type="text"
                     name="username"
@@ -53,7 +53,7 @@ export default function Example() {
                   id="about"
                   name="about"
                   rows={3}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                   defaultValue={''}
                 />
               </div>
@@ -85,7 +85,7 @@ export default function Example() {
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-sky-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-sky-600 focus-within:ring-offset-2 hover:text-sky-500"
+                      className="relative cursor-pointer rounded-md bg-white font-semibold text-violet-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-violet-600 focus-within:ring-offset-2 hover:text-violet-500"
                     >
                       <span>Upload a file</span>
                       <input id="file-upload" name="file-upload" type="file" className="sr-only" />
@@ -114,7 +114,7 @@ export default function Example() {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function Example() {
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -153,7 +153,7 @@ export default function Example() {
 
                   autoComplete="suffix"
 
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
 
                 />
 
@@ -171,7 +171,7 @@ export default function Example() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function Example() {
                   id="country"
                   name="country"
                   autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>United States</option>
                   <option>Canada</option>
@@ -204,7 +204,7 @@ export default function Example() {
                   name="street-address"
                   id="street-address"
                   autoComplete="street-address"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function Example() {
                   name="city"
                   id="city"
                   autoComplete="address-level2"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -234,7 +234,7 @@ export default function Example() {
                   name="region"
                   id="region"
                   autoComplete="address-level1"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -249,7 +249,7 @@ export default function Example() {
                   name="postal-code"
                   id="postal-code"
                   autoComplete="postal-code"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -272,7 +272,7 @@ export default function Example() {
                       id="comments"
                       name="comments"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                      className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -288,7 +288,7 @@ export default function Example() {
                       id="candidates"
                       name="candidates"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                      className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -304,7 +304,7 @@ export default function Example() {
                       id="offers"
                       name="offers"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                      className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -325,7 +325,7 @@ export default function Example() {
                     id="push-everything"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                    className="h-4 w-4 border-gray-300 text-violet-600 focus:ring-violet-600"
                   />
                   <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-900">
                     Everything
@@ -336,7 +336,7 @@ export default function Example() {
                     id="push-email"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                    className="h-4 w-4 border-gray-300 text-violet-600 focus:ring-violet-600"
                   />
                   <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-900">
                     Same as email
@@ -347,7 +347,7 @@ export default function Example() {
                     id="push-nothing"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                    className="h-4 w-4 border-gray-300 text-violet-600 focus:ring-violet-600"
                   />
                   <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-gray-900">
                     No push notifications
@@ -365,7 +365,7 @@ export default function Example() {
         </button>
         <button
           type="submit"
-          className="rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+          className="rounded-md bg-violet-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
         >
           Save
         </button>

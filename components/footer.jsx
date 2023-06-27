@@ -7,23 +7,23 @@ const Footer = () => {
 <footer aria-label="Site Footer" class="bg-transparent">
   <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
     <div class="lg:flex lg:items-center lg:justify-between">
-      <div class="flex justify-center text-sky-600 sm:justify-start">
+      <div class="flex justify-center text-violet-600 sm:justify-start">
       <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
-                    alt="AntHealth"
+                    src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                    alt="hearti"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
-                    alt="AntHealth"
+                    src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                    alt="hearti"
                   />
       </div>
 
       <p
         class="mt-4 max-w-md text-center leading-relaxed text-gray-500 sm:text-left lg:mt-0"
       >
-        The future of benefits administration is now at AntHealth
+        The future of benefits administration is now at Hearti
       </p>
     </div>
 
@@ -200,10 +200,10 @@ const Footer = () => {
 
                 <span class="absolute h-2 w-2">
                   <span
-                    class="absolute h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"
+                    class="absolute h-full w-full animate-ping rounded-full bg-violet-400 opacity-75"
                   ></span>
                   <span
-                    class="relative flex h-2 w-2 rounded-full ml-1 bg-sky-500"
+                    class="relative flex h-2 w-2 rounded-full ml-1 bg-violet-500"
                   ></span>
                 </span>
               </a>
@@ -229,13 +229,13 @@ const Footer = () => {
               <label for="email" class="sr-only">Email</label>
 
               <input
-                class="w-full rounded-full border-sky-400 px-6 py-3 shadow-sm"
+                class="w-full rounded-full border-violet-400 px-6 py-3 shadow-sm"
                 type="email"
                 placeholder="Enter your email"
               />
 
               <button
-                class="block rounded-full bg-sky-500 px-8 py-3 font-medium text-white transition hover:bg-sky-900"
+                class="block rounded-full bg-violet-500 px-8 py-3 font-medium text-white transition hover:bg-violet-900"
                 type="submit"
               >
                 Subscribe
@@ -257,7 +257,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-violet-600 transition hover:text-violet-700/75"
           >
             <span class="sr-only">Facebook</span>
             <svg
@@ -280,7 +280,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-violet-600 transition hover:text-violet-700/75"
           >
             <span class="sr-only">Instagram</span>
             <svg
@@ -303,7 +303,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-violet-600 transition hover:text-violet-700/75"
           >
             <span class="sr-only">Twitter</span>
             <svg
@@ -321,10 +321,10 @@ const Footer = () => {
 
         <li>
           <a
-            href="https://github.com/AntHealth"
+            href="https://github.com/Hearti"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-violet-600 transition hover:text-violet-700/75"
           >
             <span class="sr-only">GitHub</span>
             <svg
@@ -347,7 +347,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-sky-600 transition hover:text-sky-700/75"
+            class="text-violet-600 transition hover:text-violet-700/75"
           >
             <span class="sr-only">Dribbble</span>
             <svg
@@ -373,33 +373,16 @@ const Footer = () => {
 <p class="text-center lg:text-center text-xs text-gray-900 sm:text-center">
         
         <span class="inline-flex items-baseline">
-        <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={12} height={12} className="self-center rounded-full mx-1" />
-        <span>AntHealth Group a UWIC Holdings Inc company. All Rights Reserved.</span>
+    
+        <span>Copyright Hearti 2023. All Rights Reserved.</span>
         </span> 
         </p>
                 
 </div>
-      <p class="text-center lg:text-center text-xs text-gray-900 sm:text-center">
-        
-        <span class="inline-flex items-baseline">
-        <Image src="https://quantumone.b-cdn.net/AntHealth_Logos/30px.svg" width={12} height={12} className="self-center rounded-full mx-1" />
-        <span> AntHealth 2023.</span>
-        </span> 
-        </p>
+      
         <hr class="w-64 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
        
         
-          <div className="p-4 text-justified text-xs">
-          <p> AntHealth.ai is a non-government website that is owned and operated by AntHealth Operating LLC, which is an affiliate of AntHealth Group Inc. 
-            Both are licensed health insurance agencies and each does business as AntHealth Group.AntHealth Group is not affiliated with or endorsed by the U.S. government, 
-            Healthcare.gov or the federal Medicare program. The purpose of this site is the solicitation of insurance. Contact may be made by an insurance agent/producer or 
-            insurance company.Not all products are available in all States. AntHealth represents various Insurance Carriers, Medicare Advantage plans, Medicare Supplement plans, 
-            Dental plans, Vision plans, Hospital Gap Coverage plans and Prescription Drug Plans (PDP).We do not offer every plan available in your area. Any information we provide is 
-            limited to those plans we do offer in your area. Please contact Medicare.gov or 1-800-MEDICARE (TTY users should call 1-877-486-2048) to get information on all of your options. 
-            Not all plans offer all of these benefits. Benefits may vary by carrier and location. Limitations and exclusions may apply.By using this site, you acknowledge that you have read 
-            and agree to our Privacy Policy, Do Not Call Policy and Terms of Service. </p>        
-            </div>
-      
       </footer>
       </>
   )

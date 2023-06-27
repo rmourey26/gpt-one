@@ -19,20 +19,21 @@ import LogAuth from "../components/login-btn";
 import NoSSR from 'components/nossr'
 
 import Head from 'next/head'
+import Image from 'next/image';
 
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Avatarph from './avatarph';
 
-import Image from 'next/image';
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
-  { name: 'SMARTApp', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
+  { name: 'SMART on FHIR', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
+  { name: 'Market AI', href: '/ai', current: false},
   { name: 'Questionaire', href: '/questionaire', current: false },
   { name: 'Med History', href: '/medicalhistory', current: false },
   { name: 'ACA API', href: '/acatable', current: false },
   { name: 'Fitness API', href: '/fitnessai', current: false },
-  { name: 'ACA AI', href: '/ai', current: false},
+  
 ]
 
 
@@ -60,7 +61,7 @@ const Navbar = () => {
   return (
     <>
     
-    <Disclosure as="nav" className="twindnav">
+    <Disclosure as="nav" className="bg-gray-200">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -79,15 +80,19 @@ const Navbar = () => {
               </div>
               <div className="flex flex-1 items-center justify-center">
                 <div className="flex flex-shrink-0 items-center sm:flex-start">
-                  <img
+                  <Image
                     className="block h-8 w-auto lg:hidden"
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
-                    alt="AntHealth"
+                    src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                    width={320}
+                    height={113}
+                    alt="Hearti"
                   />
-                  <img
+                  <Image
                     className="hidden h-8 w-auto lg:block"
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
-                    alt="AntHealth"
+                    src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                    width={320}
+                    height={113}
+                    alt="Hearti"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -97,8 +102,8 @@ const Navbar = () => {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current ? 'inline-flex items-center text-sm justify-center bg-sky-600 text-white px-3 py-0.75' : 'text-sm px-3 py-0.75 inline-flex items-center justify-center text-gray-300 hover:bg-sky-700 hover:text-white',
-                            'rounded-lg px-3 py-0.75 text-sm font-medium text-center items-center'
+                            item.current ? 'inline-flex items-center text-xs justify-center bg-violet-600 text-white px-3 py-0.75' : 'text-xs px-3 py-0.75 inline-flex items-center justify-center text-gray-300 hover:bg-violet-700 hover:text-white',
+                            'rounded-lg px-3 py-0.75 text-xs font-medium text-center items-center'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
@@ -117,7 +122,7 @@ const Navbar = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="rounded-full bg-sky-600 p-1 text-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600"
+                  className="rounded-full bg-violet-600 p-1 text-violet-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-violet-600"
                 >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -127,7 +132,7 @@ const Navbar = () => {
                 <Menu as="div" className="relative ml-3">
                   <div>
                     
-                    <Menu.Button className="flex rounded-full bg-sky-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600">
+                    <Menu.Button className="flex rounded-full bg-violet-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-violet-600">
                       <span className="sr-only">Open user menu</span>
                       <Image
                        src={session.user.image} width={44} height={44} className="flex rounded-full"
@@ -190,7 +195,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
+                    item.current ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' : 'text-violet-300 hover:bg-violet-300 hover:text-white',
                     'block rounded-lg px-3 py-2 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -215,7 +220,7 @@ const Navbar = () => {
                       return (
                         <>
                         
-                        <Disclosure as="nav" className="twindnav">
+                        <Disclosure as="nav" className="bg-gray-200">
                           {({ open }) => (
                             <>
                               <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -225,23 +230,27 @@ const Navbar = () => {
                                     <Disclosure.Button className="inline-flex items-center justify-center rounded-lg p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                       <span className="sr-only">Open main menu</span>
                                       {open ? (
-                                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                        <XMarkIcon className="block h-8 w-6" aria-hidden="true" />
                                       ) : (
-                                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                        <Bars3Icon className="block h-8 w-6" aria-hidden="true" />
                                       )}
                                     </Disclosure.Button>
                                   </div>
                                   <div className="flex flex-1 items-center justify-center">
                                     <div className="flex flex-shrink-0 items-center sm:flex-start">
-                                      <img
+                                      <Image
                                         className="block h-8 w-auto lg:hidden"
-                                        src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
-                                        alt="AntHealth"
+                                        src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                                        alt="Hearti"
+                                        width={320}
+                                        height={113}
                                       />
-                                      <img
+                                      <Image
                                         className="hidden h-8 w-auto lg:block"
-                                        src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
-                                        alt="AntHealth"
+                                        src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                                        alt="Hearti"
+                                        width={320}
+                                        height={113}
                                       />
                                     </div>
                                     <div className="hidden sm:ml-6 sm:block">
@@ -251,7 +260,7 @@ const Navbar = () => {
                                               key={item.name}
                                               href={item.href}
                                               className={classNames(
-                                                item.current ? 'inline-flex items-center text-sm justify-center bg-sky-600 text-white px-3 py-2' : 'text-sm px-3 py-2.5 inline-flex items-center justify-center text-gray-300 hover:bg-sky-700 hover:text-white',
+                                                item.current ? 'inline-flex items-center text-sm justify-center bg-violet-600 text-white px-3 py-2' : 'text-sm px-3 py-2.5 inline-flex items-center justify-center text-gray-300 hover:bg-violet-700 hover:text-white',
                                                 'rounded-lg px-3 py-2 text-sm font-medium text-center items-center'
                                               )}
                                               aria-current={item.current ? 'page' : undefined}
@@ -271,7 +280,7 @@ const Navbar = () => {
                                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                     <button
                                       type="button"
-                                      className="rounded-full bg-sky-600 p-1 text-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600"
+                                      className="rounded-full bg-violet-600 p-1 text-violet-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-violet-600"
                                     >
                                       <span className="sr-only">View notifications</span>
                                       <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -281,7 +290,7 @@ const Navbar = () => {
                                     <Menu as="div" className="relative ml-3">
                                       <div>
                                         
-                                        <Menu.Button className="flex rounded-full bg-sky-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-sky-600">
+                                        <Menu.Button className="flex rounded-full bg-violet-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-violet-600">
                                           <span className="sr-only">Open user menu</span>
                                           
                                           
@@ -349,7 +358,7 @@ const Navbar = () => {
                                       as="a"
                                       href={item.href}
                                       className={classNames(
-                                        item.current ? 'bg-sky-600 text-white' : 'text-sky-300 hover:bg-sky-300 hover:text-white',
+                                        item.current ? 'bg-violet-600 text-white' : 'text-violet-300 hover:bg-violet-300 hover:text-white',
                                         'block rounded-lg px-3 py-2 text-sm font-medium'
                                       )}
                                       aria-current={item.current ? 'page' : undefined}

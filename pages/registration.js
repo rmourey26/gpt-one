@@ -81,7 +81,7 @@ export default function Example() {
     <form action="/api/form" method="post">
       <div className="space-y-12 lg:mx-36 my-16 sm:mx-10 my-5">
         <div className="border-b border-gray-900/10 pb-12">
-          <h2 className="text-base font-semibold text-center text-gray-900">AntHealth Registration/ Sign Up Process</h2>
+          <h2 className="text-base font-semibold text-center text-gray-900">Hearti Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
            To test this API, complete the form and save. If successful, you will see the name you entered on the next page. If you receive an error, it means I am updating this page.
           </p>
@@ -104,7 +104,7 @@ export default function Example() {
                   name="firstName"
                   id="firstName"
                   autoComplete="givenName"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -119,7 +119,7 @@ export default function Example() {
                   name="lastName"
                   id="lastName"
                   autoComplete="familyName"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -143,7 +143,7 @@ export default function Example() {
 
                   autoComplete="suffix"
 
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
 
                 />
 
@@ -161,7 +161,7 @@ export default function Example() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -175,7 +175,7 @@ export default function Example() {
                   id="country"
                   name="country"
                   autoComplete="country-name"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option>United States</option>
                   <option>Canada</option>
@@ -194,7 +194,7 @@ export default function Example() {
                   name="street-address"
                   id="street-address"
                   autoComplete="street-address"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -209,7 +209,7 @@ export default function Example() {
                   name="city"
                   id="city"
                   autoComplete="address-level2"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function Example() {
                   name="region"
                   id="region"
                   autoComplete="address-level1"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function Example() {
                   name="telephone-number"
                   id="postal-code"
                   autoComplete="telephone-number"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -252,7 +252,7 @@ export default function Example() {
                   name="postal-code"
                   id="postal-code"
                   autoComplete="postal-code"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sky-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-violet-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -275,14 +275,14 @@ export default function Example() {
                       id="products"
                       name="products"
                       type="products"
-                      className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                      className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
                     <label htmlFor="products" className="font-medium text-gray-900">
                       Products 
                     </label>
-                    <p className="text-gray-500">Get notified when we launch new AntHealth products and services.</p>
+                    <p className="text-gray-500">Get notified when we launch new Hearti products and services.</p>
                   </div>
                 </div>
                 <div className="relative flex gap-x-3">
@@ -291,7 +291,7 @@ export default function Example() {
                       id="ACA"
                       name="ACA"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                      className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -307,7 +307,7 @@ export default function Example() {
                       id="offers"
                       name="offers"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-sky-600 focus:ring-sky-600"
+                      className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-600"
                     />
                   </div>
                   <div className="text-sm leading-6">
@@ -328,7 +328,7 @@ export default function Example() {
                     id="push-everything"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                    className="h-4 w-4 border-gray-300 text-violet-600 focus:ring-violet-600"
                   />
                   <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-900">
                     Everything
@@ -339,7 +339,7 @@ export default function Example() {
                     id="push-email"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                    className="h-4 w-4 border-gray-300 text-violet-600 focus:ring-violet-600"
                   />
                   <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-900">
                     Same as email
@@ -350,7 +350,7 @@ export default function Example() {
                     id="push-nothing"
                     name="push-notifications"
                     type="radio"
-                    className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-sky-600"
+                    className="h-4 w-4 border-gray-300 text-violet-600 focus:ring-violet-600"
                   />
                   <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-gray-900">
                     No push notifications
@@ -368,7 +368,7 @@ export default function Example() {
         </button>
         <button
           type="submit"
-          className="rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+          className="rounded-md bg-violet-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
         >
           Save
         </button>
@@ -388,7 +388,7 @@ return (
 
 <div className="mt-5 block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
 
-     <h1 className="title">Welcome to AntHealth</h1>
+     <h1 className="title">Welcome to Hearti</h1>
 
     <div className={styles.content}>
 

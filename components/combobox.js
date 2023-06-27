@@ -55,7 +55,7 @@ const plans = [
 
         <div className="relative mt-1">
 
-          <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-sky-300 sm:text-sm">
+          <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-violet-300 sm:text-sm">
 
             <Combobox.Input
 
@@ -117,7 +117,7 @@ const plans = [
 
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
 
-                        active ? 'bg-sky-600 text-white' : 'text-gray-900'
+                        active ? 'bg-violet-600 text-white' : 'text-gray-900'
 
                       }`
 
@@ -151,7 +151,7 @@ const plans = [
 
                             className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
 
-                              active ? 'text-white' : 'text-sky-600'
+                              active ? 'text-white' : 'text-violet-600'
 
                             }`}
 

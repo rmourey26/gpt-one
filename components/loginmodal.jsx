@@ -7,10 +7,10 @@ export default function LoginModal() {
    
     <section class="bg-gray-50 dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"> AntHealth
+      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"> Hearti
           
       </a>
-    <Image class="w-8 h-8 mr-2" src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg" alt="logo" width={2227} height={884}/>
+    <Image class="w-8 h-8 mr-2" src="https://quantumone.b-cdn.net/flippa/hearty1.svg" alt="logo" width={320} height={113}/>
 
           
       <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

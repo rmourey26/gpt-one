@@ -198,7 +198,7 @@ a:hover {
  }
 
 ::-webkit-scrollbar-track {
-     background-color: rgba (0, 225, 255, 0);
+     background-color: rgba (0, 225, 255, 0.2);
      -webkit-border-radius: 6px;
      border-radius: 6px;
  }
