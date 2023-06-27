@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <>
     
-    <Disclosure as="nav" className="bg-gray-300">
+    <Disclosure as="nav" className="twindnav">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -82,14 +82,14 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center sm:flex-start">
                   <Image
                     className="block h-8 w-auto lg:hidden"
-                    src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                    src="https://quantumone.b-cdn.net/flippa/heartygray.png"
                     width={320}
                     height={113}
                     alt="Hearti"
                   />
                   <Image
                     className="hidden h-8 w-auto lg:block"
-                    src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                    src="https://quantumone.b-cdn.net/flippa/heartygray.png"
                     width={320}
                     height={113}
                     alt="Hearti"
@@ -220,7 +220,7 @@ const Navbar = () => {
                       return (
                         <>
                         
-                        <Disclosure as="nav" className="bg-gray-300">
+                        <Disclosure as="nav" className="twindnav">
                           {({ open }) => (
                             <>
                               <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -240,14 +240,14 @@ const Navbar = () => {
                                     <div className="flex flex-shrink-0 items-center sm:flex-start">
                                       <Image
                                         className="block h-8 w-auto lg:hidden"
-                                        src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                                        src="https://quantumone.b-cdn.net/flippa/heartygray.png"
                                         alt="Hearti"
                                         width={320}
                                         height={113}
                                       />
                                       <Image
                                         className="hidden h-8 w-auto lg:block"
-                                        src="https://quantumone.b-cdn.net/flippa/hearty2.png"
+                                        src="https://quantumone.b-cdn.net/flippa/heartygray.png"
                                         alt="Hearti"
                                         width={320}
                                         height={113}

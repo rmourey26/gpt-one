@@ -10,14 +10,14 @@ const Footer = () => {
       <div class="flex justify-center text-violet-600 sm:justify-start">
       <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://quantumone.b-cdn.net/flippa/hearty2.svg"
+                    src="https://quantumone.b-cdn.net/flippa/heartygray.png"
                     alt="hearti"
                     width={320}
                     height={113}
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://quantumone.b-cdn.net/flippa/hearty2.svg"
+                    src="https://quantumone.b-cdn.net/flippa/heartygray.png"
                     alt="hearti"
                     width={320}
                     height={113}
