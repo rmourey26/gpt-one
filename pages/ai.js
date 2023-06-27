@@ -53,7 +53,7 @@ export default function AI() {
  <div className="mt-10 w-full md:w-96 md:max-w-full mx-auto">
   <div className="p-6 border border-gray-300 sm:rounded-md">
     <h1 className="text-center mt-2"> Hearti's Multi-Market AI </h1>
-  <p className="mb-6 text-justify mt-2 text-sm"> This demos Large Language Models' (LLMs) ACA health plan analysis. We send LLMs the info below and it returns a few ACA Marketplace plan options.
+  <p className="mb-6 text-justify mt-2 text-sm"> This demos Large Language Models' (LLMs) ACA health plan analysis. We send LLMs the info below and it returns the most appropriate plans from the ACA Marketplace, UHone.com,and Aetna.com.
  </p>
   <div className="mb-6 w-full md:w-84 md:max-w-full mx-auto">
   <div className="p-4 border border-gray-300 sm:rounded-md">
