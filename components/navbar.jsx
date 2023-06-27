@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <>
     
-    <Disclosure as="nav" className="bg-gray-200">
+    <Disclosure as="nav" className="bg-gray-300">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -195,7 +195,7 @@ const Navbar = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white' : 'text-violet-300 hover:bg-violet-300 hover:text-white',
+                    item.current ? 'bg-gradient-to-r from-violet-500 to-blue-500 text-white' : 'text-violet-300 hover:bg-violet-300 hover:text-white',
                     'block rounded-lg px-3 py-2 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
@@ -220,7 +220,7 @@ const Navbar = () => {
                       return (
                         <>
                         
-                        <Disclosure as="nav" className="bg-gray-200">
+                        <Disclosure as="nav" className="bg-gray-300">
                           {({ open }) => (
                             <>
                               <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
