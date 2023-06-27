@@ -81,13 +81,13 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center sm:flex-start">
                   <img
                     className="block h-8 w-auto lg:hidden"
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg?color=sky&shade=500"
-                    alt="AntHealth"
+                    src="https://quantumone.b-cdn.net/flippa/Indigo%20and%20Blue%20Modern%20Gradient%20Doctor%20Health%20Logo.svg?color=sky&shade=500"
+                    alt="Viridian"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://quantumone.b-cdn.net/AntHealth_Logos/ah-nb.svg??color=sky&shade=500"
-                    alt="AntHealth"
+                    src="https://quantumone.b-cdn.net/flippa/Indigo%20and%20Blue%20Modern%20Gradient%20Doctor%20Health%20Logo.svg?color=sky&shade=500"
+                    alt="Virdian"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
