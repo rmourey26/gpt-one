@@ -31,7 +31,7 @@ export default function Login() {
 
         <div className={styles.content}>
 
-             <h2> Hi {session.user.name}, welcome to Anthealth! <br /></h2> 
+             <h2> Hi {session.user.name}, welcome to Hearti! <br /></h2> 
              <Image src={session.user.image} width={64} height={64} className="flex rounded-full"/>
              <p>  Primary email: {session.user.email} </p>
              
