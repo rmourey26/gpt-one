@@ -82,14 +82,14 @@ const Navbar = () => {
                 <div className="flex flex-shrink-0 items-center sm:flex-start">
                   <Image
                     className="block h-8 w-auto lg:hidden"
-                    src="https://quantumone.b-cdn.net/flippa/heartygray.png"
+                    src="https://quantumone.b-cdn.net/flippa/hearty1.png"
                     width={320}
                     height={113}
                     alt="Hearti"
                   />
                   <Image
                     className="hidden h-8 w-auto lg:block"
-                    src="https://quantumone.b-cdn.net/flippa/heartygray.png"
+                    src="https://quantumone.b-cdn.net/flippa/hearty1.png"
                     width={320}
                     height={113}
                     alt="Hearti"
@@ -196,7 +196,7 @@ const Navbar = () => {
                   href={item.href}
                   className={classNames(
                     item.current ? 'bg-gradient-to-r from-violet-500 to-blue-500 text-white' : 'text-violet-300 hover:bg-violet-300 hover:text-white',
-                    'block rounded-lg px-3 py-2 text-sm font-medium'
+                    'block rounded-lg px-3 py-0.75 text-sm font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
@@ -240,14 +240,14 @@ const Navbar = () => {
                                     <div className="flex flex-shrink-0 items-center sm:flex-start">
                                       <Image
                                         className="block h-8 w-auto lg:hidden"
-                                        src="https://quantumone.b-cdn.net/flippa/heartygray.png"
+                                        src="https://quantumone.b-cdn.net/flippa/hearty1.png"
                                         alt="Hearti"
                                         width={320}
                                         height={113}
                                       />
                                       <Image
                                         className="hidden h-8 w-auto lg:block"
-                                        src="https://quantumone.b-cdn.net/flippa/heartygray.png"
+                                        src="https://quantumone.b-cdn.net/flippa/hearty1.png"
                                         alt="Hearti"
                                         width={320}
                                         height={113}
@@ -260,8 +260,8 @@ const Navbar = () => {
                                               key={item.name}
                                               href={item.href}
                                               className={classNames(
-                                                item.current ? 'inline-flex items-center text-sm justify-center bg-violet-600 text-white px-3 py-2' : 'text-sm px-3 py-2.5 inline-flex items-center justify-center text-gray-300 hover:bg-violet-700 hover:text-white',
-                                                'rounded-lg px-3 py-2 text-sm font-medium text-center items-center'
+                                                item.current ? 'inline-flex items-center text-sm justify-center bg-violet-600 text-white px-3 py-0.75' : 'text-sm px-3 py-0.75 inline-flex items-center justify-center text-gray-300 hover:bg-violet-700 hover:text-white',
+                                                'rounded-lg px-3 py-0.75 text-sm font-medium text-center items-center'
                                               )}
                                               aria-current={item.current ? 'page' : undefined}
                                             >
@@ -359,7 +359,7 @@ const Navbar = () => {
                                       href={item.href}
                                       className={classNames(
                                         item.current ? 'bg-violet-600 text-white' : 'text-violet-300 hover:bg-violet-300 hover:text-white',
-                                        'block rounded-lg px-3 py-2 text-sm font-medium'
+                                        'block rounded-lg px-3 py-0.75 text-sm font-medium'
                                       )}
                                       aria-current={item.current ? 'page' : undefined}
                                     >
