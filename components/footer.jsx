@@ -261,7 +261,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-white bg-gradient-to-r from-violet-500 to-sky-500 transition hover:bg-gradient-to-bl"
+            class="text-violet-600 bg-gradient-to-r from-violet-500 to-sky-500 transition hover:bg-gradient-to-bl"
           >
             <span class="sr-only">Facebook</span>
             <svg
