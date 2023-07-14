@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials"
 import OktaProvider from "next-auth/providers/okta"
-
+import { SupabaseAdapter } from "@auth/supabase-adapter"
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -29,6 +29,10 @@ export const authOptions = {
     // ...add more providers here
   ],
   
+  adapter: SupabaseAdapter({
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
+  }),
   secret: process.env.NEXTAUTH_SECRET,
   
   session: {
