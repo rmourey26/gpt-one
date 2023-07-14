@@ -68,7 +68,7 @@ export default function AI() {
               <a href="/fitnessai" className="text-violet-600">Fitnessai page </a>
               to view the raw response data. </p>
              <div className="m-4 text-xs overflow-x:scroll h-100">
-             < AccessToken />
+             < AccessToken className="overflow-x:scroll h-100" />
              </div>
              </div>
              <div class="flex items-start mb-2">
