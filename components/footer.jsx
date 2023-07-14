@@ -27,7 +27,7 @@ const Footer = () => {
       <p
         class="mt-4 max-w-md text-center leading-relaxed text-gray-500 sm:text-left lg:mt-0"
       >
-        The future of benefits administration is now at Hearti
+        The future of benefits administration is now at Hearti!
       </p>
     </div>
 
@@ -261,7 +261,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-violet-600 transition hover:text-violet-700/75"
+            class="text-white bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             <span class="sr-only">Facebook</span>
             <svg
