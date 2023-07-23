@@ -10,6 +10,7 @@ import LogAuth from "components/login-btn";
 
 import Image from 'next/image';
 
+import Navbar from "components/navbar";
 
 export default function Login() {
 
@@ -20,7 +21,8 @@ export default function Login() {
   if (session) {
 
     return (
-      
+      <>
+      < Navbar />
 <div className={styles.center}>
       <div className={styles.container}>
 
@@ -46,12 +48,15 @@ export default function Login() {
 
       </div>
       </div>
+      </>
       
     )
 
   }
 
   return (
+    <>
+    <Navbar />
     <div className={styles.center}>
     <div className={styles.container}>
 
@@ -69,7 +74,7 @@ export default function Login() {
    </div>
     </div>
     </div>
-
+</>
   )
 
 }
