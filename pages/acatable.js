@@ -26,7 +26,7 @@ export default function Healthcare({ initialData }) {
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
       <h1 className='text-center mb-10'>ACA API Demo</h1>
-<p> Plan data fetched from endpoint https://marketplace.api.healthcare.gov/api/v1/plans.  
+<p> Plan data fetched from ACA Marketplace API.   
      The original API response shown at the very bottom is flattened midstream to establish a unique ID field comprised of the plan ID and name before populating the table below. Toggle between column views using the 
      column button on the left. 
      </p>
