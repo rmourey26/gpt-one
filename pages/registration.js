@@ -360,7 +360,7 @@ export default function Example() {
             </fieldset>
           </div>
         </div>
-      </div>
+      
 
       <div className="mt-6 flex items-center justify-end gap-x-6 mx-36">
         <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
@@ -372,6 +372,7 @@ export default function Example() {
         >
           Save
         </button>
+      </div>
       </div>
     </form>
     </div>
