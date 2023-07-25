@@ -77,9 +77,9 @@ export default function Example() {
 
 
 <Navbar />
-<div className="mt-10 md:w-96 md:max-w-full mx-auto">
+<div className="mt-10 sm:w-96 sm:max-w-full mx-auto">
     <form action="/api/form" method="post">
-      <div className="mt-10 md:w-84 md:max-w-full mx-auto">
+      <div className="mt-10 sm:w-84 sm:max-w-full mx-auto">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">Hearti Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
