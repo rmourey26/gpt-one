@@ -83,7 +83,7 @@ export default function Example() {
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold text-center text-gray-900">Hearti Registration/ Sign Up Process</h2>
           <p className="mt-1 text-sm text-center text-gray-600">
-           To test this API, complete the form and save. If successful, you will see the name you entered on the next page. If you receive an error, it means I am updating this page.
+           To test this API, complete the form and save. If successful, you will see the name you entered on the next page.
           </p>
 
          
