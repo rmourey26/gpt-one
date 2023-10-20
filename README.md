@@ -15,8 +15,35 @@
 
 - Or use template, change the prompts and UI to fit your use case.
 
-## Install
--  Built with NodeJS 18. We'll use npm here but pnpm works too
+## Install & Run
+- Built with NodeJS 18. We'll use npm here but pnpm works too
+- For dev mode at localhost:3000, after copying in your env variables into a .env.local file run:
 ~~~ 
 npm install
 npm run dev 
+~~~
+
+- Production build - be sure to copy your variables into a .env file
+~~~
+npm install
+npm run build
+npm run start 
+~~~
+
+## Tech Stack
+- NextJS 13.2 with pages router
+- OpenAI's ChatGPT with chat and form functionality 
+- NextAuth oauth2 with Google and Okta IDP's
+- Supabase Next-Auth plugin for user and session storage 
+- Google Fitness API with all scopes enabled
+- Next-Rest Framework
+- Zod typed ACA 'Household' API
+- ACA Marketplace API 
+- Dockerized 
+- SurveyJS with 10 page 'Patient Medical Record' form and user survey form
+- React lottie
+- Tailwind and Flowbite CSS
+- SMART on FHIR app demo navlink
+- Radix and Material UI
+
+## Head to github.com/rmourey26/appsync-gpt to deploy this or any other NextJS app as a full stack, enterprise grade AWS Cloudformation
