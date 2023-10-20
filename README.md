@@ -46,4 +46,5 @@ npm run start
 - SMART on FHIR app demo navlink
 - Radix and Material UI
 
-## Head to github.com/rmourey26/appsync-gpt to deploy this or any other NextJS app as a full stack, enterprise grade AWS Cloudformation
+## Convert to AWS Cloudformation 
+- Head to github.com/rmourey26/appsync-gpt to deploy this or any other NextJS app as a full stack, enterprise grade AWS Cloudformation
