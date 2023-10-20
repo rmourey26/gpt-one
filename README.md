@@ -33,7 +33,7 @@ npm run start
 ## Tech Stack
 - NextJS 13.2 with pages router
 - OpenAI's ChatGPT with chat and form functionality 
-- NextAuth oauth2 with Google and Okta IDP's
+- NextAuth oauth2 with Google and Okta providers configured
 - Supabase Next-Auth plugin for user and session storage 
 - Google Fitness API with all scopes enabled
 - Next-Rest Framework
