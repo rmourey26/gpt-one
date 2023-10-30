@@ -96,7 +96,7 @@ const toggle = (index) => {
     setMessages(context);
 
     // Send chat history to API
-    const response = await fetch("/api/uhonechat", {
+    const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
