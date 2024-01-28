@@ -1,5 +1,4 @@
 // Make sure to add OPENAI_API_KEY as a secret
-'use server';
 import { Database } from 'lib/supabase';
 import { createClient } from '@supabase/supabase-js';
 import { Configuration, OpenAIApi } from "openai";
