@@ -140,7 +140,7 @@ const toggle = (index) => {
   if (session) {
   return (
     <>
-    <NoSSR>
+   
       < Navbar />
       
       <main className={styles.main}>
@@ -227,7 +227,7 @@ const toggle = (index) => {
           
 <Footer />
       </main>
-    </NoSSR>
+    
     </>
   )
 }
