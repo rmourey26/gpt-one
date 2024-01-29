@@ -31,22 +31,6 @@ global.messages = [
     content: "You provide guidance pertaining to health plans available within the marketplace at healthcare.gov. Additionally, you never ask the customer to provide photos. Also, do not mention that you are a bot."
   },
 ];
-
-
-
-export const createSupabaseStaticClient = () =>
-  createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      global: {
-        fetch,
-      },
-      auth: {
-        persistSession: true,
-      },
-    }
-  );
   
 export default async function(req, res) {
   const requestMethod = req.method;
@@ -65,29 +49,6 @@ export default async function(req, res) {
   console.log(markdownToPlainText(({ result:completion.data.choices[0].message }))+"that was markdown")
   console.log(JSON.stringify(completion.data.choices[0].message)+"that was json stringified")
 }
-
-try {
-    const { data, error } = await supabase.from('gpt_one')
-    .insert([
-        { messages: res.status(200).markdownToPlainText(completion.data.choices[0].message) },
-         { vector_one: res.status(200).json({ result: completion.data.choices[0].message }) },
-        ])
-    .select()
-
-    if (error) {
-      console.error('Error inserting data:', error);
-    } else {
-      console.log('Data inserted successfully:', data);
-      console.log(values.rows)
-      // Clear form values or handle success actions
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  } finally {
-   
-  
-  }
-    // Clear form values or handle success actions
   
 };
 
