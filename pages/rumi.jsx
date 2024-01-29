@@ -19,6 +19,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Content from '../components/Content';
 import RadixTabs from '../components/RadixTabs';
 import Head from 'next/head';
+import nossr from 'components/nossr';
 
   
 
@@ -34,7 +35,7 @@ function classNames(...classes) {
 
 
 
-export default function Example({initialData}) {
+export default function Example() {
   const { data: session } = useSession()
   
   const [household, setHousehold] = useState([""]);
@@ -138,6 +139,7 @@ const toggle = (index) => {
   if (session) {
   return (
     <>
+    <nossr>
       < Navbar />
       
       <main className={styles.main}>
@@ -224,7 +226,7 @@ const toggle = (index) => {
           
 <Footer />
       </main>
-    
+    </nossr>
     </>
   )
 }
@@ -252,50 +254,4 @@ return (
 
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context)
-  console.log({session})
-  const { accessToken } = session;
-  console.log({accessToken});
-  
-  if (!session) {
-    return {
-      props: {}
-    }
-  }
-  const res = await fetch(
 
-    "/api/chat",
-
-    {
-
-      method: "POST",
-
-      headers: {
-
-        "Content-Type": "application/json",
-
-        authorization: `Bearer ${accessToken}`,
-
-      },
-
-      body: JSON.stringify({ messages: context})
-
-    }
-
-  );
-  
-  const { user } = session;
-  const initialData = await res.json();
-
-  if (!res.ok) {
-
-    console.error("Error fetching data", initialData);
-
-    return { props: {} };
-
-  }
-
-  return { props: { initialData } } ;
-
-}
