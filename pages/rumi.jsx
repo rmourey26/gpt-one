@@ -34,7 +34,7 @@ function classNames(...classes) {
 
 
 
-export default function Example() {
+export default function Example({initialData}) {
   const { data: session } = useSession()
   
   const [household, setHousehold] = useState([""]);
@@ -279,7 +279,7 @@ export async function getServerSideProps(context) {
 
       },
 
-      body: JSON.stringify(data)
+      body: JSON.stringify({ messages: context})
 
     }
 
