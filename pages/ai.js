@@ -71,16 +71,16 @@ export default function AI() {
              
              </div>
              </div>
-             <div class="flex items-start mb-2">
-        <div class="flex items-center h-5">
-        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" />
+             <div className="flex items-start mb-2">
+        <div className="flex items-center h-5">
+        <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" />
         </div>
-        <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to submit my device data and our <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
+        <label for="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree to submit my device data and our <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
     </div>
   </div>
   </div>
   <form onSubmit={onSubmit}>
-  <div class="mb-6">
+  <div className="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
   <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     name="gender"
@@ -92,7 +92,7 @@ export default function AI() {
   </select>
   </div>
 
-  <div class="mb-6">
+  <div className="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
             
   <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -107,7 +107,7 @@ export default function AI() {
   />
 </div>
 
-<div class="mb-6">
+<div className="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Budget Minimum</label>
   <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     type="number"
@@ -118,7 +118,7 @@ export default function AI() {
     onChange={(e) => setBudgetMin(Number.parseInt(e.target.value))}
   />
 </div>
-<div class="mb-6">
+<div className="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Budget Maximum</label>
   <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     type="number"
@@ -129,7 +129,7 @@ export default function AI() {
     onChange={(e) => setBudgetMax(Number.parseInt(e.target.value))}
   />
 </div>
-<div class="mb-6">
+<div className="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Chronic Conditions</label>
   <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
     type="text"
@@ -139,7 +139,7 @@ export default function AI() {
     onChange={(e) => setChronic(e.target.value)}
   />
   </div>
-  <div class="mb-6">
+  <div className="mb-6">
   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zip Code</label>
             
   <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -153,13 +153,13 @@ export default function AI() {
     onChange={(e) => setZipcode(Number.parseInt(e.target.value))}
     />
     </div>
-  <div class="flex items-start mb-6">
-        <div class="flex items-center h-5">
-        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
+  <div className="flex items-start mb-6">
+        <div className="flex items-center h-5">
+        <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
         </div>
-        <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
+        <label for="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
     </div>
-  <button type="submit" class="text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800">Submit</button>
+  <button type="submit" className="text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800">Submit</button>
 </form>
 {loading && (
   <div className="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

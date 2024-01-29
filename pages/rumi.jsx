@@ -251,3 +251,51 @@ return (
 )
 
 }
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context)
+  console.log({session})
+  const { accessToken } = session;
+  console.log({accessToken});
+  
+  if (!session) {
+    return {
+      props: {}
+    }
+  }
+  const res = await fetch(
+
+    "/api/chat",
+
+    {
+
+      method: "POST",
+
+      headers: {
+
+        "Content-Type": "application/json",
+
+        authorization: `Bearer ${accessToken}`,
+
+      },
+
+      body: JSON.stringify(data)
+
+    }
+
+  );
+  
+  const { user } = session;
+  const initialData = await res.json();
+
+  if (!res.ok) {
+
+    console.error("Error fetching data", initialData);
+
+    return { props: {} };
+
+  }
+
+  return { props: { initialData } } ;
+
+}

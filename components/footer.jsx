@@ -4,10 +4,10 @@ import Image from 'next/image';
 const Footer = () => {
   return (
     <>
-<footer aria-label="Site Footer" class="bg-transparent">
-  <div class="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
-    <div class="lg:flex lg:items-center lg:justify-between">
-      <div class="flex justify-center text-violet-600 sm:justify-start">
+<footer aria-label="Site Footer" className="bg-transparent">
+  <div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8">
+    <div className="lg:flex lg:items-center lg:justify-between">
+      <div className="flex justify-center text-violet-600 sm:justify-start">
       <img
                     className="block h-8 w-auto lg:hidden"
                     src="https://quantumone.b-cdn.net/flippa/heartygray.png"
@@ -25,23 +25,23 @@ const Footer = () => {
       </div>
 
       <p
-        class="mt-4 max-w-md text-center leading-relaxed text-gray-500 sm:text-left lg:mt-0"
+        className="mt-4 max-w-md text-center leading-relaxed text-gray-500 sm:text-left lg:mt-0"
       >
         The future of benefits administration is now at Hearti!
       </p>
     </div>
 
     <div
-      class="mt-16 grid grid-cols-1 gap-8 border-t border-gray-100 pt-16 md:grid-cols-4 lg:grid-cols-6"
+      className="mt-16 grid grid-cols-1 gap-8 border-t border-gray-100 pt-16 md:grid-cols-4 lg:grid-cols-6"
     >
-      <div class="text-center sm:text-left">
-        <p class="text-lg font-medium text-gray-900">About Us</p>
+      <div className="text-center sm:text-left">
+        <p className="text-lg font-medium text-gray-900">About Us</p>
 
-        <nav aria-label="Footer About Nav" class="mt-8">
-          <ul class="space-y-4 text-sm">
+        <nav aria-label="Footer About Nav" className="mt-8">
+          <ul className="space-y-4 text-sm">
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Company History
@@ -50,7 +50,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Meet the Team
@@ -59,7 +59,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Careers
@@ -68,7 +68,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Suggestions
@@ -78,14 +78,14 @@ const Footer = () => {
         </nav>
       </div>
 
-      <div class="text-center sm:text-left">
-        <p class="text-lg font-medium text-gray-900">Our Services</p>
+      <div className="text-center sm:text-left">
+        <p className="text-lg font-medium text-gray-900">Our Services</p>
 
-        <nav aria-label="Footer Services Nav" class="mt-8">
-          <ul class="space-y-4 text-sm">
+        <nav aria-label="Footer Services Nav" className="mt-8">
+          <ul className="space-y-4 text-sm">
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 SMART on FHIR
@@ -94,7 +94,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 
@@ -103,7 +103,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 HL7
@@ -112,7 +112,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 CMS
@@ -122,14 +122,14 @@ const Footer = () => {
         </nav>
       </div>
 
-      <div class="text-center sm:text-left">
-        <p class="text-lg font-medium text-gray-900">Resources</p>
+      <div className="text-center sm:text-left">
+        <p className="text-lg font-medium text-gray-900">Resources</p>
 
-        <nav aria-label="Footer Resources Nav" class="mt-8">
-          <ul class="space-y-4 text-sm">
+        <nav aria-label="Footer Resources Nav" className="mt-8">
+          <ul className="space-y-4 text-sm">
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Online Guides
@@ -138,7 +138,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Actuarial AI
@@ -147,7 +147,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Forum
@@ -156,7 +156,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Downloads
@@ -168,14 +168,14 @@ const Footer = () => {
         </nav>
       </div>
 
-      <div class="text-center sm:text-left">
-        <p class="text-lg font-medium text-gray-900">Helpful Links</p>
+      <div className="text-center sm:text-left">
+        <p className="text-lg font-medium text-gray-900">Helpful Links</p>
 
-        <nav aria-label="Footer Helpful Nav" class="mt-8">
-          <ul class="space-y-4 text-sm">
+        <nav aria-label="Footer Helpful Nav" className="mt-8">
+          <ul className="space-y-4 text-sm">
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/FAQs"
               >
                 FAQs
@@ -184,7 +184,7 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-gray-700 transition hover:text-gray-700/75"
+                className="text-gray-700 transition hover:text-gray-700/75"
                 href="/"
               >
                 Support
@@ -193,21 +193,21 @@ const Footer = () => {
 
             <li>
               <a
-                class="text-center group gap-1.5"
+                className="text-center group gap-1.5"
                 href="/"
               >
                 <span
-                  class="text-gray-700 text-center transition group-hover:text-gray-700/75"
+                  className="text-gray-700 text-center transition group-hover:text-gray-700/75"
                 >
                   Live Chat
                 </span>
 
-                <span class="absolute h-2 w-2">
+                <span className="absolute h-2 w-2">
                   <span
-                    class="absolute h-full w-full animate-ping rounded-full bg-violet-400 opacity-75"
+                    className="absolute h-full w-full animate-ping rounded-full bg-violet-400 opacity-75"
                   ></span>
                   <span
-                    class="relative flex h-2 w-2 rounded-full ml-1 bg-violet-500"
+                    className="relative flex h-2 w-2 rounded-full ml-1 bg-violet-500"
                   ></span>
                 </span>
               </a>
@@ -216,30 +216,30 @@ const Footer = () => {
         </nav>
       </div>
 
-      <div class="text-center sm:text-left md:col-span-4 lg:col-span-2">
-        <p class="text-lg font-medium text-gray-900">Stay in Touch</p>
+      <div className="text-center sm:text-left md:col-span-4 lg:col-span-2">
+        <p className="text-lg font-medium text-gray-900">Stay in Touch</p>
 
-        <div class="mx-auto mt-8 max-w-md sm:ms-0">
+        <div className="mx-auto mt-8 max-w-md sm:ms-0">
           <p
-            class="text-center leading-relaxed text-gray-500 ltr:sm:text-left rtl:sm:text-right"
+            className="text-center leading-relaxed text-gray-500 ltr:sm:text-left rtl:sm:text-right"
           >
             Enter your email below to receive our latest updates!
           </p>
 
-          <form class="mt-4">
+          <form className="mt-4">
             <div
-              class="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start"
+              className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start"
             >
-              <label for="email" class="sr-only">Email</label>
+              <label for="email" className="sr-only">Email</label>
 
               <input
-                class="w-full rounded-full border-violet-400 px-6 py-3 shadow-sm"
+                className="w-full rounded-full border-violet-400 px-6 py-3 shadow-sm"
                 type="email"
                 placeholder="Enter your email"
               />
 
               <button
-                class="block text-white bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                className="block text-white bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 type="submit"
               >
                 Subscribe
@@ -251,21 +251,21 @@ const Footer = () => {
     </div>
 
     <div
-      class="mt-16 mb-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
+      className="mt-16 mb-16 border-t border-gray-100 pt-6 sm:flex sm:items-center sm:justify-between"
     >
       
      
-      <ul class="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
+      <ul className="mt-4 flex justify-center gap-6 sm:mt-0 sm:justify-start">
         <li>
           <a
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-violet-600 bg-gradient-to-r from-violet-500 to-sky-500 transition hover:bg-gradient-to-bl"
+            className="text-violet-600 bg-gradient-to-r from-violet-500 to-sky-500 transition hover:bg-gradient-to-bl"
           >
-            <span class="sr-only">Facebook</span>
+            <span className="sr-only">Facebook</span>
             <svg
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -284,11 +284,11 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-violet-600 transition hover:text-violet-700/75"
+            className="text-violet-600 transition hover:text-violet-700/75"
           >
-            <span class="sr-only">Instagram</span>
+            <span className="sr-only">Instagram</span>
             <svg
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -307,11 +307,11 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-violet-600 transition hover:text-violet-700/75"
+            className="text-violet-600 transition hover:text-violet-700/75"
           >
-            <span class="sr-only">Twitter</span>
+            <span className="sr-only">Twitter</span>
             <svg
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -328,11 +328,11 @@ const Footer = () => {
             href="https://github.com/Hearti"
             rel="noreferrer"
             target="_blank"
-            class="text-violet-600 transition hover:text-violet-700/75"
+            className="text-violet-600 transition hover:text-violet-700/75"
           >
-            <span class="sr-only">GitHub</span>
+            <span className="sr-only">GitHub</span>
             <svg
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -351,11 +351,11 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            class="text-violet-600 transition hover:text-violet-700/75"
+            className="text-violet-600 transition hover:text-violet-700/75"
           >
-            <span class="sr-only">Dribbble</span>
+            <span className="sr-only">Dribbble</span>
             <svg
-              class="h-6 w-6"
+              className="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
               aria-hidden="true"
@@ -374,9 +374,9 @@ const Footer = () => {
 
 
 <div className="text-center text-sm text-lightgray"> 
-<p class="text-center lg:text-center text-xs text-gray-900 sm:text-center">
+<p className="text-center lg:text-center text-xs text-gray-900 sm:text-center">
         
-        <span class="inline-flex items-baseline">
+        <span className="inline-flex items-baseline">
     
         <span>Copyright Hearti 2023. All Rights Reserved.</span>
         </span> 
@@ -384,7 +384,7 @@ const Footer = () => {
                 
 </div>
       
-        <hr class="w-64 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
+        <hr className="w-64 h-1 mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700"></hr>
        
         
       </footer>

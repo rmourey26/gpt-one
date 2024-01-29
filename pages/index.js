@@ -39,11 +39,11 @@ export default function Home() {
     <Head/>
     <Navbar />
       <div>
-        <section class="my-10 bg-transparent dark:bg-gray-900">
-            <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
-              <div class="mx-auto place-self-center lg:col-span-7 md:col-span-4 sm:col-span-1">
-              <h1 class="max-w-2xl text-center mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Generative AI-Powered Health Plan Design</h1>
-              <p class="max-w-2xl text-center mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"></p>
+        <section className="my-10 bg-transparent dark:bg-gray-900">
+            <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 md:grid-cols-8 sm:grid-cols-1">
+              <div className="mx-auto place-self-center lg:col-span-7 md:col-span-4 sm:col-span-1">
+              <h1 className="max-w-2xl text-center mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Generative AI-Powered Health Plan Design</h1>
+              <p className="max-w-2xl text-center mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400"></p>
               <div className="items-center px-4 flex justify-center" >
                   <div className="z-50 relative mr-3">
                 <Link className="z-50" href="/rumi" passHref>
