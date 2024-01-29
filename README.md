@@ -2,7 +2,7 @@
 
 
 ## gpt-one
-
+- Main branch in process of being converted to app router and TypeScript. Hearti.ai presently uses the 'pre-13.1-13.5-bump' branch. 
 - gpt-one is a full stack, ChatGPT integrated NextJS web app that includes NextAuth, Google Fitness API, Supabase Next-Auth plugin for user and session storage and more. 
 - Dockerized and scalable. Great starting point for those looking to build their own ChatGPT Saas. 
 - Full tech stack listed below 
