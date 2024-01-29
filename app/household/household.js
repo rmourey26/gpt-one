@@ -1,4 +1,4 @@
-import StateCombo from "../components/combobox";
+import StateCombo from "../../components/combobox";
 import Navbar from "components/navbar";
 import Footer from "components/footer";
 import {useState} from 'react';

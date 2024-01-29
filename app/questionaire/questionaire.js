@@ -26,7 +26,7 @@ import styles from '../styles/Home.module.css';
 import LogAuth from "components/login-btn";
 
 
-const SurveyComponent = dynamic(() => import("../components/SurveyComp"),{
+const SurveyComponent = dynamic(() => import("../../components/SurveyComp"),{
   ssr:false,
 })
 

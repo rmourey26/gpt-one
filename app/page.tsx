@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <>
-    <Head/>
+    
     <Navbar />
       <div>
         <section className="my-10 bg-transparent dark:bg-gray-900">

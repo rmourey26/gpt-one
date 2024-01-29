@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PopoverOne from "../components/popover";
-import RadixTabs from "../components/RadixTabs";
+import PopoverOne from "../../components/popover";
+import RadixTabs from "../../components/RadixTabs";
 
 const Post = () => {
   const [title, setTitle] = useState("");

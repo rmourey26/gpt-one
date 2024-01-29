@@ -14,7 +14,7 @@ import styles from '../styles/Home.module.css';
 import LogAuth from "components/login-btn";
 
 
-const MedSurveyComponent = dynamic(() => import("../components/MedicalSurveyComp"),{
+const MedSurveyComponent = dynamic(() => import("../../components/MedicalSurveyComp"),{
   ssr:false,
 })
 

@@ -12,10 +12,10 @@
   }
   ```
 */
-import Navbar from "../components/navbar"
+import Navbar from "../../components/navbar"
 import Head from 'next/head'
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
-import Footer from "../components/footer"
+import Footer from "../../components/footer"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 import { useRouter } from 'next/router';
