@@ -20,6 +20,7 @@ import Content from '../components/Content';
 import RadixTabs from '../components/RadixTabs';
 import Head from 'next/head';
 import nossr from 'components/nossr';
+import { NoSsr } from '@mui/base';
 
   
 
@@ -139,7 +140,7 @@ const toggle = (index) => {
   if (session) {
   return (
     <>
-    <nossr>
+    <NoSSR>
       < Navbar />
       
       <main className={styles.main}>
@@ -226,7 +227,7 @@ const toggle = (index) => {
           
 <Footer />
       </main>
-    </nossr>
+    </NoSSR>
     </>
   )
 }
