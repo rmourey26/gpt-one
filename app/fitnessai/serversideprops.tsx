@@ -6,7 +6,15 @@ import React from 'react';
 export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
   const { userId } = auth();
 
-  const res = await fetch('https://api.example.com/foo', {
+const session = await getSession(context)
+  console.log({session})
+
+const { accessToken } = session;
+  console.log({accessToken});
+
+
+
+const res = await fetch('https://api.example.com/foo', {
     headers: {
       Authorization: `Bearer: ${process.env.API_KEY}`
     }
@@ -17,7 +25,57 @@ export const getServerSideProps: GetServerSideProps<PageProps> = async () => {
 
 export const dynamic = "force-dynamic"
 
-export default async function Page() {
+  if (!session) {
+    return {
+      props: {}
+    }
+  }
+  const res = await fetch(
+
+    "https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate",
+
+    {
+
+      method: "POST",
+
+      headers: {
+
+        "Content-Type": "application/json",
+
+        authorization: `Bearer ${accessToken}`,
+
+      },
+
+      body: JSON.stringify(data)
+
+    }
+
+  );
+  
+  const { user } = session;
+  const initialData = await res.json();
+
+  if (!res.ok) {
+
+    console.error("Error fetching data", initialData);
+
+    return { props: {} };
+
+  }
+
+  return { props: { initialData } } ;
+
+}
+
+ 
+
+
+  
+
+  
+  
+  
+export default async function Page({initialData}) {
   const { props } = await getServerSideProps();
   return <ClientComponent {...props} />
 }
