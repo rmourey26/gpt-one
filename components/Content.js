@@ -1,3 +1,4 @@
+'use client'
 import Data from "../data.json";
 import MobileImage from "./MobileImage";
 import DesktopImage from "./DesktopImage";
