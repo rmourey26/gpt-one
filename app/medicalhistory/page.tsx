@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 import NoSSR from "components/nossr"; 
 
-import {styles} from '@/styles/Home.module.css';
+import styles from '@/styles/Home.module.css';
 
 import LogAuth from '@/components/login-btn'
 
