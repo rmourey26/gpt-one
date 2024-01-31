@@ -1,9 +1,9 @@
 import { useSelectedLayoutSegments } from 'next/navigation';
 import './globals.css';
 import { Inter } from 'next/font/google';
-import Footer from '@/app/components/Footer';
-import Navbar from '@/app/components/Navbar';
-import NextAuthProvider from '@/app/context/NextAuthProvider';
+import { Footer }from '@/components/footer';
+import { Navbar} from '@/components/navbar';
+import { NextAuthProvider } from '@/app/context/NextAuthProvider';
 import { ReactNode } from 'react';
 import React from 'react';
 const inter = Inter({ subsets: ['latin'] });
@@ -24,3 +24,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </body>
     </html>
   );
+}
