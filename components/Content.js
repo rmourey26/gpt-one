@@ -2,7 +2,7 @@
 import Data from "../data.json";
 import MobileImage from "./MobileImage";
 import DesktopImage from "./DesktopImage";
-import useWindowDimensions from "useWindowDimensions";
+import useWindowDimensions from '@/useWindowDimensions'
 import bgMobile from "../public/bg-pattern-mobile.svg";
 import bgDesktop from "../public/bg-pattern-desktop.svg";
 import { useState } from "react";
