@@ -28,7 +28,7 @@ export default function AI() {
 
   const [result, setResult] = useState('');
 
-  async function onSubmit(event) {
+  async function onSubmit(event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
     if (loading) {
       return;
