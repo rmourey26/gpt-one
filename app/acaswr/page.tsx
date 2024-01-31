@@ -1,3 +1,4 @@
+'use client'
 import useSWR, { SWRConfig } from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
