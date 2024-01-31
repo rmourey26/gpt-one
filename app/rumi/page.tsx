@@ -14,12 +14,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import {styles} from '@/styles/Home.module.css'
 import Image from 'next/image';
 
-import { LogAuth }from '@/components/login-btn'
+import LogAuth from '@/components/login-btn'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import {Content} from '@/components/Content';
-import {RadixTabs} from '@/components/RadixTabs';
+import Content from '@/components/Content';
+import RadixTabs from '@/components/RadixTabs';
 
 
   
