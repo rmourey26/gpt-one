@@ -2,25 +2,25 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
-import { useRouter } from 'next/router';
-
+import { useRouter } from 'next/navigation';
+import { Footer } from '@/components/footer'
+import { Navbar } from '@/components/navbar'
 import { Combobox } from '@headlessui/react'
 
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
-import styles from "../styles/Home.module.css"
+import {styles} from '@/styles/Home.module.css'
 import Image from 'next/image';
-import Navbar from 'components/navbar';
-import Footer from 'components/footer';
-import LogAuth from 'components/login-btn'
+
+import { LogAuth }from '@/components/login-btn'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Content from '../../components/Content';
-import RadixTabs from '../../components/RadixTabs';
-import Head from 'next/head';
+import {Content} from '@/components/Content';
+import {RadixTabs} from '@/components/RadixTabs';
+
 
   
 
