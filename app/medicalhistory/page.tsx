@@ -1,19 +1,19 @@
 'use client'
 
-import Footer from 'components/footer'
-import Navbar from 'components/navbar'
-import Head from 'next/head'
+import {Footer} from '@/components/footer'
+import {Navbar} from '@/components/navbar'
+
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic'
 import { useSession, signIn, signOut } from "next-auth/react"
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import NoSSR from "components/nossr"; 
 
-import styles from '../styles/Home.module.css';
+import {styles} from '@/styles/Home.module.css';
 
-import LogAuth from "components/login-btn";
+import {LogAuth} from '@/components/login-btn'
 
 
 const MedSurveyComponent = dynamic(() => import("../../components/MedicalSurveyComp"),{
