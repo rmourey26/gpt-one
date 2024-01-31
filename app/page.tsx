@@ -1,3 +1,4 @@
+'use client'
 import { useState, useRef, useEffect, Fragment } from 'react'
 import Link from 'next/link';
 import { Dialog } from '@headlessui/react'
