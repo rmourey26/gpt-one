@@ -44,9 +44,9 @@ export default function AcaPlans () {
 
     const data = {
 
-      plan_id: e.target.plan_id.value,
+      plan_id: e.target.value,
 
-      year: e.target.year.value, 
+      year: e.target.value, 
 
     };
 
