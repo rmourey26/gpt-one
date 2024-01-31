@@ -137,52 +137,52 @@ return(
       <form onSubmit={handleSubmit}>
     
         <div>
-            <label for="first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
+            <label htmlFor"first_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
             <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John" required />
            </div>
            <div>
-            <label for="last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
+            <label htmlFor"last_name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last name</label>
 
             <input type="text" id="last_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe" required />
         </div>
         <div>
-            <label for="income" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">income</label>
+            <label htmlFor"income" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">income</label>
             <input type="text" id="income" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="75000" required />
         </div>  
         <div>
-            <label for="age" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">age </label>
+            <label htmlFor"age" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">age </label>
             <input type="number" id="age" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="45" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required />
         </div>
         <div>
-            <label for="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">gender</label>
+            <label htmlFor"gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">gender</label>
             <input type="text" id="gender" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="male" required />
         </div>
         <div>
-            <label for="uses_tobacco" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tobacco User</label>
+            <label htmlFor"uses_tobacco" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tobacco User</label>
             <input type="text" id="uses_tobacco" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="no" required />
         </div>
     
     <div className="mb-6">
-        <label for="market" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Individual | Group</label>
+        <label htmlFor"market" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Individual | Group</label>
         <input type="market" id="market" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Individual" required />
     </div> 
     <div className="mb-6">
-        <label for="state" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">State</label>
+        <label htmlFor"state" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">State</label>
         <input type="state" id="state" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="NC" required />
     </div> 
     <div className="mb-6">
-        <label for="zipcode" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zipcode</label>
+        <label htmlFor"zipcode" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Zipcode</label>
         <input type="zipcode" id="zipcode" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="35681" required />
     </div> 
     <div className="mb-6">
-        <label for="year" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
+        <label htmlFor"year" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
         <input type="number" id="year" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="2023" required />
     </div> 
     <div className="flex items-start mb-6">
         <div className="flex items-center h-5">
         <input id="remember" type="checkbox" value="" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" required />
         </div>
-        <label for="remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
+        <label htmlFor"remember" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
     </div>
     <button type="submit" className="text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800">Submit</button>
    </form>

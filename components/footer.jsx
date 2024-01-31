@@ -230,7 +230,7 @@ const Footer = () => {
             <div
               className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start"
             >
-              <label for="email" className="sr-only">Email</label>
+              <label htmlFor"email" className="sr-only">Email</label>
 
               <input
                 className="w-full rounded-full border-violet-400 px-6 py-3 shadow-sm"
