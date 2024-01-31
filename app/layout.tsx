@@ -2,8 +2,8 @@
 import { useSelectedLayoutSegments } from 'next/navigation';
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
-import { Footer }from '@/components/footer';
-import { Navbar} from '@/components/navbar';
+import Footer from '@/components/footer';
+import Navbar from '@/components/navbar';
 import { NextAuthProvider } from '@/app/context/nextauthprovider';
 import { ReactNode } from 'react';
 import React from 'react';
