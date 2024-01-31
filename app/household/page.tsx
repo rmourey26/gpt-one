@@ -1,8 +1,8 @@
 'use client' 
 
 import { StateCombo } from '@/components/combobox'
-import { Navbar }from '@/components/navbar'
-import { Footer }from '@/components/footer'
+import Navbar from '@/components/navbar'
+import Footer from '@/components/footer'
 import {useState} from 'react';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { LogAuth } from '@/components/login-btn'; 
