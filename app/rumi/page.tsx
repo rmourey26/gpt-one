@@ -11,7 +11,7 @@ import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 
 import ReactMarkdown from 'react-markdown'
 import CircularProgress from '@mui/material/CircularProgress';
-import {styles} from '@/styles/Home.module.css'
+import styles from '@/styles/Home.module.css'
 import Image from 'next/image';
 
 import LogAuth from '@/components/login-btn'
