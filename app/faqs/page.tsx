@@ -1,17 +1,19 @@
 import { useState, useRef, useEffect, Fragment } from 'react'
 import Accordion from '../../components/Accordion';
 import Content from '../../components/Content';
+import { useProps } from '@mui/x-data-grid/internals';
 
 
 
-const Faqs = () => {
+const Faqs = (Content) => {
   
-Accordion({Content})
+Accordion()
 
 return (
     
    
-      <><Accordion/></>
+      <Accordion title={useProps} index={useProps}content={Content}/>
+      
       
       );
 };
