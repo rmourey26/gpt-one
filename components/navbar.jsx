@@ -8,13 +8,13 @@ import { useRouter } from 'next/navigation';
 
 import { useLottie } from 'lottie-react';
 
-import { docrxAnimation }from '@/docrx.json'
+import docrxAnimation from '@/docrx.json'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 
 import { VoiceSearch } from '@/components/voicesearch'
 
-import { LogAuth} from '@/components/login-btn'
+import LogAuth from '@/components/login-btn'
 
 import NoSSR from '@/components/nossr'
 
@@ -22,7 +22,7 @@ import NoSSR from '@/components/nossr'
 import Image from 'next/image';
 
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Avatarph } from '@/components/avatarph';
+import Avatarph from '@/components/avatarph';
 
 
 const navigation = [
