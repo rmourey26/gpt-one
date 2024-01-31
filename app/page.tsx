@@ -5,12 +5,12 @@ import { Dialog } from '@headlessui/react'
 import { useLottie } from 'lottie-react';
 import docrxAnimation from '@/docrx.json'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Content } from '@/components/Content'
+import Content from '@/components/Content'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { VoiceSearch } from '@/components/voicesearch';
+import VoiceSearch from '@/components/voicesearch';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { PlanCombo } from '@/components/combobox';
+import PlanCombo  from '@/components/combobox';
 import { styles } from '@/styles/Home.module.css'
 
 
