@@ -1,4 +1,4 @@
-'use server'
+'use client'
 // pages/acatable.js
 
 import { useState, useEffect } from 'react';
