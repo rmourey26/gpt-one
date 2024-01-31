@@ -3,8 +3,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/navigation';
-import { Footer } from '@/components/footer'
-import { Navbar } from '@/components/navbar'
+import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 import { Combobox } from '@headlessui/react'
 
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
