@@ -1,11 +1,11 @@
 'use client' 
 
 import { useSession, signIn, signOut } from "next-auth/react"
-import { useRouter } from 'next/router';
-import styles from '../styles/Home.module.css';
-import LogAuth from "components/login-btn";
+import { useRouter } from 'next/navigation';
+import { styles } from '@/styles/Home.module.css';
+import {LogAuth} from '@/components/login-btn'
 import Image from 'next/image';
-import Navbar from "components/navbar";
+import {Navbar} from '@/components/navbar'
 
 export default function Login() {
 
