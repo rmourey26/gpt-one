@@ -29,7 +29,7 @@ export default function AcaPlans () {
 
   // Handles the submit event on form submit.
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLInputElement>) => {
 
     // Stop the form from submitting and refreshing the page.
 
