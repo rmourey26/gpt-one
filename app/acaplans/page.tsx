@@ -1,5 +1,5 @@
 'use client'
-import Navbar from '/components/navbar'
+import Navbar from '@/components/navbar'
 import Footer from '@/components/footer'
 import { useState } from 'react';
 import { useSession, signIn, signOut } from "next-auth/react"
