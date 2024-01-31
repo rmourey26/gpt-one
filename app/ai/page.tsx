@@ -28,7 +28,7 @@ export default function AI() {
 
   const [result, setResult] = useState('');
 
-  async function onChange(e: React.FormEvent<HTMLInputElement>) => {
+  async function onChange(e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (loading) {
       return;
@@ -45,7 +45,7 @@ export default function AI() {
     const data = await response.json();
     setResult(data.result.replaceAll('\\n', '<br />'));
     setLoading(false);
-    const newValue = e.currentTarget.value;
+    const newValue = e.target.value;
   }
   if (session) {
   return (
