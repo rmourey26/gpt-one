@@ -14,9 +14,9 @@ export default function AcaPlans () {
 
   // loading state control
   const [loading, setLoading ] = useState(false);
-  const [userInput, setUserInput] = useState(<string | "">("");
-  const [plan_id, setPlan_id] = useState(<string | "">("");
-  const [year, setYear] = useState(<string | "">("");
+  const [userInput, setUserInput] = useState<string | "">("");
+  const [plan_id, setPlan_id] = useState<string | "">("");
+  const [year, setYear] = useState<string | "">("");
   
 
   // API endpoint where we send form data.
