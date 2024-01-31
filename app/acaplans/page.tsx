@@ -118,7 +118,7 @@ return(
   <div className="mx-16 my-4">
   <h1 className="text-center mt-2"> ACA Marketplace API - Plan Info </h1>
   <p className="text-center mt-2 text-sm">This form demonstrates an API call to the ACA Marketplace API. If you receive an error on submit, it typically means updates are in progress</p>
-      <form onSubmit={handleSubmit}>
+      <form>
     
         <div>
             <label for="plan_id" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plan ID</label>
