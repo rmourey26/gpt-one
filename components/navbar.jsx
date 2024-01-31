@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 import { Dialog } from '@headlessui/react';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import { useLottie } from 'lottie-react';
 
