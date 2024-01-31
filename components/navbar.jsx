@@ -12,7 +12,7 @@ import docrxAnimation from '@/docrx.json'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 
-import { VoiceSearch } from '@/components/voicesearch'
+import VoiceSearch from '@/components/voicesearch'
 
 import LogAuth from '@/components/login-btn'
 
