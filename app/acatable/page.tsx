@@ -1,8 +1,8 @@
-'use client'
+'use server'
 // pages/acatable.js
 
 import { useState, useEffect } from 'react';
-import NoSSR from 'components/nossr';
+
 import * as React from 'react';
 import { DataGrid, GridToolbar, Tool } from '@mui/x-data-grid';
 
@@ -24,7 +24,7 @@ export default function Healthcare({ initialData }) {
   // Render logic can go here. For example, you might want to map over the data array
   return (
     <div>
-      <NoSSR>
+      
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
       <h1 className='text-center mb-10'>ACA API Demo</h1>
@@ -47,7 +47,7 @@ export default function Healthcare({ initialData }) {
       <div className='m-10'>
       {JSON.stringify(data, null, 2)}
       </div>
-      </NoSSR>
+    
     </div>
   );
 }
@@ -68,7 +68,7 @@ function transformData(data) {
                    return flattenedData; 
                   }
 
-export async function getServerSideProps(context) {
+export async function getAca(props) {
   const data = {
     household: {
       income: 52000,
