@@ -24,7 +24,7 @@ import { useRouter } from 'next/navigation';
 
 import { styles } from '@/styles/Home.module.css';
 
-import { LogAuth } from '@/components/login-btn'
+import LogAuth from '@/components/login-btn'
 
 
 const SurveyComponent = dynamic(() => import("../../components/SurveyComp"),{
