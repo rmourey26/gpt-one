@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 
 import { useLottie } from 'lottie-react';
 
-import docrxAnimation from '@docrx.json'
+import { docrxAnimation }from '@/docrx.json'
 
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 
