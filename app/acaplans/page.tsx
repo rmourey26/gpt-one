@@ -6,7 +6,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 import { useRouter } from 'next/navigation';
 import { LogAuth } from '@/components/login-btn'
-import styles from './styles/Home.module.css'
+import { styles } from '@/styles/Home.module.css'
 
 export default function AcaPlans () {
   const { data: session } = useSession()
