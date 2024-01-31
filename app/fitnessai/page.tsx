@@ -9,10 +9,10 @@ import { useRouter } from 'next/router';
 
 import { useState, useEffect } from 'react';
 
-import styles from "../styles/Home.module.css"
+import { styles } from '@/styles/Home.module.css'
 import * as React from 'react';
 import { DataGrid, GridToolbar, Toolbar } from '@mui/x-data-grid';
-import LogAuth from "components/login-btn";
+import { LogAuth } from '@/components/login-btn';
 import { getToken } from "next-auth/jwt";
 
   
