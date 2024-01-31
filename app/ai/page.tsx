@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import React from 'react';
 import { useState } from 'react';
-import { styles } from '@/styles/Home.module.css';
+import styles from '@/styles/Home.module.css';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import LogAuth from '@/components/login-btn';
