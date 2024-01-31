@@ -1,9 +1,10 @@
+'use client'
 import { useSelectedLayoutSegments } from 'next/navigation';
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import { Footer }from '@/components/footer';
 import { Navbar} from '@/components/navbar';
-import { NextAuthProvider } from '@/context/NextAuthProvider';
+import { NextAuthProvider } from '@/app/context/NextAuthProvider';
 import { ReactNode } from 'react';
 import React from 'react';
 const inter = Inter({ subsets: ['latin'] });
