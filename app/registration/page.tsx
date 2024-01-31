@@ -369,7 +369,7 @@ export default function Example() {
     
     
   )
-}
+
 
 return (
   <div className={styles.center}>
@@ -390,5 +390,5 @@ return (
   </div>
   </div>
 
-}
+)
 }
