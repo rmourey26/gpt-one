@@ -19,7 +19,7 @@ import { getToken } from "next-auth/jwt";
 
 
 
-export default function FitnessAi({ initialData }) {
+export default function FitnessAi() {
   const [data, setData] = useState(initialData);
   const { data: session } = useSession()
   
