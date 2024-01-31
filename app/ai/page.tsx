@@ -9,8 +9,8 @@ import { useState } from 'react';
 import { styles } from '@/styles/Home.module.css';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
-import { LogAuth } from '@/components/login-btn';
-import { AccessToken } from '@/components/AccessToken';
+import LogAuth from '@/components/login-btn';
+import AccessToken from '@/components/AccessToken';
 
 
 
