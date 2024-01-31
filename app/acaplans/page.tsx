@@ -11,6 +11,9 @@ import styles from '@/styles/Home.module.css'
 export default function AcaPlans () {
   const { data: session } = useSession()
 
+ const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const newValue = e.currentTarget.value;
+}
   // loading state control
   const [loading, setLoading ] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -22,13 +25,7 @@ export default function AcaPlans () {
 
   const endpoint = "https://marketplace.api.healthcare.gov/api/v1/plans/${plan_id}?year=${year}&apikey=${ACA_API_KEY}"
 
-  function handleplan_idChange(e) {
-    setPlan_id(e.target.value);
-  }
-
-  function handleyearChange(e) {
-    setYear(e.target.value);
-  }
+  
 
   // Handles the submit event on form submit.
 
