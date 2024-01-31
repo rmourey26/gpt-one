@@ -12,7 +12,7 @@ export default function AcaPlans () {
   const { data: session } = useSession()
 
  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-  const newValue = e.currentTarget.value;
+  const newValue = e.target.value;
 }
   // loading state control
   const [loading, setLoading ] = useState(false);
@@ -29,7 +29,7 @@ export default function AcaPlans () {
 
   // Handles the submit event on form submit.
 
-  const handleSubmit = async (event: React.FormEvent<HTMLInputElement>) => {
+  const handleSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
     // Stop the form from submitting and refreshing the page.
 
@@ -46,9 +46,9 @@ export default function AcaPlans () {
 
     const data = {
 
-      plan_id: event.target.plan_id.value,
+      plan_id: e.target.plan_id.value,
 
-      year: event.target.year.value, 
+      year: e.target.year.value, 
 
     };
 
