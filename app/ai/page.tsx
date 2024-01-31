@@ -45,6 +45,7 @@ export default function AI() {
     const data = await response.json();
     setResult(data.result.replaceAll('\\n', '<br />'));
     setLoading(false);
+    const newValue = event.currentTarget.value;
   }
   if (session) {
   return (
