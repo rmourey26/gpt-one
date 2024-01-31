@@ -15,7 +15,7 @@ export default function AcaPlans () {
   // loading state control
   const [loading, setLoading ] = useState(false);
   const [userInput, setUserInput] = useState<string | "">("");
-  const [plan_id, setPlan_id] = useState<string | "">("");
+  const [plan_id, setPlan_Id] = useState<string | "">("");
   const [year, setYear] = useState<string | "">("");
   
 
@@ -122,12 +122,12 @@ return(
     
         <div>
             <label htmlFor="plan_id" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plan ID</label>
-            <input type="text" id="plan_id" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleplan_idChange} placeholder="11512NC0100031" required />
+            <input type="text" id="plan_id" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => setPlan_Id(e.target.value)} placeholder="11512NC0100031" required />
            </div>
            <div>
             <label htmlFor="year" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Year</label>
 
-            <input type="number" id="year" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={handleyearChange} placeholder="2022" required />
+            <input type="number" id="year" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e) => set_Year(e.target.value)} placeholder="2022" required />
         </div>
  
     <div className="flex items-start mb-6">
