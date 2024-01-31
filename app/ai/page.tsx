@@ -28,7 +28,7 @@ export default function AI() {
 
   const [result, setResult] = useState('');
 
-  async function onChange(e: React.ChangeEvent<HTMLInputElement>) => {
+  async function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     e.preventDefault();
     if (loading) {
       return;
