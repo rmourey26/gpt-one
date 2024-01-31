@@ -13,8 +13,8 @@
   }
   ```
 */
-import { Footer } from '@/components/footer'
-import { Navbar } from '@/components/navbar'
+import Footer from '@/components/footer'
+import Navbar from '@/components/navbar'
 
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import dynamic from 'next/dynamic';
