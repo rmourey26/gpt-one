@@ -9,14 +9,14 @@ import LogAuth from '@/components/login-btn'
 import styles from '@/styles/Home.module.css'
 
 export default function AcaPlans () {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
 
   // loading state control
   const [loading, setLoading ] = useState(false);
   const [userInput, setUserInput] = useState(<string | "">("");
-  const [plan_id, setPlan_id] = useState(<string | "">("")
-  const [year, setYear] = useState(<string | "">("")
+  const [plan_id, setPlan_id] = useState(<string | "">("");
+  const [year, setYear] = useState(<string | "">("");
   
 
   // API endpoint where we send form data.
