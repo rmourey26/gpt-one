@@ -3,7 +3,7 @@ import useSWR, { SWRConfig } from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const API = "https://marketplace.api.healthcare.gov/api/v1/households/lcsp?year=2019&apikey=${ACA_API_KEY}";
 
-export async function getServerSideProps() {
+export async function getRepo(props) {
   const repoInfo = await fetcher(API);
   return {
     props: {
