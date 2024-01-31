@@ -11,7 +11,7 @@ import VoiceSearch from '@/components/voicesearch';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import PlanCombo  from '@/components/combobox';
-import { styles } from '@/styles/Home.module.css'
+import styles from '@/styles/Home.module.css'
 
 
 
