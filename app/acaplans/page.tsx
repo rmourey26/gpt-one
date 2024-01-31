@@ -11,14 +11,12 @@ import styles from '@/styles/Home.module.css'
 export default function AcaPlans () {
   const { data: session } = useSession()
 
- const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-  const newValue = e.target.value;
-}
+
   // loading state control
   const [loading, setLoading ] = useState(false);
-  const [userInput, setUserInput] = useState("");
-  const [plan_id, setPlan_id] = useState("");
-  const [year, setYear] = useState("");
+  const [userInput, setUserInput] = useState(<string | "">("");
+  const [plan_id, setPlan_id] = useState(<string | "">("")
+  const [year, setYear] = useState(<string | "">("")
   
 
   // API endpoint where we send form data.
@@ -33,7 +31,7 @@ export default function AcaPlans () {
 
     // Stop the form from submitting and refreshing the page.
 
-    event.preventDefault();
+    e.preventDefault();
 
     if (userInput.trim() === "") {
       return;
