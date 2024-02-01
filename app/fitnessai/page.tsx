@@ -11,20 +11,49 @@ import { useState, useEffect } from 'react';
 
 import styles from '@/styles/Home.module.css'
 import * as React from 'react';
-import { DataGrid, GridToolbar, Toolbar } from '@mui/x-data-grid';
+import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import LogAuth from '@/components/login-btn';
 import { getToken } from "next-auth/jwt";
+import { string } from "zod";
+import { authOptions } from "../auth/[...nextauth]";
+import AccessToken from "@/components/AccessToken";
 
-  
+
+interface initialVals {
+  startTimeMillis: any;
+  endTimeMillis: any;
+  rows: {
+    startTimeMillis: number;
+    endTimeMillis: number;
+  } [],
+  min_answers: number;
+  max_answers: number;
+  custom_rules_select: string;
+}
+
+interface TempVals {
+  Temp: string [];
+
+}
 
 
 
 export default function FitnessAi() {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState();
   const { data: session } = useSession()
   
   const router = useRouter();
-
+  
+  const initialData: initialVals ={
+    rows: [
+      { startTimeMillis: 0, endTimeMillis: 0 }
+    ],
+    min_answers: 0,
+    max_answers: 0,
+    custom_rules_select: "",
+    startTimeMillis: undefined,
+    endTimeMillis: undefined
+  }
 
   const rows = [transformData(initialData)];
 
@@ -46,17 +75,17 @@ export default function FitnessAi() {
     <div className="h-max m-10 w-100">
       {/* Render the data here */}
       <h1 className='text-center mb-10'>GoogleFit Aggregate</h1>
-<p className="text-xs"> Hi...{session.user.name} ..your accessToken is currently: {session.accessToken} </p>
+<p className="text-xs"> Hi...{session.user.name} ..your accessToken is currently:  </p>
 <p>  Rendering the Access Token is just an exercise to show a test of the two step authorization process required to access device data. This is not meant for the user.</p>
 <p className="text-xs"> Below, we are querying `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate` to obtain your `estimated step count`. The main point here is that we have have enabled access to Google Fitness API scopes in accordance with the oauth2 protocol. When patching the data over to LLM's, retaining the original data format - in this case milliseconds - is preferred because otherwise, the app would have to convert it too and from multiple times before sending and while receiving and or rendering the response.    
      </p>
       <DataGrid className='overflow-x:scroll h-100'
       rows={rows} 
       columns={columns}
-      getRowId={(row) => row.startTimeMillis + row.endTimeMillis }
-      height={500}
-      components={{
-        Toolbar: GridToolbar
+      getRowId={(row) => initialData.startTimeMillis + initialData.endTimeMillis }
+      
+      slots={{
+        toolbar: GridToolbar
     }}
     
        />

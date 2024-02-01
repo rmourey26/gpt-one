@@ -3,15 +3,21 @@
 import { Form, Formik } from "formik";
 import React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { FormStepComponentType } from '../formstepsprops'
+import { FormStepComponentType } from '@/components/formstepprops'
 import { FormValues } from "@/lib/form";
+import { createBrowserClient } from '@supabase/ssr'
 
 type Props = {
   steps: FormStepComponentType[];
 };
 const SignUpForm = ({ steps }: Props) => {
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+
   const handleSubmit = async (values: FormValues, {setSubmitting}) => {
-    setIsSubmitting(true)
+    setSubmitting(true)
     class MatchRule {
       custom_rules_answer: any
       custom_rules_name: any
@@ -44,15 +50,15 @@ const SignUpForm = ({ steps }: Props) => {
        
       
     try {
-      const { data, error } = await supabase.from('questions')
+      const { data, error } = await supabase.from('gpt_one')
      
       .insert({
         
           custom_rules_name: tempstring,
           custom_rules_answer: result,
-          min_answers: values.min_answers,
-          max_answers: values.max_answers,
-          custom_rules_select: values.custom_rules_select,
+          min_answers: values.budget_min,
+          max_answers: values.budget_max,
+          custom_rules_select: values.program_description,
           
           
 
@@ -74,7 +80,7 @@ const SignUpForm = ({ steps }: Props) => {
       console.error('Error:', error);
     } finally {
      
-      setIsSubmitting(false);
+      setSubmitting(false);
       
     }
   };

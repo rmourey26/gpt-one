@@ -1,12 +1,9 @@
 "use client";
 import {  Menu } from "@headlessui/react";
-import { FormStepComponentType } from '../formstepsprops'
-import FormikSelect from '../formikselect'
-import FormikTextField from "../formiktextfield";
-import FormikCustomDropdown from "../formikcustomdropdown";
-import OnboardingProgress from "@/app/(onboarding)/onboarding-progress";
-import OnboardingHeader from "@/app/(onboarding)/onboarding-header";
-import OnboardingImage from "@/app/(onboarding)/onboarding-image";
+import { FormStepComponentType } from '@/components/formstepprops'
+import FormikSelect from '@/components/formiksekect'
+import FormikTextField from '@/components/formiktextfield'
+import FormikCustomDropdown from '@/components/formikcustomdropdown'
 
 const Page3: FormStepComponentType = (props) => {
   return (
@@ -16,9 +13,8 @@ const Page3: FormStepComponentType = (props) => {
     <div className="w-full md:w-1/2">
     <div className="min-h-[100dvh] h-full flex flex-col after:flex-1">
 
-<OnboardingHeader />
 
-      <OnboardingProgress step={3} />
+
       <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6 mx-auto">Create New Match Program ✨</h1>
       <FormikTextField className="form-input w-full" name="program_name" label="Match Program Name"/>
       <FormikTextField className="form-input w-full" name="program_description" label="Program Description" type="text" />
@@ -52,7 +48,7 @@ const Page3: FormStepComponentType = (props) => {
         </button>
       </div>
     
-    <OnboardingImage />
+   
     </div>
     </div>
   );

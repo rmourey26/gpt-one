@@ -1,13 +1,11 @@
 // components/signup/Page2.tsx
 "use client";
 import React from "react";
-import { FormStepComponentType } from '../formstepsprops';
-import FormikTextField from '../formiktextfield'
-import FormikRadioGroup from '../formikradiogroup'
-import OnboardingProgress from "@/app/(onboarding)/onboarding-progress";
-import AuthHeader from "@/app/(auth)/auth-header";
-import OnboardingHeader from "@/app/(onboarding)/onboarding-header";
-import OnboardingImage from "@/app/(onboarding)/onboarding-image";
+import { FormStepComponentType } from '@/components/formstepprops';
+import FormikTextField from '@/components/formiktextfield'
+import FormikRadioGroup from '@/components/formikradiogroup'
+
+
 
 const Page2: FormStepComponentType = (props) => {
   return (
@@ -17,9 +15,7 @@ const Page2: FormStepComponentType = (props) => {
     <div className="w-full md:w-1/2">
     <div className="min-h-[100dvh] h-full flex flex-col after:flex-1">
 
-<OnboardingHeader />
-    
-      <OnboardingProgress step={2} />
+
       <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">How would you like to match members? ✨</h1>
       <FormikRadioGroup
           name="match_type"
@@ -56,7 +52,7 @@ const Page2: FormStepComponentType = (props) => {
         
       </div>
     </div>
-    <OnboardingImage />
+ 
     </div>
     </div>
   );

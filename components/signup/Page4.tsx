@@ -1,11 +1,10 @@
 "use client";
 import {  Menu } from "@headlessui/react";
-import { FormStepComponentType } from '../formstepsprops'
-import FormikSelect from '../formikselect'
-import FormikCustomDropdown from "../formikcustomdropdown";
+import { FormStepComponentType } from '@/components/formstepprops'
+import FormikSelect from '@/components/formiksekect'
+import FormikTextField from '@/components/formiktextfield'
+import FormikCustomDropdown from '@/components/formikcustomdropdown'
 import { ErrorMessage, Field, FieldArray } from "formik";
-import FormikTextField from "../formiktextfield";
-;
 import React, { useState } from "react";
 
 const Page4: FormStepComponentType = (props) => {
@@ -33,11 +32,7 @@ const Page4: FormStepComponentType = (props) => {
   return (
 <>
 
-<OnboardingHeader />
 
-  
-
-      <OnboardingProgress step={4} />
       <div className="px-4 py-8">
             <div className="max-w-md mx-auto">
       <h1 className="text-3xl text-slate-800 dark:text-slate-100 font-bold mb-6">Create a Custom Match ✨</h1>
@@ -84,15 +79,17 @@ const Page4: FormStepComponentType = (props) => {
                           </label>
                         </div>
                         <div>
-                          <FieldArray
-                            name="rows"
+                        <FieldArray name="rows">
+                            
+                            {({ push, remove, form }) => {
+                              const { values } = form;
                             
                             
                               return (
                                 <div>
                                   {isCustom &&
                                     values.rows.length > 0 &&
-                                    values.rows.map((row, idx) => (
+                                    values.rows.map((row:any, idx: any) => (
                                       <div className="row" key={idx}>
                                         <label htmlFor={`rows.[${idx}].custom_rules_name`} className="block text-xs mb-2">
                                           Question #{idx + 1}{" "}
@@ -207,11 +204,7 @@ const Page4: FormStepComponentType = (props) => {
                 ]} /> 
                 </div>
                 
- {/*
- <DropdownFs options={[]} value={undefined} onChange={function (value: unknown): void {
-                                              throw new Error('Function not implemented.')
-                                            } }/>
-                                          */}
+ 
  
  
  
@@ -224,21 +217,7 @@ const Page4: FormStepComponentType = (props) => {
       
     
 
-{/*
 
-      <Listbox as="div" className="relative inline-flex w-full" name="min_answer" defaultValue={minanswer[0]}>
-        <Listbox.Button className={`flex items-center justify-between w-full py-2 px-3 cursor-pointer text-indigo-500'}`} onClick={()=> setCustomClick(true)}>{({ value }) => value.value}</Listbox.Button>
-        <Listbox.Options>
-          {minanswer.map((minanswer) => (
-            <Listbox.Option key={minanswer.id} value={minanswer}>
-              {minanswer.value}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
-      </Listbox>
-      <button>Submit</button>
-    
-          */}
                                           
                                           </div>
                                         </div>
@@ -254,14 +233,14 @@ const Page4: FormStepComponentType = (props) => {
                                     <span className="text-rose-500">*</span>
                                   </label>
 
-{/* #TODO add function updateArrayColumn(user.id, values.customRules) to onclick below when FieldArray value abstraction layer is added */}
+
                                   <a
                                     className={`btn ml-auto cursor-pointer ${isCustom
                                       ? "bg-indigo-500 hover:bg-indigo-600 text-white"
                                       : "bg-gray-200 text-gray-400"
                                       }`}
                                     onClick={
-                                      isCustom ? () => push({custom_rules_name: '', custom_rules_answer:'', min_answers: 0}) : null
+                                      isCustom ? () => push({custom_rules_name: '', custom_rules_answer:'', min_answers: 0}) : undefined
                                       
                                     }
                                     
@@ -283,24 +262,11 @@ const Page4: FormStepComponentType = (props) => {
                                     Add Rule
                                   </a>
 
-                                {/*
-                                  <div className="flex items-center justify-between mb-1">
-        <button
-          type="submit"
-          className="mt-2 btn bg-indigo-500 hover:bg-indigo-600 text-white ml-auto"
-          onClick={clickHandler}
-          disabled={isSubmitting}
-        >
-          {loading ? 'Loading ...' : 'Submit'}
-        </button>
-                                      </div>
-                                      
-                                      */}
-                                </div>
                                 
-                              );
+                                </div>
+                              )
                             }}
-                          />
+                                    </FieldArray>
                         </div>
 
                 
@@ -320,16 +286,9 @@ const Page4: FormStepComponentType = (props) => {
       </div>
       </div>
      
-      </div>
+      </>
       
-    </div>
-    </div>
-    </div>
-    </div>
-    
-    <OnboardingImage />
-    </div>
-    </div>
+  
     
   );
 };

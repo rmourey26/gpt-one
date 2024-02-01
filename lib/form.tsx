@@ -1,4 +1,3 @@
-import { PasswordPolicyAuthServerConfig } from "firebase-admin/lib/auth/auth-config";
 import { ZodOptionalType } from "zod";
 
 export type FormValues = {

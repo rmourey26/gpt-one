@@ -54,14 +54,20 @@ const toggle = (index) => {
     setOpen(index)
    }
   
-    const clickPoint = useRef();
-    const handleFocus = () => {
-        clickPoint.current.style.display = "none";
-    };
-
-    const handleBlur = () => {
-        clickPoint.current.style.display = "block";
-    };
+   const body = document.querySelector("body");
+   const log = document.getElementById("log");
+   
+   function checkDocumentFocus() {
+    if (document.hasFocus()) {
+      log.textContent = "This document has focus.";
+      body.style.display = "none";
+    } else {
+      log.textContent = "This document does not have focus.";
+      body.style.display = "block";
+    }
+  }
+    
+   
   const [content, setContent] = useState([]);
   const [userInput, setUserInput] = useState("");
  
@@ -198,7 +204,7 @@ const toggle = (index) => {
                 autoFocus={false}
                 rows={1}
                 maxLength={512}
-                type="text"
+               
                 id="userInput"
                 name="userInput"
                 placeholder={loading ? "Waiting for response..." : "Enter your needs..."}

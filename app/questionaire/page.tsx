@@ -57,7 +57,7 @@ const Questionaire = () => {
 
         <div className="border-b border-gray-900/10 pb-12">
     <div className="grid grid-cols-1 span-1 self-aligned-center">
-        <><SurveyComponent color="inherit" /></>
+        <><SurveyComponent /></>
     </div>
     
     
