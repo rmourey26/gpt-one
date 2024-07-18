@@ -23,18 +23,13 @@ function markdownToPlainText(markdown) {
   return plainText;
 }
 
-global.messages = [
-  {
-    role: "system",
-    content: "You provide guidance pertaining to health plans available within the marketplace at healthcare.gov. Additionally, you never ask the customer to provide photos. Also, do not mention that you are a bot."
-  },
-];
+
 export default async function(req, res) {
   const requestMethod = req.method;
   const completion = await openai.createChatCompletion({
     // You need early access to GPT-4, otherwise use "gpt-3.5-turbo"
     model: "gpt-3.5-turbo",
-    messages: [{ "role": "system", "content": "You provide the most appropriate Healthcare.gov health plan based upon the users age, gender, marital status, number of children, income, budget, medical coverage needs, chronic diseases and conditions, preferred providers. You never ask the customer to upload or provide any photos as our website has no means of doing so at this time. Also, do not mention that you are a bot." }].concat(req.body.messages),
+    messages: [{ "role": "system", "content": "You provide healthcare plan suggestions based upon information provided by users. Do not mention that you are a bot." }].concat(req.body.messages),
   });
   switch (requestMethod) {
     case 'GET':
