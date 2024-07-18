@@ -36,7 +36,7 @@ function classNames(...classes) {
 
 
 
-export default function Example({ data }) {
+export function Page() {
   const { data: session } = useSession()
   
   const [household, setHousehold] = useState([""]);
