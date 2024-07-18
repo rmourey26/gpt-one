@@ -32,17 +32,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export async function getServerSideProps() {
-  // Fetch data from API
-  const res = await fetch('/api/chat')
-  const repo = await res.json()
-  // Pass data to the page via props
-  return { props: { repo } }
-}
 
 
 
-export default function Example({ repo }) {
+
+export default function Example({ data }) {
   const { data: session } = useSession()
   
   const [household, setHousehold] = useState([""]);
