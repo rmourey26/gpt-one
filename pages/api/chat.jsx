@@ -40,6 +40,7 @@ export default async function(req, res) {
     case 'GET':
       res.status(200).markdownToPlainText(completion.data.choices[0].message)
     default:
+       res.setHeader('Content-Type', 'application/json')
       res.status(200).json({ result: completion.data.choices[0].message })
   
       
