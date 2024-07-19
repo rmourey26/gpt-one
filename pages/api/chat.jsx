@@ -28,7 +28,7 @@ export default async function(req, res) {
   const requestMethod = req.method;
   const completion = await openai.createChatCompletion({
     // You need early access to GPT-4, otherwise use "gpt-3.5-turbo"
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     messages: [{ "role": "system", "content": "You provide healthcare plan suggestions based upon information provided by users. Do not mention that you are a bot." }].concat(req.body.messages),
   });
   switch (requestMethod) {
