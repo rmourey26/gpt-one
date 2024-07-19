@@ -36,7 +36,7 @@ function classNames(...classes) {
 
 
 
-export function Page() {
+export default async function Page() {
   const { data: session } = useSession()
   
   const [household, setHousehold] = useState([""]);
