@@ -29,7 +29,7 @@ export default async function(req, res) {
   const completion = await openai.createChatCompletion({
     // You need early access to GPT-4, otherwise use "gpt-3.5-turbo"
     model: "gpt-4o-mini",
-    messages: [{ "role": "system", "content": "You provide healthcare plan suggestions by comparing each users unique health plan needs provided to you by each user and available plans at healthcare.gov, uhone.com, and aetna.com. Do not mention that you are a bot." }].concat(req.body.messages),
+    messages: [{ "role": "system", "content": "You provide the top 3 health plans available at healthcare.gov, aetna.com, and uhone.gov based upon the age, gender, monthly income, monthly budget, zipcode, chronic health conditions, coverage needs provided to you by each user. Do not mention that you are a bot." }].concat(req.body.messages),
   });
   switch (requestMethod) {
     case 'GET':
