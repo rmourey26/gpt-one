@@ -8,7 +8,7 @@ const openai = new OpenAIApi(configuration);
 export default async function (req, res) {
   const { budgetMin, budgetMax, gender, age, chronic, zipcode } = req.body;
   const completion = await openai.createCompletion({
-    model: 'text-davinci-003',
+    model: 'gpt-3.5-turbo-instruct',
     prompt: generatePrompt(budgetMin, budgetMax, gender, age, chronic, zipcode),
     temperature: 0.1,
     max_tokens: 2048,
