@@ -261,7 +261,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            className="text-violet-600 bg-gradient-to-r from-violet-500 to-sky-500 transition hover:bg-gradient-to-bl"
+            className="bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-2.5 py-1.25 text-center mr-2 mb-2"
           >
             <span className="sr-only">Facebook</span>
             <svg
@@ -284,7 +284,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            className="text-violet-600 transition hover:text-violet-700/75"
+            className="bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             <span className="sr-only">Instagram</span>
             <svg
@@ -307,7 +307,7 @@ const Footer = () => {
             href="/"
             rel="noreferrer"
             target="_blank"
-            className="text-violet-600 transition hover:text-violet-700/75"
+            className="bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             <span className="sr-only">Twitter</span>
             <svg
@@ -328,7 +328,7 @@ const Footer = () => {
             href="https://github.com/Hearti"
             rel="noreferrer"
             target="_blank"
-            className="text-violet-600 transition hover:text-violet-700/75"
+            className="bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             <span className="sr-only">GitHub</span>
             <svg
@@ -356,7 +356,7 @@ const Footer = () => {
             <span className="sr-only">Dribbble</span>
             <svg
               className="h-6 w-6"
-              fill="currentColor"
+              fill="inherit"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
