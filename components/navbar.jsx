@@ -102,8 +102,8 @@ const Navbar = () => {
                           key={item.name}
                           href={item.href}
                           className={classNames(
-                            item.current ? 'inline-flex items-center text-xs justify-center bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 text-white px-2.5 py-1.25' : 'text-xs px-3 py-0.75 inline-flex items-center justify-center text-gray-300 hover:bg-violet-700 hover:text-white',
-                            'rounded-lg px-2.5 py-1.25 text-xs font-medium text-center items-center'
+                            item.current ? 'inline-flex items-center text-xs justify-center bg-gradient-to-r from-violet-500 to-sky-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-violet-300 dark:focus:ring-violet-800 font-medium rounded-lg text-sm px-3 py-0.75 text-center text-white' : 'text-xs px-3 py-0.75 inline-flex items-center justify-center text-gray-300 hover:bg-gradient-to-r from-violet-700 to-sky-700 hover:text-white',
+                            'rounded-lg text-xs font-medium text-center items-center'
                           )}
                           aria-current={item.current ? 'page' : undefined}
                         >
