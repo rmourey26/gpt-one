@@ -67,7 +67,7 @@ const toggle = (index) => {
  
   const [loading, setLoading] = useState(false);
   const [messages, setMessages] = useState([
-    {role: "assistant", content: "Hi, my name is RUMI. I'm here to help you design the optimal healthplan for your unique needs. Please tell me your age, gender, annual income, monthly budget, coverage needs, chronic diseases, zipcode, and preferred providers. If you receive an unexpected response, please call or message us using the support button at the bottom right of the page "}
+    {role: "assistant", content: "Hi, my name is RUMI. I'm here to help you design the optimal healthplan for your unique needs by finding the most appropriate plans available from the ACA Marketplace, United Health, and Aetna. Please tell me your household data by listing your age, gender, annual income, monthly budget, coverage needs, chronic diseases, zipcode, and preferred providers. If you receive an unexpected response, please contact us. "}
     ]);
   
       const messageListRef = useRef(null);
