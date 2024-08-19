@@ -3,8 +3,8 @@
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    style-src 'self' 'unsafe-inline' *.googleapis.com;
+    img-src 'self' quantumone.b-cdn.net blob: data:;
     font-src 'self';
     object-src 'none';
     base-uri 'self';
