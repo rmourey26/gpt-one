@@ -3,12 +3,12 @@
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline' *.googleapis.com;
-    img-src 'self' quantumone.b-cdn.net *.googleusercontent.com googleapis.com unpkg.com *.supabase.co blob: data:;
+    style-src 'self' 'unsafe-inline' *.googleapis.com *.google.com *.okta.com ;
+    img-src 'self' quantumone.b-cdn.net *.googleusercontent.com googleapis.com unpkg.com *.supabase.co *.google.com *.okta.com blob: data:;
     font-src 'self' *.googleapis.com;
     object-src 'none';
     base-uri 'self';
-    form-action 'self';
+    form-action 'self' *.googleapis.com *.okta.com *.google.com;
     frame-ancestors 'none';
     upgrade-insecure-requests;
     `
