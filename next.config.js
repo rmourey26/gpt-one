@@ -4,7 +4,7 @@ const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
     style-src 'self' 'unsafe-inline' *.googleapis.com;
-    img-src 'self' quantumone.b-cdn.net *.googleusercontent.com googleapis.com unpkg.com blob: data:;
+    img-src 'self' quantumone.b-cdn.net *.googleusercontent.com googleapis.com unpkg.com *.supabase.co blob: data:;
     font-src 'self' *.googleapis.com;
     object-src 'none';
     base-uri 'self';
