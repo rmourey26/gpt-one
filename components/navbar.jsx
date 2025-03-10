@@ -27,10 +27,10 @@ import Avatarph from './avatarph';
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
-  { name: 'SMART on FHIR', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
+  { name: 'SMART FHIR', href: 'https://reactrouterfhir-6d38qi6u8-rmourey26.vercel.app', current: false },
   { name: 'Market AI', href: '/ai', current: false},
   { name: 'Questionaire', href: '/questionaire', current: false },
-  { name: 'Med History', href: '/medicalhistory', current: false },
+  { name: 'Med Hx', href: '/medicalhistory', current: false },
   { name: 'ACA API', href: '/acatable', current: false },
   { name: 'Fitness API', href: '/fitnessai', current: false },
   
@@ -64,7 +64,7 @@ const Navbar = () => {
     <Disclosure as="nav" className="twindnav">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -223,7 +223,7 @@ const Navbar = () => {
                         <Disclosure as="nav" className="twindnav">
                           {({ open }) => (
                             <>
-                              <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                              <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
                                 <div className="relative flex h-16 items-center justify-between">
                                   <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                     {/* Mobile menu button*/}
